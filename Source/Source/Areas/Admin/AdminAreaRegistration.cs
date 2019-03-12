@@ -8,7 +8,7 @@ namespace Source.Areas.Admin
         {
             get 
             {
-                return "Admina";
+                return "Admin";
             }
         }
 

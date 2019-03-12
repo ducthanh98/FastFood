@@ -13,5 +13,16 @@ namespace Source.Areas.Admin.Controllers
         {
             return View();
         }
+
+        [ChildActionOnly]
+        public ActionResult _Header()
+        {
+            return View();
+        }
+
+        public ActionResult _Menu()
+        {
+            return View();
+        }
     }
 }

@@ -17,7 +17,7 @@ namespace Source
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                namespaces:new[] { "Source.Areas.Admin.Controllers" }
+                namespaces:new[] { "Source.Controllers" }
             );
 
         }

@@ -1,0 +1,113 @@
+﻿
+@{
+    ViewBag.Title = "DanhSachLoaiChiPhi";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header">
+    <h1 class="page-title">Danh Sách Chi Phí</h1>
+    <div class="page-header-actions">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+            <li class="breadcrumb-item"><a href="/ChiPhi/DanhSachChiPhi">Chi Phí</a></li>
+            <li class="breadcrumb-item active">Danh Sách Chi Phí</li>
+        </ol>
+    </div>
+</div>
+
+<div class="page-content">
+    <!-- Panel -->
+    <div class="panel">
+        <div class="panel-body container-fluid">
+            <div class="row row-lg">
+                <div class="col-lg">
+                    <!-- Example Basic -->
+                    <div class="example-wrap">
+                        <div class="example table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>Mã Loại Chi Phí</th>
+                                        <th>Tên Loại Chi phí</th>
+                                        <th>Mô tả</th>
+                                        <th class="text-center">Chỉnh sửa</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Teagan</td>
+                                        <td>Prohaska</td>
+                                        <td>Elijah</td>
+                                        <td class="text-center">
+                                            <i class="icon wb-edit text-primary" data-target="#ExpenseTypeModal" data-toggle="modal" aria-hidden="true"></i> / <i class="icon wb-trash text-danger"  aria-hidden="true" data-target="#ConfirmModal"
+                            data-toggle="modal"></i>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- End Example Basic -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Panel -->
+
+</div>
+<!-- End Page -->
+
+<!-- Modal -->
+<div class="modal fade modal-3d-flip-vertical" id="ExpenseTypeModal" aria-hidden="true"
+     aria-labelledby="exampleModalTitle" role="dialog">
+    <div class="modal-dialog modal-simple">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title">Thông tin</h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel-body container-fluid">
+                    <form autocomplete="off">
+                        <div class="form-group form-material" data-plugin="formMaterial">
+                            <label class="form-control-label" for="inputText">Tên Loại Chi Phí</label>
+                            <input type="text" class="form-control" id="inputText" name="inputText" placeholder="Text" />
+                        </div>
+
+                        <div class="form-group form-material" data-plugin="formMaterial">
+                            <label class="form-control-label" for="selectMulti">Chi Nhánh</label>
+                            <select class="form-control" data-plugin="select2">
+                                    <option value="AZ">Arizona</option>
+                                    <option value="CO">Colorado</option>
+                                    <option value="ID">Idaho</option>
+                                    <option value="MT">Montana</option>
+                                    <option value="NE">Nebraska</option>
+                                    <option value="NM">New Mexico</option>
+                                    <option value="ND">North Dakota</option>
+                                    <option value="UT">Utah</option>
+                                    <option value="WY">Wyoming</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group form-material" data-plugin="formMaterial">
+                            <label class="form-control-label" >Mô tả</label>
+                            <textarea class="form-control border-form" rows="8"></textarea>
+                        </div>
+
+
+   
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-pure" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary">Gửi</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Modal -->

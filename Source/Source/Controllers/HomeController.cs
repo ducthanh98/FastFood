@@ -1,8 +1,12 @@
-﻿using System;
+﻿using DAO;
+using Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BusinessLogic;
+using System.Data;
 
 namespace Source.Controllers
 {
@@ -10,6 +14,7 @@ namespace Source.Controllers
     {
         public ActionResult Index()
         {
+            List<LoaiChiPhiDAO> data = new LoaiChiPhiBL().GetByID(6);
             return View();
         }
 

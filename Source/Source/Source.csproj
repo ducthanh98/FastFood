@@ -196,9 +196,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ChiPhiController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AjaxController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -5244,12 +5246,10 @@
     <Content Include="Assets\skins\teal.min.css" />
     <Content Include="Assets\skins\yellow.css" />
     <Content Include="Assets\skins\yellow.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\customize.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -5280,6 +5280,7 @@
     <Folder Include="Scripts\" />
     <Folder Include="Views\Admin\" />
     <Folder Include="Views\Ajax\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -6208,7 +6209,24 @@
     <Content Include="Assets\global\vendor\toastr\toastr.js.map" />
     <Content Include="Assets\global\vendor\waves\waves.min.js.map" />
     <Content Include="Assets\images\.gitkeep" />
+    <Content Include="Areas\Admin\Views\Home\_Header.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\_Menu.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiPhi\DanhSachLoaiChiPhi.cshtml" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
+      <Project>{A1CA7815-04FF-457F-B4B2-2CFE450E6454}</Project>
+      <Name>BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAO\DAO.csproj">
+      <Project>{3e98cfa3-d0a1-4dba-bff0-252fbd648545}</Project>
+      <Name>DAO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SQLHelper\Common.csproj">
+      <Project>{f2472ef4-b8b0-4abb-ae76-828e18567869}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
