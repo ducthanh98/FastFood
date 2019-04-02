@@ -1,11 +1,9 @@
-﻿using BusinessLogic;
-using DAO;
-using Source.Controllers;
+﻿using DTO;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using System.Linq;
+using System.Collections;
 
 namespace Source.Areas.Admin.Controllers
 {
@@ -19,16 +17,58 @@ namespace Source.Areas.Admin.Controllers
 
         public ActionResult DanhSachLoaiChiPhi()
         {
-            List<LoaiChiPhiDAO> list = new List<LoaiChiPhiDAO>();
+
+            return View();
+        }
+
+        public PartialViewResult _DanhSachLoaiChiPhi(int pageNumber =1,int pageSize =10,string keyText ="")
+        {
+            List<LoaiChiPhiDTO> list = new List<LoaiChiPhiDTO>();
             try
             {
+                List<ChiNhanhDTO> listBoxes = ChiNhanh_Service.GetAll();
+                Hashtable hs = new Hashtable();
+                for(int i = 0; i < listBoxes.Count; i++)
+                {
+                    hs.Add(listBoxes[i].MaChiNhanh, listBoxes[i].DiaChi);
+                }
+                ViewBag.listboxes = hs;
                 int totalEntries = LoaiChiPhi_Service.GetAllEntries();
-                list = LoaiChiPhi_Service.GetAllBy(1, 10, "");
+                ViewBag.maxNumber = Math.Ceiling(totalEntries / (double)pageSize);
+                ViewBag.pageNumber = pageNumber;
+                ViewBag.pageSize = pageSize;
+                list = LoaiChiPhi_Service.GetAllBy(pageNumber, pageSize, keyText);
+                TempData["ExpenseType"] = list;
+                TempData["Boxes"] = listBoxes;
+                TempData.Keep();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            return PartialView(list);
+        }
+
+        public PartialViewResult _LoaiChiPhi_ChiTiet(int ID)
+        {
+            LoaiChiPhiDTO data;
+            try
+            {
+                List <LoaiChiPhiDTO> list = (List<LoaiChiPhiDTO>)TempData["ExpenseType"];
+                TempData.Keep();
+                if(ID == -1)
+                {
+                    data = new LoaiChiPhiDTO();
+                } else
+                {
+                    data = list.Where(x => x.MaLoaiChiPhi.Equals(ID)).FirstOrDefault();
+                }
             } catch(Exception e)
             {
                 throw e;
             }
-            return View(list);
+            
+            return PartialView(data);
         }
     }
 }

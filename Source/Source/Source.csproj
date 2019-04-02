@@ -196,15 +196,22 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AjaxController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ChiNhanhController.cs" />
     <Compile Include="Areas\Admin\Controllers\ChiPhiController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\KhuyenMaiController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MatHangController.cs" />
+    <Compile Include="Configuration\AppConfig.cs" />
+    <Compile Include="Configuration\AuthorizeBusinessLogic.cs" />
     <Compile Include="Controllers\AjaxController.cs" />
-    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\CookieHelper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -5247,6 +5254,7 @@
     <Content Include="Assets\skins\yellow.css" />
     <Content Include="Assets\skins\yellow.min.css" />
     <Content Include="Content\customize.css" />
+    <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -5256,6 +5264,8 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Scripts\Features.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -5277,8 +5287,11 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Scripts\" />
-    <Folder Include="Views\Admin\" />
+    <Folder Include="Areas\Admin\Views\Ajax\" />
+    <Folder Include="Areas\Admin\Views\Base\" />
+    <Folder Include="Areas\Admin\Views\ChiNhanh\" />
+    <Folder Include="Areas\Admin\Views\KhuyenMai\" />
+    <Folder Include="Areas\Admin\Views\SanPham\" />
     <Folder Include="Views\Ajax\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
@@ -6212,16 +6225,25 @@
     <Content Include="Areas\Admin\Views\Home\_Header.cshtml" />
     <Content Include="Areas\Admin\Views\Home\_Menu.cshtml" />
     <Content Include="Areas\Admin\Views\ChiPhi\DanhSachLoaiChiPhi.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiPhi\_DanhSachLoaiChiPhi.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiPhi\_LoaiChiPhi_ChiTiet.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\_Pagination.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiPhi\DanhSachChiPhi.cshtml" />
+    <Content Include="Areas\Admin\Views\MatHang\SanPham.cshtml" />
     <None Include="Project_Readme.html" />
+    <Content Include="Views\Auth\Login.cshtml" />
+    <Content Include="Views\Auth\ForgotPassword.cshtml" />
+    <Content Include="Views\Auth\Unauthorized.cshtml" />
+    <Content Include="Views\Auth\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
       <Project>{A1CA7815-04FF-457F-B4B2-2CFE450E6454}</Project>
       <Name>BusinessLogic</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DAO\DAO.csproj">
+    <ProjectReference Include="..\DAO\DTO.csproj">
       <Project>{3e98cfa3-d0a1-4dba-bff0-252fbd648545}</Project>
-      <Name>DAO</Name>
+      <Name>DTO</Name>
     </ProjectReference>
     <ProjectReference Include="..\SQLHelper\Common.csproj">
       <Project>{f2472ef4-b8b0-4abb-ae76-828e18567869}</Project>

@@ -20,7 +20,13 @@ namespace Common
                 {
                     if(pro.Name == dc.ColumnName)
                     {
-                        pro.SetValue(obj, dr[dc.ColumnName], null);
+                        if(dr[dc.ColumnName] == null || dr[dc.ColumnName] == DBNull.Value)
+                        {
+                            pro.SetValue(obj, null, null);
+                        } else
+                        {
+                            pro.SetValue(obj, dr[dc.ColumnName], null);
+                        }
                     } else
                     {
                         continue;

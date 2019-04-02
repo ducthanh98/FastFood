@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Source.Areas.Admin.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         // GET: Admin/Home
         public ActionResult Index()
@@ -23,6 +23,13 @@ namespace Source.Areas.Admin.Controllers
         public ActionResult _Menu()
         {
             return View();
+        }
+
+        public PartialViewResult _Pagination(int maxNumber, int pageNumber)
+        {
+            ViewBag.maxNumber = maxNumber;
+            ViewBag.pageNumber = pageNumber;
+            return PartialView();
         }
     }
 }

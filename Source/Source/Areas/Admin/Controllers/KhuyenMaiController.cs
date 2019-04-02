@@ -4,15 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Source.Controllers
+namespace Source.Areas.Admin.Controllers
 {
-    public class AjaxController : Controller
+    public class KhuyenMaiController : Controller
     {
-        // GET: Ajax
+        // GET: Admin/KhuyenMai
         public ActionResult Index()
         {
             return View();
         }
-
     }
 }

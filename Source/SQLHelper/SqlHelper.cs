@@ -1,5 +1,4 @@
-﻿using DAO;
-using Common;
+﻿using Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -155,6 +154,32 @@ namespace Common
             return result;
         }
 
+        public List<T> ExecuteProcAndGetData(string name_proc)
+        {
+            List<T> result = new List<T>();
+            DataSet ds = new DataSet();
+            SqlCommand cmdObject = null;
+            try
+            {
+                cmdObject = new SqlCommand(name_proc, Connection);
+                cmdObject.CommandType = CommandType.StoredProcedure;
+                // Do something with propValue
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmdObject);
+                sqlDataAdapter.Fill(ds);
+                result = ConvertData.ConvertDataTableToList<T>(ds.Tables[0]);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                cmdObject.Dispose();
+                CloseConnection();
+            }
+            return result;
+        }
+
         public int GetTotalRow(string tablename)
         {
             int total=0;
@@ -209,6 +234,36 @@ namespace Common
                 CloseConnection();
             }
             return result;
+        }
+
+        public T ExecuteProcAndGetData(string name_proc, string TenTaiKhoan, string MatKhau)
+        {
+            List<T> result = new List<T>();
+            DataSet ds = new DataSet();
+            SqlCommand cmdObject = null;
+            try
+            {
+                cmdObject = new SqlCommand(name_proc, Connection);
+                cmdObject.CommandType = CommandType.StoredProcedure;
+
+                cmdObject.Parameters.Add(new SqlParameter("TenTaiKhoan", TenTaiKhoan));
+                cmdObject.Parameters.Add(new SqlParameter("MatKhau", MatKhau));
+
+                // Do something with propValue
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmdObject);
+                sqlDataAdapter.Fill(ds);
+                result = ConvertData.ConvertDataTableToList<T>(ds.Tables[0]);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                cmdObject.Dispose();
+                CloseConnection();
+            }
+            return result.FirstOrDefault();
         }
 
     }

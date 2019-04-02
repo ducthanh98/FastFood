@@ -1,0 +1,41 @@
+﻿@model List<DTO.LoaiChiPhiDTO>
+@{ 
+    int pageFrom = ((ViewBag.pageNumber - 1) * ViewBag.pageSize) + 1;
+}
+<!-- Table -->
+<div class="example-wrap">
+    <div class="example table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Tên Loại Chi phí</th>
+                    <th>Mô tả</th>
+                    <th class="text-center">Chi nhánh</th>
+                    <th class="text-center">Chỉnh sửa</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <tr>
+                            <td>@(pageFrom + i)</td>
+      
+                              <td>@Model[i].TenLoaiChiPhi</td>
+      
+                              <td>@Model[i].MoTa</td>
+                              <td class="text-center">@ViewBag.listBoxes[Model[i].MaChiNhanh]</td>
+                              <td class="text-center">
+                            <i class="icon wb-edit text-primary" onclick="setValueForModal(this)" data-id='@Model[i].MaLoaiChiPhi' data-target="#info-modal" data-toggle="modal" aria-hidden="true"></i> / <i class="icon wb-trash text-danger" aria-hidden="true" data-target="#confirm-modal" data-toggle="modal"></i>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- End Table -->
+
+<div class="">
+    @{ Html.RenderAction("_Pagination", "Home", new { maxNumber = ViewBag.maxNumber, pageNumber = ViewBag.pageNumber });}
+</div>

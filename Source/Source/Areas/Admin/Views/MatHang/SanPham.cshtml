@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "SanPham";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>UploadFile</h2>
+
+<form action="/Admin/Ajax/UploadFile" enctype="multipart/form-data" method="post">
+    <input type="file" id="file" name="file" />
+    <input type="button" onclick="send()" name="name" value="" />
+</form>
+
+<script>
+    function send() {
+        var formData = new FormData();
+        var imagefile = document.getElementById("file").files[0];
+        formData.append("file", imagefile);
+        $.ajax({
+            url: '/Admin/Ajax/UploadFile',
+            data: formData,
+            method: 'POST',
+            processData: false,
+            contentType: false,
+            dataType: 'json',
+            success: function (data) {
+                console.log(data)
+            }
+        });
+    }
+</script>

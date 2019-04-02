@@ -40,13 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessLogic.cs" />
+    <Compile Include="ChiNhanhBL.cs" />
     <Compile Include="LoaiChiPhiBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TaiKhoanBL.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DAO\DAO.csproj">
+    <ProjectReference Include="..\DAO\DTO.csproj">
       <Project>{3e98cfa3-d0a1-4dba-bff0-252fbd648545}</Project>
-      <Name>DAO</Name>
+      <Name>DTO</Name>
     </ProjectReference>
     <ProjectReference Include="..\SQLHelper\Common.csproj">
       <Project>{f2472ef4-b8b0-4abb-ae76-828e18567869}</Project>

@@ -1,41 +1,48 @@
-﻿using DAO;
-using Common;
+﻿using Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using DTO;
 
 namespace BusinessLogic
 {
-    public class LoaiChiPhiBL
+    public class LoaiChiPhiBL:BusinessLogic<LoaiChiPhiDTO>
     {
-        public bool Insert(LoaiChiPhiDAO obj)
+        public bool Insert(LoaiChiPhiDTO obj)
         {
-            return new SqlHelper<LoaiChiPhiDAO>().ExecuteProc("CTLoaiChiPhi_Insert", obj);
+            return new SqlHelper<LoaiChiPhiDTO>().ExecuteProc("CTLoaiChiPhi_Insert", obj);
+        }
+        public bool Update(LoaiChiPhiDTO obj)
+        {
+            return new SqlHelper<LoaiChiPhiDTO>().ExecuteProc("CTLoaiChiPhi_Update", obj);
         }
 
         public bool Delete(int ID)
         {
-            return new SqlHelper<LoaiChiPhiDAO>().ExecuteProc("CTLoaiChiPhi_DeleteByPrimaryKey", "MaLoaiChiPhi", ID);
+            return new SqlHelper<LoaiChiPhiDTO>().ExecuteProc("CTLoaiChiPhi_DeleteByPrimaryKey", "MaLoaiChiPhi", ID);
         }
 
-        public List<LoaiChiPhiDAO> GetByID(int ID)
+        public LoaiChiPhiDTO GetByID(int ID)
         {
-            return new SqlHelper<LoaiChiPhiDAO>().ExecuteProcAndGetData("CTLoaiChiPhi_SelectByPrimaryKey", "MaLoaiChiPhi",ID);
+            return new SqlHelper<LoaiChiPhiDTO>().ExecuteProcAndGetData("CTLoaiChiPhi_SelectByPrimaryKey", "MaLoaiChiPhi",ID).FirstOrDefault();
         }
 
-        public List<LoaiChiPhiDAO> GetAllBy(int pageNumber,int pageSize,string keyText)
+        public List<LoaiChiPhiDTO> GetAllBy(int pageNumber,int pageSize,string keyText)
         {
-            return new SqlHelper<LoaiChiPhiDAO>().ExecuteProcAndGetData("CTLoaiChiPhi_GetAllBy",pageNumber,pageSize,keyText);
+            return new SqlHelper<LoaiChiPhiDTO>().ExecuteProcAndGetData("CTLoaiChiPhi_GetAllBy",pageNumber,pageSize,keyText);
         }
 
         public int GetAllEntries()
         {
-            return new SqlHelper<LoaiChiPhiDAO>().GetTotalRow("LoaiChiPhi");
+            return new SqlHelper<LoaiChiPhiDTO>().GetTotalRow("LoaiChiPhi");
         }
 
-
+        public List<LoaiChiPhiDTO> GetAll()
+        {
+            return new SqlHelper<LoaiChiPhiDTO>().ExecuteProcAndGetData("CTLoaiChiPhi_SelectAll");
+        }
     }
 }

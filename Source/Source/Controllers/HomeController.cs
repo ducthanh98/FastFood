@@ -1,5 +1,4 @@
-﻿using DAO;
-using Common;
+﻿using Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +13,6 @@ namespace Source.Controllers
     {
         public ActionResult Index()
         {
-            List<LoaiChiPhiDAO> data = new LoaiChiPhiBL().GetByID(6);
             return View();
         }
 
