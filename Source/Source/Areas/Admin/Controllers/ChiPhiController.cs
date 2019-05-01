@@ -30,14 +30,14 @@ namespace Source.Areas.Admin.Controllers
                 Hashtable hs = new Hashtable();
                 for(int i = 0; i < listBoxes.Count; i++)
                 {
-                    hs.Add(listBoxes[i].MaChiNhanh, listBoxes[i].DiaChi);
+                    hs.Add(listBoxes[i].MaChiNhanh, listBoxes[i].TenChiNhanh);
                 }
                 ViewBag.listboxes = hs;
-                int totalEntries = LoaiChiPhi_Service.GetAllEntries();
+                int totalEntries;
+                list = LoaiChiPhi_Service.GetAllBy(pageNumber, pageSize, keyText,out totalEntries);
                 ViewBag.maxNumber = Math.Ceiling(totalEntries / (double)pageSize);
                 ViewBag.pageNumber = pageNumber;
                 ViewBag.pageSize = pageSize;
-                list = LoaiChiPhi_Service.GetAllBy(pageNumber, pageSize, keyText);
                 TempData["ExpenseType"] = list;
                 TempData["Boxes"] = listBoxes;
                 TempData.Keep();
@@ -56,12 +56,10 @@ namespace Source.Areas.Admin.Controllers
             {
                 List <LoaiChiPhiDTO> list = (List<LoaiChiPhiDTO>)TempData["ExpenseType"];
                 TempData.Keep();
-                if(ID == -1)
+                data = list.Where(x => x.MaLoaiChiPhi.Equals(ID)).FirstOrDefault();
+                if(data == null)
                 {
                     data = new LoaiChiPhiDTO();
-                } else
-                {
-                    data = list.Where(x => x.MaLoaiChiPhi.Equals(ID)).FirstOrDefault();
                 }
             } catch(Exception e)
             {

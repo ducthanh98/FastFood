@@ -20,12 +20,12 @@ namespace Source.Areas.Admin.Controllers
             {
                 if (file.ContentLength > 0)
                 {
-                    string fileName = Path.GetFileName(file.FileName);
+                    string fileName = DateTime.Now.Ticks.ToString()+Path.GetFileName(file.FileName);
                     string path = Path.Combine(Server.MapPath(AppConfig.uploadFolder), fileName);
                     file.SaveAs(path);
+                    Result.Code = 0;
+                    Result.Message = AppConfig.uploadFolder+fileName;
                 }
-                Result.Code = 0;
-                Result.Message = "Thành công";
             }
             catch (Exception e)
             {
@@ -51,8 +51,43 @@ namespace Source.Areas.Admin.Controllers
                 {
                     check = LoaiChiPhi_Service.Insert(obj);
                 }
-                Result.Code = 0;
-                Result.Message = "Thành công";
+                if (check)
+                {
+                    Result.Code = 0;
+                    Result.Message = "Thành công";
+                }
+                else
+                {
+                    Result.Code = 1;
+                    Result.Message = "Đã có lỗi xảy ra. Vui lòng thử lại.";
+                }
+            }
+            catch (Exception e)
+            {
+                Result.Code = 1;
+                Result.Message = e.Message;
+                //throw;
+            }
+            return Json(new JsonResult() { Data = Result });
+        }
+        public JsonResult DeleteExpenseType(int ID)
+        {
+            AjaxResultModel Result = new AjaxResultModel();
+
+            bool check = true;
+            try
+            {
+                check = LoaiChiPhi_Service.Delete(ID);
+                if (check)
+                {
+                    Result.Code = 0;
+                    Result.Message = "Thành công";
+                }
+                else
+                {
+                    Result.Code = 1;
+                    Result.Message = "Đã có lỗi xảy ra. Vui lòng thử lại.";
+                }
             }
             catch (Exception e)
             {
@@ -99,6 +134,70 @@ namespace Source.Areas.Admin.Controllers
         }
 
         #endregion BOXES
+
+        #region PRODUCT
+        public JsonResult addOrUpdateProduct(SanPhamDTO obj, bool isUpdate)
+        {
+            AjaxResultModel Result = new AjaxResultModel();
+
+            bool check = true;
+            try
+            {
+                if (isUpdate)
+                {
+                    check = SanPham_Service.Update(obj);
+                }
+                else
+                {
+                    check = SanPham_Service.Insert(obj);
+                }
+                if (check)
+                {
+                    Result.Code = 0;
+                    Result.Message = "Thành công";
+                }
+                else
+                {
+                    Result.Code = 1;
+                    Result.Message = "Đã có lỗi xảy ra. Vui lòng thử lại.";
+                }
+            }
+            catch (Exception e)
+            {
+                Result.Code = 1;
+                Result.Message = e.Message;
+                //throw;
+            }
+            return Json(new JsonResult() { Data = Result });
+        }
+        public JsonResult DeleteProduct(int ID)
+        {
+            AjaxResultModel Result = new AjaxResultModel();
+
+            bool check = true;
+            try
+            {
+                check = SanPham_Service.Delete(ID);
+                if (check)
+                {
+                    Result.Code = 0;
+                    Result.Message = "Thành công";
+                }
+                else
+                {
+                    Result.Code = 1;
+                    Result.Message = "Đã có lỗi xảy ra. Vui lòng thử lại.";
+                }
+            }
+            catch (Exception e)
+            {
+                Result.Code = 1;
+                Result.Message = e.Message;
+                //throw;
+            }
+            return Json(new JsonResult() { Data = Result });
+        }
+        #endregion
         public bool test()
         {
             try
@@ -111,5 +210,6 @@ namespace Source.Areas.Admin.Controllers
             }
             return true;
         }
+
     }
 }

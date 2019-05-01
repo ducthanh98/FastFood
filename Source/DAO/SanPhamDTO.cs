@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAO
+namespace DTO
 {
     public class SanPhamDTO
     {
@@ -13,6 +13,8 @@ namespace DAO
         public decimal DonGia { get; set; }
         public int MaLoaiSanPham { get; set; }
         public string HinhAnh { get; set; }
+        public string MoTa { get; set; }
+        public bool TrangThai { get; set; }
 
 
     }

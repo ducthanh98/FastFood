@@ -59,6 +59,11 @@
     <script>
       Breakpoints();
     </script>
+    <style>
+        .dataTables_filter{
+            text-align:right;
+        }
+    </style>
 </head>
 <body class="animsition dashboard">
     <!--[if lt IE 8]>
@@ -154,7 +159,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default btn-pure" data-dismiss="modal">Đóng</button>
-                    <button type="button" class="btn btn-danger">Xóa</button>
+                    <button type="button" class="btn btn-danger" onclick="Delete()">Xóa</button>
                 </div>
             </div>
         </div>
@@ -216,3 +221,4 @@
 
 </body>
 </html>
+

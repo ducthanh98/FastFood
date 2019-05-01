@@ -16,18 +16,27 @@
                 </tr>
             </thead>
             <tbody>
-                @for (int i = 0; i < Model.Count; i++)
+                @if (Model.Count > 0)
+                {
+                    for (int i = 0; i < Model.Count; i++)
+                    {
+                        <tr>
+                                <td>@(pageFrom + i)</td>
+      
+                                  <td>@Model[i].TenLoaiChiPhi</td>
+      
+                                  <td>@Model[i].MoTa</td>
+                                  <td class="text-center">@ViewBag.listBoxes[Model[i].MaChiNhanh]</td>
+                                  <td class="text-center">
+                                <i class="icon wb-edit text-primary" onclick="setValueForModal(this,true)" data-id='@Model[i].MaLoaiChiPhi' data-target="#info-modal" data-toggle="modal" aria-hidden="true"></i> / <i class="icon wb-trash text-danger" aria-hidden="true" data-target="#confirm-modal" onclick="setIDForDelete(@Model[i].MaLoaiChiPhi)" data-toggle="modal"></i>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
                 {
                     <tr>
-                            <td>@(pageFrom + i)</td>
-      
-                              <td>@Model[i].TenLoaiChiPhi</td>
-      
-                              <td>@Model[i].MoTa</td>
-                              <td class="text-center">@ViewBag.listBoxes[Model[i].MaChiNhanh]</td>
-                              <td class="text-center">
-                            <i class="icon wb-edit text-primary" onclick="setValueForModal(this)" data-id='@Model[i].MaLoaiChiPhi' data-target="#info-modal" data-toggle="modal" aria-hidden="true"></i> / <i class="icon wb-trash text-danger" aria-hidden="true" data-target="#confirm-modal" data-toggle="modal"></i>
-                        </td>
+                        <td class="text-center" colspan="7">Không có dữ liệu</td>
                     </tr>
                 }
             </tbody>
@@ -35,7 +44,12 @@
     </div>
 </div>
 <!-- End Table -->
+@{ Html.RenderAction("_Pagination", "Home", new { maxNumber = ViewBag.maxNumber, pageNumber = ViewBag.pageNumber });}
 
-<div class="">
-    @{ Html.RenderAction("_Pagination", "Home", new { maxNumber = ViewBag.maxNumber, pageNumber = ViewBag.pageNumber });}
-</div>
+<script>
+    var url_GetTb = '/Admin/ChiPhi/_DanhSachLoaiChiPhi';
+    var url_GetMd = '/Admin/ChiPhi/_LoaiChiPhi_ChiTiet';
+    var url_InsertUpdate = '/Admin/Ajax/addOrUpdateExpenseType';
+    var url_Delete = '/Admin/Ajax/DeleteExpenseType';
+
+</script>

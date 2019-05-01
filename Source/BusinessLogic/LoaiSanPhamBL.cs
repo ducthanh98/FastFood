@@ -1,26 +1,26 @@
-﻿using System;
+﻿using Common;
+using DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DTO;
-using Common;
 
 namespace BusinessLogic
 {
-    public class TaiKhoanBL
+    public class LoaiSanPhamBL : BusinessLogic<LoaiSanPhamDTO>
     {
         public bool Delete(int ID)
         {
             throw new NotImplementedException();
         }
 
-        public List<TaiKhoanDTO> GetAll()
+        public List<LoaiSanPhamDTO> GetAll()
         {
-            throw new NotImplementedException();
+            return new SqlHelper<LoaiSanPhamDTO>().ExecuteProcAndGetData("CTLoaiSanPham_SelectAll");
         }
 
-        public List<TaiKhoanDTO> GetAllBy(int pageNumber, int pageSize, string keyText,out int totalEntries)
+        public List<LoaiSanPhamDTO> GetAllBy(int pageNumber, int pageSize, string keyText, out int totalEntries)
         {
             throw new NotImplementedException();
         }
@@ -30,23 +30,19 @@ namespace BusinessLogic
             throw new NotImplementedException();
         }
 
-        public TaiKhoanDTO GetByID(int ID)
+        public LoaiSanPhamDTO GetByID(int ID)
         {
             throw new NotImplementedException();
         }
 
-        public bool Insert(TaiKhoanDTO obj)
+        public bool Insert(LoaiSanPhamDTO obj)
         {
             throw new NotImplementedException();
         }
 
-        public bool Update(TaiKhoanDTO obj)
+        public bool Update(LoaiSanPhamDTO obj)
         {
             throw new NotImplementedException();
-        }
-        public TaiKhoanDTO checkExistAcc(string TenTaiKhoan,string MatKhau)
-        {
-            return new SqlHelper<TaiKhoanDTO>().ExecuteProcAndGetData("CTTaiKhoan_CheckExistLogin", TenTaiKhoan, MatKhau);
         }
     }
 }

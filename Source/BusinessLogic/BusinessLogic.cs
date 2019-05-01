@@ -17,7 +17,7 @@ namespace BusinessLogic
 
         T GetByID(int ID);
 
-        List<T> GetAllBy(int pageNumber, int pageSize, string keyText);
+        List<T> GetAllBy(int pageNumber, int pageSize, string keyText,out int totalEntries);
         List<T> GetAll();
 
         int GetAllEntries();

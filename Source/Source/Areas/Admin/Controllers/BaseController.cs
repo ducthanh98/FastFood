@@ -14,5 +14,8 @@ namespace Source.Areas.Admin.Controllers
         protected LoaiChiPhiBL LoaiChiPhi_Service = new LoaiChiPhiBL();
         protected ChiNhanhBL ChiNhanh_Service = new ChiNhanhBL();
         protected TaiKhoanBL TaiKhoan_Service = new TaiKhoanBL();
+        protected SanPhamBL SanPham_Service = new SanPhamBL();
+        protected LoaiSanPhamBL LoaiSanPham_Service = new LoaiSanPhamBL();
+
     }
 }

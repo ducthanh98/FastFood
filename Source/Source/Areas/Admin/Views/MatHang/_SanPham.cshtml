@@ -1,0 +1,54 @@
+﻿@model List<DTO.SanPhamDTO>
+@{
+    int pageFrom = ((ViewBag.pageNumber - 1) * ViewBag.pageSize) + 1;
+
+}
+<!-- Table -->
+<div class="example-wrap">
+    <div class="example table-responsive">
+        <table class="table table-hover">   
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Loại sản phẩm</th>
+                    <th class="text-center">Hình ảnh</th>
+                    <th class="text-center">Đơn giá</th>
+                    <th>Mô tả</th>
+                    <th class="text-center">Chỉnh sửa</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count > 0)
+                {
+                    for (int i = 0; i < Model.Count; i++)
+                    {
+                            <tr>
+                                <td>@(pageFrom + i)</td>
+
+                                <td>@Model[i].TenSanPham</td>
+
+                                <td>@Model[i].MaLoaiSanPham</td>
+                                <td class="text-center"><img width="150px" height="150px" src="@Model[i].HinhAnh" alt="" /></td>
+                                <td class="text-center">@Model[i].DonGia</td>
+                                <td>@Model[i].MoTa</td>
+                                <td class="text-center">
+                                    <i class="icon wb-edit text-primary" onclick="setValueForModal(this)" data-id='@Model[i].MaSanPham' data-target="#info-modal" data-toggle="modal" aria-hidden="true"></i> / <i class="icon wb-trash text-danger" aria-hidden="true" data-target="#confirm-modal" data-toggle="modal" onclick="setIDForDelete(@Model[i].MaSanPham,@Model[i].HinhAnh)"></i>
+                                </td>
+                            </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td class="text-center" colspan="7">Không có dữ liệu</td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- End Table -->
+@{ Html.RenderAction("_Pagination", "Home", new { maxNumber = ViewBag.maxNumber, pageNumber = ViewBag.pageNumber });}
+

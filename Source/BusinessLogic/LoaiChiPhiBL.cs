@@ -30,9 +30,9 @@ namespace BusinessLogic
             return new SqlHelper<LoaiChiPhiDTO>().ExecuteProcAndGetData("CTLoaiChiPhi_SelectByPrimaryKey", "MaLoaiChiPhi",ID).FirstOrDefault();
         }
 
-        public List<LoaiChiPhiDTO> GetAllBy(int pageNumber,int pageSize,string keyText)
+        public List<LoaiChiPhiDTO> GetAllBy(int pageNumber,int pageSize,string keyText, out int totalEntries)
         {
-            return new SqlHelper<LoaiChiPhiDTO>().ExecuteProcAndGetData("CTLoaiChiPhi_GetAllBy",pageNumber,pageSize,keyText);
+            return new SqlHelper<LoaiChiPhiDTO>().ExecuteProcAndGetData("CTLoaiChiPhi_GetAllBy",pageNumber,pageSize,keyText, out totalEntries);
         }
 
         public int GetAllEntries()
