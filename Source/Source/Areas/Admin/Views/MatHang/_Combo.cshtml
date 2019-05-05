@@ -1,0 +1,54 @@
+﻿
+@model List<DTO.Combo_SanPham>
+@{
+    int pageFrom = ((ViewBag.pageNumber - 1) * ViewBag.pageSize) + 1;
+
+}
+<!-- Table -->
+<div class="example-wrap">
+    <div class="example table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Tên combo</th>
+                    <th>Thành phần</th>
+                    <th class="text-center">Chỉnh sửa</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count > 0)
+                {
+                    for (int i = 0; i < Model.Count; i++)
+                    {
+                        <tr>
+                            <td>@(pageFrom + i)</td>
+
+                            <td>@Model[i].TenCombo</td>
+                            <td>
+                                @for (int j = 0; j < Model[i].sanPham.Count; j++)
+                                {
+                                    <span>@Model[i].sanPham[j].TenSanPham x  @Model[i].sanPham[j].SoLuong</span><br>
+                                }
+                            </td>
+                            
+                            <td class="text-center">
+                                <i class="icon wb-edit text-primary" onclick="setValueForModal(this,true)" data-id='@Model[i].MaCombo' data-target="#info-modal" data-toggle="modal" aria-hidden="true"></i>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td class="text-center" colspan="7">Không có dữ liệu</td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- End Table -->
+@{ Html.RenderAction("_Pagination", "Home", new { maxNumber = ViewBag.maxNumber, pageNumber = ViewBag.pageNumber });}
+
