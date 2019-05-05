@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="BusinessLogic.cs" />
     <Compile Include="ChiNhanhBL.cs" />
+    <Compile Include="ComboBL.cs" />
     <Compile Include="LoaiChiPhiBL.cs" />
     <Compile Include="LoaiSanPhamBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

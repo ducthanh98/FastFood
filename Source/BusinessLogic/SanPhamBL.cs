@@ -43,7 +43,7 @@ namespace BusinessLogic
 
         public bool Update(SanPhamDTO obj)
         {
-            return new SqlHelper<SanPhamDTO>().ExecuteProc("CTLoaiChiPhi_Update", obj);
+            return new SqlHelper<SanPhamDTO>().ExecuteProc("CTSanPham_Update", obj);
         }
     }
 }
