@@ -42,16 +42,16 @@
                         <button type="button" class="btn btn-block btn-sm btn-primary waves-effect waves-classic" onclick="changePage(1)"><i class="icon wb-search" aria-hidden="true"></i></button>
                     </div>
                 </div>
-                
+
             </div>
             <div class="row">
                 <div class="col-12 d-flex justify-content-end">
                     <button class="btn btn-primary" onclick="setValueForModal(this,false)" data-id='0' data-target="#info-modal" data-toggle="modal" aria-hidden="true">Thêm mới</button>
                 </div>
-            </div> 
+            </div>
             <div class="row row-lg">
                 <div class="col-lg data-table">
-                    @{Html.RenderAction("_SanPham", "MatHang");}
+                    @{Html.RenderAction("_Combo", "MatHang");}
                 </div>
             </div>
         </div>
@@ -72,11 +72,11 @@
                 <h4 class="modal-title">Thông tin</h4>
             </div>
             <div class="modal-body">
-                @{Html.RenderAction("_SanPham_ChiTiet", "MatHang", new { ID = -1 });}
+                @{Html.RenderAction("_Combo_ChiTiet", "MatHang", new { ID = -1 });}
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default btn-pure" data-dismiss="modal">Đóng</button>
-                <button type="button" class="btn btn-primary" onclick="saveProduct()">Gửi</button>
+                <button type="button" class="btn btn-primary" onclick="">Gửi</button>
             </div>
         </div>
     </div>
@@ -88,34 +88,5 @@
     var url_GetTb = '/Admin/MatHang/_SanPham';
     var url_GetMd = '/Admin/MatHang/_SanPham_ChiTiet';
     var url_InsertUpdate = '/Admin/Ajax/addOrUpdateProduct';
-    function saveProduct() {
-        const obj = getValueFromModal();
-        if (!file && !obj.HinhAnh) { // file có thể null 
-            return toastr.error('Vui lòng chọn hình ảnh')
-        }
 
-        if (!obj) { return; }
-
-        if (file) {
-            const formData = new FormData();
-            formData.append('file', file);
-            $.ajax({
-                method: 'post',
-                url: '/Admin/Ajax/UploadFile',
-                data: formData,
-                "async": false,
-                "contentType": false,
-                "processData": false
-            }).done(result => {
-                if (result.Data.Code == 0) {
-                    obj.HinhAnh = result.Data.Message;
-                } else {
-                    $("#HinhAnh").val('');
-                    return toastr.error(result.Data.Message);
-                }
-            });
-        }
-        insertOrUpdate(obj);
-        
-    }
 </script>

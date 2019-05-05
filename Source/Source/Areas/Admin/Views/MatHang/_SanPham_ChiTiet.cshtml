@@ -17,12 +17,10 @@
             <input type="text" class="form-control required" value='@Model.DonGia' id="DonGia" />
         </div>
 
-        <div class="form-group form-material radio-primary radio-custom" data-plugin="formMaterial">
+        <div class="form-group form-material" data-plugin="formMaterial">
             <label class="form-control-label">Trạng Thái *</label>
-            <input type="radio" class="form-control" value='@Model.DonGia' name="TrangThai" />
-            <label for="inputRadiosUnchecked">Unchecked</label>
-            <input type="radio" class="form-control" value='@Model.DonGia' name="TrangThai" />
-            <label for="inputRadiosUnchecked">Unchecked</label>
+            <input type="checkbox" style="transform: scale(3);width:44px;" id="TrangThai" @if (Model.TrangThai) { <text>checked</text> }  />
+            <label for="TrangThai">Hiện bán</label>
         </div>
 
         <div class="form-group form-material" data-plugin="formMaterial">
@@ -44,9 +42,9 @@
         <div class="form-group" data-plugin="formMaterial">
             <label class="form-control-label font-weight-bold" for="HinhAnh">Hình ảnh *</label>
             <input type="file" id="file">
-            <input type="hidden" id="HinhAnh">
+            <input type="hidden" value="@Model.HinhAnh" id="HinhAnh">
             <br>
-            <img src="" width='200px' height='200px' id="showImg" style="display:none;">
+            <img src="@Model.HinhAnh" width='200px' height='200px' id="showImg" style='@if (Model.MaSanPham.Equals(0)) { <text>display:none;</text> } else { <text>display:block;</text> } ')>
         </div>
         
         
@@ -57,7 +55,7 @@
     </form>
 </div>
 <script>
-    var file;
+    var file=undefined;
     $("#MaLoaiSanPham").select2();
     $("#file").change(function (event) {
         $("#showImg").css("display", "none");

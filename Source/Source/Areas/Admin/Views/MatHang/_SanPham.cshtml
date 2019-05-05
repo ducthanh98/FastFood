@@ -33,7 +33,7 @@
                                 <td class="text-center">@Model[i].DonGia</td>
                                 <td>@Model[i].MoTa</td>
                                 <td class="text-center">
-                                    <i class="icon wb-edit text-primary" onclick="setValueForModal(this)" data-id='@Model[i].MaSanPham' data-target="#info-modal" data-toggle="modal" aria-hidden="true"></i> / <i class="icon wb-trash text-danger" aria-hidden="true" data-target="#confirm-modal" data-toggle="modal" onclick="setIDForDelete(@Model[i].MaSanPham,@Model[i].HinhAnh)"></i>
+                                    <i class="icon wb-edit text-primary" onclick="setValueForModal(this,true)" data-id='@Model[i].MaSanPham' data-target="#info-modal" data-toggle="modal" aria-hidden="true"></i>
                                 </td>
                             </tr>
                     }

@@ -48,12 +48,17 @@ namespace Source.Areas.Admin.Controllers
         {
             List<SanPhamDTO> products = (List<SanPhamDTO>)TempData["products"];
             TempData.Keep();
-            SanPhamDTO product = products.Where(x => x.MaLoaiSanPham.Equals(ID)).FirstOrDefault();
+            SanPhamDTO product = products.Where(x => x.MaSanPham.Equals(ID)).FirstOrDefault();
             if(product == null)
             {
                 product = new SanPhamDTO();
             } 
             return PartialView(product);
+        }
+
+        public ActionResult Combo()
+        {
+            return View();
         }
     }
 }
