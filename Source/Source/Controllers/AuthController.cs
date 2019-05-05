@@ -25,7 +25,7 @@ namespace Source.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(string username, string password,string remember)
+        public ActionResult Login(string username, string password,string remember,string url)
         {
             TaiKhoanDTO user = new TaiKhoanDTO();
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
@@ -43,8 +43,12 @@ namespace Source.Controllers
             } else
             {
                 Session["User"] = user;
-                return RedirectToAction("Index","Home"); 
+                if (!string.IsNullOrEmpty(url))
+                {
+                    return Redirect(url);
+                }
             }
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult ForgotPassword()

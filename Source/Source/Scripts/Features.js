@@ -9,6 +9,10 @@ var id = 0;
             if (modalItems[i].id != "") {
                 if (modalItems[i].type == "file") {
                     continue;
+                } else if (modalItems[i].type == "checkbox") {
+
+                    params[modalItems[i].id] = modalItems[i].checked;
+                    continue;
                 }
                 let res = checkValid(modalItems[i]);
                 if (res.valid) {

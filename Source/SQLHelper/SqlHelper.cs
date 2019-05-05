@@ -78,11 +78,10 @@ namespace Common
                     cmdObject.Parameters.Add(par);
                     // Do something with propValue
                 }
-
                 if (cmdObject.ExecuteNonQuery() == 0)
                 {
                     check = false;
-                }
+                } 
 
             } catch(Exception e)
             {
@@ -205,7 +204,7 @@ namespace Common
             return total;
         }
 
-        public List<T> ExecuteProcAndGetData(string name_proc,int pageNumber,int pageSize, string keyText)
+        public List<T> ExecuteProcAndGetData(string name_proc,int pageNumber,int pageSize, string keyText,out int totalEntries)
         {
             List<T> result = new List<T>();
             DataSet ds = new DataSet();
@@ -223,6 +222,8 @@ namespace Common
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmdObject);
                 sqlDataAdapter.Fill(ds);
                 result = ConvertData.ConvertDataTableToList<T>(ds.Tables[0]);
+                totalEntries = (int)ds.Tables[1].Rows[0]["totalEntires"];
+
             }
             catch (Exception e)
             {

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace BusinessLogic
 {
     interface BusinessLogic<T>
-    {
+    {  
         bool Insert(T obj);
 
         bool Update(T obj);

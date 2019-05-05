@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class SanPham_REL
+    public class SanPham_REL 
     {
+        public int MaSanPham { get; set; }
         public string TenSanPham { get; set; }
         public int SoLuong { get; set; }
-    }
+
+    } 
 }

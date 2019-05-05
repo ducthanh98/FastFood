@@ -18,7 +18,8 @@ namespace Source.Configuration
                 TaiKhoanDTO user = HttpContext.Current.Session["User"] == null ? null : (TaiKhoanDTO)HttpContext.Current.Session["User"];
                 if (user == null)
                 {
-                    filterContext.Result = new RedirectResult("/Auth/Login");
+                    string url = "/Auth/Login?url=/Admin/"+controller.ControllerName + "/" + filterContext.ActionDescriptor.ActionName;
+                    filterContext.Result = new RedirectResult(url);
                 } else if(user.QuyenHan == 3)
                 {
                     filterContext.Result = new RedirectResult("/Auth/Unauthorized");

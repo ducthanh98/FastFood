@@ -8,7 +8,8 @@ namespace DTO
 {
     public class Combo_SanPham
     {
-        public ComboDTO combo { get; set; }
+        public int MaCombo { get; set; }
+        public string TenCombo { get; set; }
         public List<SanPham_REL> sanPham { get; set; }
     }
 }

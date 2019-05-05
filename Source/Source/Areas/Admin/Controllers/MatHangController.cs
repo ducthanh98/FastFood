@@ -60,5 +60,24 @@ namespace Source.Areas.Admin.Controllers
         {
             return View();
         }
+
+        public PartialViewResult _Combo(int pageNumber = 1, int pageSize = 10, string keyText = "")
+        {
+            List<Combo_SanPham> list = new List<Combo_SanPham>();
+            try
+            {
+                int totalEntries;
+                list = Combo_Service.REL_GetAllBy(pageNumber, pageSize, keyText, out totalEntries);
+
+                ViewBag.maxNumber = Math.Ceiling(totalEntries / (double)pageSize);
+                ViewBag.pageNumber = pageNumber;
+                ViewBag.pageSize = pageSize;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            return PartialView(list);
+        }
     }
 }
