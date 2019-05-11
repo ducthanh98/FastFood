@@ -1,41 +1,134 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/Assets/global/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Assets/css/layout.css">
+    <link rel="stylesheet" href="~/Assets/css/font-awesome.css">
+    <link rel="stylesheet" href="~/Assets/css/product.css">
+    <link rel="stylesheet" href="~/Assets/css/menu-product.css">
+    <link rel="stylesheet" href="~/Assets/css/product.css">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="~/Assets/global/vendor/jquery/jquery.js"></script>
+    <script src="~/Assets/global/vendor/popper-js/umd/popper.min.j"></script>
+    <script src="~/Assets/global/vendor/bootstrap/bootstrap.js"></script>
+    <script src="~/Assets/js/Calculation.js"></script>
+    <script>
+        $(window).scroll(function () {
+            if ($(window).scrollTop() == 0) {
+                $(".header").css("position", "relative");
+            } else {
+                $(".header").css("position", "fixed");
+            }
+        });
+    </script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="header">
+        <div class="headertop-right">
+            <ul>
+                <li>
+                    <a href="#">Đăng Nhập</a>
+                </li>
+                <img src="~/Assets/images/topbar.png">
+                <li style="margin-right: 3px">
+                    <a href="#">Đăng Kí</a>
+                </li>
+            </ul>
+        </div>
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <div class="logo">
+                <a href="index.html"><img src="~/Assets/images/logo.png"></a>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+            <div class="menu">
+                <div class="listmenu">
+                    <ul>
+                        <li>
+                            <a href="#">Khuyễn Mãi</a>
+                        </li>
+                        <img src="~/Assets/images/topbar-separator.png">
+                        <li>
+                            <a href="menu.html">Thuc don</a>
+                            <div class="memenu">
+                                <ul>
+                                    <li>
+                                        <a href="#">Món mới</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">HamBurGer</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Thức Uống & Tráng Miệng</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <a href="#">Món mới</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">HamBurGer</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Thức Uống & Tráng Miệng</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <a href="#">Món mới</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">HamBurGer</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Thức Uống & Tráng Miệng</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <img src="~/Assets/images/topbar-separator.png">
+                        <li>
+                            <a href="#">Chi Nhánh</a>
+                        </li>
+                        <img src="~/Assets/images/topbar-separator.png">
+                        <li>
+                            <a href="#">Giới Thiệu</a>
+                        </li>
+                        <img src="~/Assets/images/topbar-separator.png">
+                        <li>
+                            <button data-toggle="modal" data-target="#cart"><img src="~/Assets/images/cart.png"> Giỏ Hàng</button>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+    @RenderBody()
+    <div class="footer">
+        <div class="container ">
+            <div style="text-align: center; padding-top:10px; padding-bottom: 10px;">
+                <h4>Kết nối với chúng tôi</h4>
+                <ul class="social ">
+                    <li><a href="# "><i> </i></a></li>
+                    <li><a href="# "><i class="twitter "> </i></a></li>
+                    <li><a href="# "><i class="rss "> </i></a></li>
+                    <li><a href="# "><i class="gmail "> </i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="clearfix"> </div>
     </div>
-
-    @RenderSection("scripts", required: false)
+    <div class="footer-class ">
+        <p>
+            FastFood WebSite | Design by team 413 Hoàng Quốc Việt
+            <a href="#" class="backtop backtop-visible"></a>
+        </p>
+    </div>
 </body>
 </html>

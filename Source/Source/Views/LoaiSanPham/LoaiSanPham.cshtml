@@ -1,0 +1,24 @@
+﻿@model  List<DTO.LoaiSanPhamDTO>
+@{
+    ViewBag.Title = "LoaiSanPham";
+    Layout = "~/Views/Shared/_LayoutSanPham.cshtml";
+}
+
+<div class="title-menu">
+    <h2>Thực Đơn</h2>
+</div>
+<div class="content-top">
+    <div class="row" style="margin-bottom: 5%; ">
+        @foreach(var item in Model)
+            {
+            <div class="col-4">
+                <div class="product-item">
+                    <a class="item-pro" href="product.html"><img src="@Url.Content("~/Assets/images/LoaiSanPham/" +item.HinhAnh)" alt=""></a>
+                    <a class="item-btn" href="product.html">@item.TenLoaiSanPham</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+

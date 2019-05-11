@@ -1,0 +1,35 @@
+.content {
+    background: url('../imagesCart/background-product-view.jpg') no-repeat fixed;
+    background-size: cover;
+}
+
+.content>.container {
+    height: 800px;
+}
+
+.information {
+    background: #ffffff;
+    position: absolute;
+    margin-top: 6%;
+    width: 1100px;
+    border-radius: 10px;
+}
+
+.information img {
+    width: 60%;
+    height: 60%;
+    margin-top: 10%;
+    margin-left: 15%;
+}
+
+.title,
+title p {
+    font-weight: bold;
+    color: black;
+    text-align: center;
+}
+
+.title h3 {
+    margin-top: 3%;
+    color: #a31806;
+}
