@@ -8,7 +8,7 @@ namespace DTO
 {
     public class TaiKhoanDTO
     { 
-        public int MaTaiKhoan { get; set; }
+        public int MaTaiKhoan { get; set; } 
 
         public string TenTaiKhoan { get; set; }
 

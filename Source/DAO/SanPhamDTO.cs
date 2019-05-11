@@ -8,7 +8,7 @@ namespace DTO
 {
     public class SanPhamDTO
     { 
-        public int MaSanPham { get; set; }
+        public int MaSanPham { get; set; } 
         public string TenSanPham { get; set; }
         public decimal DonGia { get; set; }
         public int MaLoaiSanPham { get; set; }

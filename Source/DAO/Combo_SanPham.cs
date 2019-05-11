@@ -8,7 +8,7 @@ namespace DTO
 {
     public class Combo_SanPham 
     {
-        public int MaCombo { get; set; }
+        public int MaCombo { get; set; } 
         public string HinhAnh { get; set; }
         public decimal DonGia { get; set; } 
         public string TenCombo { get; set; }

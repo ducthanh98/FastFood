@@ -7,5 +7,5 @@ namespace DTO
         public int MaSanPham { get; set; }
         public String TenSanPham { get; set; }
     }
-}
- 
+} 
+  

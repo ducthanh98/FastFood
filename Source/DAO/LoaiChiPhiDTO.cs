@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 { 
-    public class LoaiChiPhiDTO
+    public class LoaiChiPhiDTO 
     {
         public int MaLoaiChiPhi { get; set; }
         public string TenLoaiChiPhi { get; set; } 

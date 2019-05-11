@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 { 
-    public class Combo_Insert
+    public class Combo_Insert 
     {
         public int MaCombo { get; set; }
         public string HinhAnh { get; set; }
