@@ -10,7 +10,7 @@ namespace DTO
     public class LoaiChiPhiDTO
     {
         public int MaLoaiChiPhi { get; set; }
-        public string TenLoaiChiPhi { get; set; }
+        public string TenLoaiChiPhi { get; set; } 
         public string MoTa { get; set; }
         public int MaChiNhanh { get; set; }
 

@@ -13,5 +13,5 @@ namespace DTO
         public decimal DonGia { get; set; }
         public string TenCombo { get; set; }
         public List<SanPham_InsertComboREL> sanPham { get; set; }
-    }
+    } 
 }

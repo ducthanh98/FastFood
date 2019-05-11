@@ -10,6 +10,6 @@ namespace DTO
     {
         public int MaLoaiSanPham { get; set; }
         public string TenLoaiSanPham { get; set; }
-
+         
     }
 }

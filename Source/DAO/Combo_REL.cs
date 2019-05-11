@@ -9,7 +9,7 @@ namespace DTO
     public class Combo_REL
     {
         public int MaCombo { get; set; }
-        public string TenCombo { get; set; }
+        public string TenCombo { get; set; } 
 
         public string TenSanPham { get; set; }
         public int SoLuong { get; set; }
