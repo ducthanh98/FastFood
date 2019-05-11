@@ -1,0 +1,141 @@
+﻿@model DTO.Combo_SanPham
+@using DTO;
+@{
+    ViewBag.Title = "Combo_ChiTiet";
+    List<SanPham_TypeInsertCombo> dsSanPham = ViewBag.dsSanPham;
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    int i = 0;
+}
+
+<div class="page-content">
+    <!-- Panel -->
+    <div class="panel">
+        <div class="panel-body container-fluid">
+
+            <div class="row row-lg">
+                <div class="col-6">
+                    <div class="example-wrap">
+                        <h4 class="example-title">Tên Combo</h4>
+                        <input type="text" class="form-control required" value="@Model.TenCombo" id="TenCombo" placeholder="Nhập tên combo">
+                        <input type="hidden" value="@Model.MaCombo" id="MaCombo">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="example-wrap">
+                        <h4 class="example-title">Đơn giá</h4>
+                        <input type="text" class="form-control required" id="DonGia" value="@Model.DonGia" placeholder="Nhập giá combo">
+                        <input type="hidden" class="form-control required" id="HinhAnh" value="@Model.HinhAnh">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row row-lg">
+                <div class="col-6">
+                    <div class="example-wrap">
+                        <h4 class="example-title">Hình ảnh</h4>
+                        <input type="file">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <img src="@Model.HinhAnh" width='200px' height='200px' id="showImg" style='@if (Model.MaCombo.Equals(0)) { <text>display:none;</text> } else { <text>display:block;</text> } ' )>
+                </div>
+            </div>
+            <div class="row row-lg">
+                <h4 class="example-title">Danh sách sản phẩm: </h4>
+            </div>
+            @do
+            {
+                <div class="row row-lg cb-sp mb-4">
+                    <div class="col-7 row">
+                        <label class="col-3">Sản phẩm</label>
+                        <select class="form-control col-9 MaSanPham">
+                            @for (int j=0;j<dsSanPham.Count;j++)
+                            {
+                                <option @if (Model.sanPham != null && dsSanPham[j].MaSanPham == Model.sanPham[i].MaSanPham)
+                                { <text> selected</text>} value='@dsSanPham[j].MaSanPham'>@dsSanPham[j].TenSanPham</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-4 row">
+                        <label class="col-5">Số lượng</label>
+                        <input type="text" class="soLuong col-7" @if (Model.sanPham !=null) {<text>value="@Model.sanPham[i].SoLuong"</text> } />
+                    </div>
+
+
+                    <div class="col-2 row">
+                          <i class="icon wb-plus-circle" onclick="addForm(this)"></i>
+                          <i class="icon wb-minus-circle" onclick="removeForm(this)"></i>
+                    </div>
+                    </div>
+                        i++;
+                    } while (Model.sanPham != null && i < Model.sanPham.Count );
+                        <button type="button" id="btnSave" class="btn btn-block float-right btn-sm btn-primary waves-effect waves-classic"> Lưu </button>
+
+                            </div>
+                        </div>
+                        <!-- End Panel -->
+
+                    </div>
+
+<script>
+    var url_InsertUpdate = '/Admin/Ajax/addOrUpdateCombo';
+
+    const htmlOptions = "@Html.Raw(@ViewBag.selectTag)";
+    function removeForm(element) {
+        if ($(".cb-sp").length === 1) return;
+        $(element).parent().parent().remove();
+    }
+    function addForm(element) {
+        if ($(".cb-sp").length === 5) {
+            toastr.error("Số loại sản phẩm trong combo tối đa là 5");
+            return;
+        }
+        const html = `<div class="row row-lg cb-sp mb-4">
+                    <div class="col-7 row">
+                        <label class="col-3">Sản phẩm</label>
+                        <select class="form-control col-9 MaSanPham">
+                            ${htmlOptions}
+                        </select>
+                    </div>
+                    <div class="col-4 row">
+                        <label class="col-5">Số lượng</label>
+                        <input type="text" class="soLuong col-7" />
+                    </div>
+                    <div class="col-2 row">
+                          <i class="icon wb-plus-circle" onclick="addForm(this)"></i>
+                          <i class="icon wb-minus-circle" onclick="removeForm(this)"></i>
+                    </div>
+                    </div>`;
+        $(element).parent().parent().after(html);
+    }
+
+    $(document).ready(function () {
+        $(".MaSanPham").select2();
+        $("#btnSave").click(function () {
+            const obj = {};
+            obj.TenCombo = $("#TenCombo").val();
+            obj.DonGia = $("#DonGia").val();
+            obj.HinhAnh = '';
+            obj.sanPham = [];
+            $(".cb-sp").each(function () {
+                const sp = {};
+                sp.MaSanPham = $('.MaSanPham', this).val();
+                sp.SoLuong = $('.soLuong', this).val();
+                obj.sanPham.push(sp);
+            });
+
+            $.ajax({
+                url: url_InsertUpdate, // Md modal
+                type: "post",
+                data: {
+                    obj: obj,
+                    isUpdate: false
+                },
+            }).done(function (result) {
+                alertMess(result);
+            });
+
+        })
+    });
+
+</script>

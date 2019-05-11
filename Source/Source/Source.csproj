@@ -6238,6 +6238,7 @@
     <Content Include="Areas\Admin\Views\MatHang\_SanPham_ChiTiet.cshtml" />
     <Content Include="Areas\Admin\Views\MatHang\Combo.cshtml" />
     <Content Include="Areas\Admin\Views\MatHang\_Combo.cshtml" />
+    <Content Include="Areas\Admin\Views\MatHang\Combo_ChiTiet.cshtml" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Auth\Login.cshtml" />
     <Content Include="Views\Auth\ForgotPassword.cshtml" />

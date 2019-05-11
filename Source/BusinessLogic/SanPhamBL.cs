@@ -19,6 +19,10 @@ namespace BusinessLogic
         {
             throw new NotImplementedException();
         }
+        public List<SanPham_TypeInsertCombo> SelectAllForCombo()
+        {
+            return new SqlHelper<SanPham_TypeInsertCombo>().ExecuteProcAndGetData("CTSanPham_SelectAll");
+        }
 
         public List<SanPhamDTO> GetAllBy(int pageNumber, int pageSize, string keyText, out int totalEntries)
         {

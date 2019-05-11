@@ -1,4 +1,5 @@
 ﻿using Common;
+using DTO;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -62,7 +63,7 @@ namespace Common
             if (connection.State == ConnectionState.Open) connection.Close();
         }
 
-        public bool ExecuteProc(string name_proc, T obj)
+        public bool ExecuteProc(string name_proc, T obj,bool insertTable = false)
         {
             bool check = true;
             SqlCommand cmdObject = null;
@@ -74,7 +75,18 @@ namespace Common
                 IList<PropertyInfo> props = new List<PropertyInfo>(type.GetProperties());
                 foreach (PropertyInfo prop in props)
                 {
-                    SqlParameter par = new SqlParameter(prop.Name, prop.GetValue(obj, null));
+                    SqlParameter par;
+                    if (prop.PropertyType.FullName.Contains("List"))
+                    {
+                        DataTable table = new DataTable();
+                        table = ConvertData.ConvertListToDatatable<SanPham_InsertComboREL>(prop.GetValue(obj,null));
+                        par = new SqlParameter(prop.Name, table);
+                        par.SqlDbType = SqlDbType.Structured;
+                        par.TypeName = "dbo.lstcb_sp";
+                    } else
+                    {
+                        par = new SqlParameter(prop.Name, prop.GetValue(obj, null));
+                    }
                     cmdObject.Parameters.Add(par);
                     // Do something with propValue
                 }
@@ -94,6 +106,7 @@ namespace Common
             }
             return check;
         }
+
 
         public bool ExecuteProc(string name_proc,string Field, int ID)
         {
@@ -124,6 +137,8 @@ namespace Common
             }
             return check;
         }
+
+
 
         public List<T> ExecuteProcAndGetData(string name_proc,string Field, int ID)
         {

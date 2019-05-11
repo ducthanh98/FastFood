@@ -6,15 +6,12 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class ComboDTO
+    public class Combo_Insert
     {
         public int MaCombo { get; set; }
+        public string HinhAnh { get; set; }
+        public decimal DonGia { get; set; }
         public string TenCombo { get; set; }
-
-        public string TenSanPham { get; set; }
-        public int SoLuong { get; set; }
-        public int MaSanPham { get; set; }
-
-
+        public List<SanPham_InsertComboREL> sanPham { get; set; }
     }
 }

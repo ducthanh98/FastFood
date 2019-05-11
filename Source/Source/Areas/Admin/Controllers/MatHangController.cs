@@ -79,5 +79,23 @@ namespace Source.Areas.Admin.Controllers
             }
             return PartialView(list);
         }
+        public ActionResult Combo_ChiTiet(int ID=0)
+        {
+            Combo_SanPham combo_sanPham = new Combo_SanPham();
+            if (ID != 0)
+            {
+                combo_sanPham = Combo_Service.SelectByPrimaryKey(ID);
+
+            }
+            String selectHtml = "";
+            List<SanPham_TypeInsertCombo> dsSanPham = SanPham_Service.SelectAllForCombo();
+            for(int i = 0; i < dsSanPham.Count; i++)
+            {
+                selectHtml += "<option value='" + dsSanPham[i].MaSanPham + "'>" + dsSanPham[i].TenSanPham + "</option>";
+            }
+            ViewBag.dsSanPham = dsSanPham;
+            ViewBag.selectTag = selectHtml;
+            return View(combo_sanPham);
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DTO;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -47,5 +48,30 @@ namespace Common
             }
             return list;
         }
+
+        public static DataTable ConvertListToDatatable<T>(Object listData)
+        {
+            List<T> lstData = (List<T>)listData;
+            DataTable table = new DataTable();
+            List<PropertyInfo> props = new List<PropertyInfo>(lstData.FirstOrDefault()?.GetType().GetProperties());
+            // tao cot trong bang
+            foreach (PropertyInfo pro in props)
+            {
+                    table.Columns.Add(pro.Name, pro.PropertyType);
+            }
+            // them gia tri vao cac cot
+            foreach (T tmp in lstData)
+            {
+                DataRow dr = table.NewRow();
+                foreach (PropertyInfo pro in props)
+                {
+                    dr[pro.Name] = pro.GetValue(tmp, null);
+                }
+                table.Rows.Add(dr);
+
+            }
+            return table;
+        }
+
     }
 }

@@ -197,6 +197,42 @@ namespace Source.Areas.Admin.Controllers
             }
             return Json(new JsonResult() { Data = Result });
         }
+
+        public JsonResult addOrUpdateCombo(Combo_Insert obj, bool isUpdate)
+        {
+            AjaxResultModel Result = new AjaxResultModel();
+
+            bool check = true;
+            try
+            {
+                if (isUpdate)
+                {
+                    check = Combo_Service.Update(obj);
+                }
+                else
+                {
+                    check = Combo_Service.Insert(obj);
+                }
+                if (check)
+                {
+                    Result.Code = 0;
+                    Result.Message = "Thành công";
+                }
+                else
+                {
+                    Result.Code = 1;
+                    Result.Message = "Đã có lỗi xảy ra. Vui lòng thử lại.";
+                }
+            }
+            catch (Exception e)
+            {
+                Result.Code = 1;
+                Result.Message = e.Message;
+                //throw;
+            }
+            return Json(new JsonResult() { Data = Result });
+        }
+
         #endregion
         public bool test()
         {
