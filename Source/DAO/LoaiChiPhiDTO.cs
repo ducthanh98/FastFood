@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DTO
-{
+{ 
     public class LoaiChiPhiDTO
     {
         public int MaLoaiChiPhi { get; set; }

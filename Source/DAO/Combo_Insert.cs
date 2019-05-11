@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DTO
-{
+{ 
     public class Combo_Insert
     {
         public int MaCombo { get; set; }
