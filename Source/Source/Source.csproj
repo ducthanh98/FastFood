@@ -205,9 +205,9 @@
     <Compile Include="Areas\Admin\Controllers\MatHangController.cs" />
     <Compile Include="Configuration\AppConfig.cs" />
     <Compile Include="Configuration\AuthorizeBusinessLogic.cs" />
-    <Compile Include="Controllers\AjaxController.cs" />
-    <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ListMenuController.cs" />
+    <Compile Include="Controllers\LoaiSanPhamController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -219,8 +219,14 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\css\font-awesome.css" />
+    <Content Include="Assets\css\layout.css" />
+    <Content Include="Assets\css\menu-product.css" />
+    <Content Include="Assets\css\product.css" />
     <Content Include="Assets\css\site.css" />
     <Content Include="Assets\css\site.min.css" />
+    <Content Include="Assets\css\store.css" />
+    <Content Include="Assets\css\update-cart.css" />
     <Content Include="Assets\examples\css\advanced\alertify.css" />
     <Content Include="Assets\examples\css\advanced\alertify.min.css" />
     <Content Include="Assets\examples\css\advanced\animation.css" />
@@ -5199,14 +5205,32 @@
     <Content Include="Assets\global\vendor\x-editable\bootstrap-editable.min.js" />
     <Content Include="Assets\global\vendor\x-editable\images\clear.png" />
     <Content Include="Assets\global\vendor\x-editable\images\loading.gif" />
-    <Content Include="Assets\images\apple-touch-icon.png" />
-    <Content Include="Assets\images\favicon.ico" />
-    <Content Include="Assets\images\logo%402x.png" />
-    <Content Include="Assets\images\logo-blue%402x.png" />
-    <Content Include="Assets\images\logo-blue.png" />
-    <Content Include="Assets\images\logo-colored%402x.png" />
-    <Content Include="Assets\images\logo-colored.png" />
+    <Content Include="Assets\images\Banner\banner1.jpg" />
+    <Content Include="Assets\images\Banner\banner2.png" />
+    <Content Include="Assets\images\Banner\banner3.png" />
+    <Content Include="Assets\images\body-bg.png" />
+    <Content Include="Assets\images\cart.png" />
+    <Content Include="Assets\images\footer-bg.jpg" />
+    <Content Include="Assets\images\Home\home_block_career_V.jpg" />
+    <Content Include="Assets\images\Home\home_block_deli_V.jpg" />
+    <Content Include="Assets\images\Home\home_block_menu_V.jpg" />
+    <Content Include="Assets\images\img-sprite.png" />
+    <Content Include="Assets\images\KhuyenMai\menu_spicy_40off.png" />
     <Content Include="Assets\images\logo.png" />
+    <Content Include="Assets\images\LoaiSanPham\m4.png" />
+    <Content Include="Assets\images\LoaiSanPham\menu_bev_dessert.png" />
+    <Content Include="Assets\images\LoaiSanPham\menu_BURGER_fish.png" />
+    <Content Include="Assets\images\LoaiSanPham\menu_MILD_alacarte.png" />
+    <Content Include="Assets\images\LoaiSanPham\menu_SIDE_cajunfries-L.png" />
+    <Content Include="Assets\images\LoaiSanPham\menu_SPICY_alacarte_1.png" />
+    <Content Include="Assets\images\nav-top.png" />
+    <Content Include="Assets\images\scroll-top.png" />
+    <Content Include="Assets\images\themes.gif" />
+    <Content Include="Assets\images\top-menu-bg.png" />
+    <Content Include="Assets\images\top-menu-bg1.png" />
+    <Content Include="Assets\images\topbar-separator.png" />
+    <Content Include="Assets\images\topbar.png" />
+    <Content Include="Assets\js\App\Calculation.js" />
     <Content Include="Assets\js\App\Calendar.js" />
     <Content Include="Assets\js\App\Contacts.js" />
     <Content Include="Assets\js\App\Documents.js" />
@@ -5276,14 +5300,6 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Shared\_AdminLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -5293,7 +5309,7 @@
     <Folder Include="Areas\Admin\Views\KhuyenMai\" />
     <Folder Include="Areas\Admin\Views\SanPham\" />
     <Folder Include="Views\Ajax\" />
-    <Folder Include="Views\Base\" />
+    <Folder Include="Views\ListMenu\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -6221,7 +6237,6 @@
     <Content Include="Assets\global\vendor\summernote\summernote.woff" />
     <Content Include="Assets\global\vendor\toastr\toastr.js.map" />
     <Content Include="Assets\global\vendor\waves\waves.min.js.map" />
-    <Content Include="Assets\images\.gitkeep" />
     <Content Include="Areas\Admin\Views\Home\_Header.cshtml" />
     <Content Include="Areas\Admin\Views\Home\_Menu.cshtml" />
     <Content Include="Areas\Admin\Views\ChiPhi\DanhSachLoaiChiPhi.cshtml" />
@@ -6238,12 +6253,15 @@
     <Content Include="Areas\Admin\Views\MatHang\_SanPham_ChiTiet.cshtml" />
     <Content Include="Areas\Admin\Views\MatHang\Combo.cshtml" />
     <Content Include="Areas\Admin\Views\MatHang\_Combo.cshtml" />
-    <Content Include="Areas\Admin\Views\MatHang\Combo_ChiTiet.cshtml" />
-    <None Include="Project_Readme.html" />
+   <Content Include="Areas\Admin\Views\MatHang\Combo_ChiTiet.cshtml" />    <None Include="Project_Readme.html" />
     <Content Include="Views\Auth\Login.cshtml" />
     <Content Include="Views\Auth\ForgotPassword.cshtml" />
     <Content Include="Views\Auth\Unauthorized.cshtml" />
     <Content Include="Views\Auth\NotFound.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\LoaiSanPham\LoaiSanPham.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_layoutSanPham.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
