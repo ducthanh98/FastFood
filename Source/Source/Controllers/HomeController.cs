@@ -16,5 +16,12 @@ namespace Source.Controllers
             return View();
         }
 
+        public PartialViewResult _Pagination(int maxNumber, int pageNumber)
+        {
+            ViewBag.maxNumber = maxNumber;
+            ViewBag.pageNumber = pageNumber;
+            return PartialView();
+        }
+
     }
 }

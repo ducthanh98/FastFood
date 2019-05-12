@@ -1,4 +1,5 @@
 ﻿@model  List<DTO.LoaiSanPhamDTO>
+@using Source.Configuration;
 @{
     ViewBag.Title = "LoaiSanPham";
     Layout = "~/Views/Shared/_LayoutSanPham.cshtml";
@@ -13,8 +14,8 @@
             {
             <div class="col-4">
                 <div class="product-item">
-                    <a class="item-pro" href="product.html"><img src="@Url.Content("~/Assets/images/LoaiSanPham/" +item.HinhAnh)" alt=""></a>
-                    <a class="item-btn" href="product.html">@item.TenLoaiSanPham</a>
+                    <a class="item-pro" href="#"><img src="@Url.Content( AppConfig.uploadLSP +item.HinhAnh)" alt=""></a>
+                    <a class="item-btn" href="#">@item.TenLoaiSanPham</a>
                 </div>
             </div>
         }
