@@ -21,7 +21,7 @@ namespace Source.Areas.Admin.Controllers
         {
             List<ChiPhiDAO> chiPhi = new List<ChiPhiDAO>();
             try
-            {
+            { 
                 List<LoaiChiPhiDAO> loaiChiPhi = LoaiChiPhi_Service.GetAll();
                 Hashtable hs = new Hashtable();
                 for (int i = 0; i < loaiChiPhi.Count; i++)
@@ -47,7 +47,7 @@ namespace Source.Areas.Admin.Controllers
         }
 
         public PartialViewResult _ChiPhi_ChiTiet(int ID)
-        {
+        { 
             ChiPhiDAO data;
             try
             {
