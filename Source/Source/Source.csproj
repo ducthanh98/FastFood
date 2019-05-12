@@ -206,8 +206,8 @@
     <Compile Include="Configuration\AppConfig.cs" />
     <Compile Include="Configuration\AuthorizeBusinessLogic.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ListMenuController.cs" />
-    <Compile Include="Controllers\LoaiSanPhamController.cs" />
+    <Compile Include="Controllers\SanPhamController.cs" />
+    <Compile Include="Controllers\Menu_ListLSPController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -5224,12 +5224,16 @@
     <Content Include="Assets\images\LoaiSanPham\menu_SIDE_cajunfries-L.png" />
     <Content Include="Assets\images\LoaiSanPham\menu_SPICY_alacarte_1.png" />
     <Content Include="Assets\images\nav-top.png" />
+    <Content Include="Assets\images\pen.png" />
+    <Content Include="Assets\images\SanPham\menu_spicy_redboat1pc.png" />
+    <Content Include="Assets\images\SanPham\pimgpsh_fullsize_distr.png" />
     <Content Include="Assets\images\scroll-top.png" />
     <Content Include="Assets\images\themes.gif" />
     <Content Include="Assets\images\top-menu-bg.png" />
     <Content Include="Assets\images\top-menu-bg1.png" />
     <Content Include="Assets\images\topbar-separator.png" />
     <Content Include="Assets\images\topbar.png" />
+    <Content Include="Assets\images\trash.png" />
     <Content Include="Assets\js\App\Calculation.js" />
     <Content Include="Assets\js\App\Calendar.js" />
     <Content Include="Assets\js\App\Contacts.js" />
@@ -5309,7 +5313,6 @@
     <Folder Include="Areas\Admin\Views\KhuyenMai\" />
     <Folder Include="Areas\Admin\Views\SanPham\" />
     <Folder Include="Views\Ajax\" />
-    <Folder Include="Views\ListMenu\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -6253,6 +6256,7 @@
     <Content Include="Areas\Admin\Views\MatHang\_SanPham_ChiTiet.cshtml" />
     <Content Include="Areas\Admin\Views\MatHang\Combo.cshtml" />
     <Content Include="Areas\Admin\Views\MatHang\_Combo.cshtml" />
+      <Content Include="Areas\Admin\Views\MatHang\Combo_ChiTiet.cshtml" />    <None Include="Project_Readme.html" />
     <Content Include="Areas\Admin\Views\MatHang\Combo_ChiTiet.cshtml" />
     <Content Include="Areas\Admin\Views\ChiPhi\_DanhSachChiPhi.cshtml" />
     <Content Include="Areas\Admin\Views\ChiPhi\_ChiPhi_ChiTiet.cshtml" />
@@ -6262,9 +6266,14 @@
     <Content Include="Views\Auth\Unauthorized.cshtml" />
     <Content Include="Views\Auth\NotFound.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\LoaiSanPham\LoaiSanPham.cshtml" />
+    <Content Include="Views\SanPham\LoaiSanPham.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_layoutSanPham.cshtml" />
+    <Content Include="Views\Menu_ListLSP\MenuPartial.cshtml" />
+    <Content Include="Views\SanPham\SanPham.cshtml" />
+    <Content Include="Views\Home\_Pagination.cshtml" />
+    <Content Include="Views\SanPham\_SanPham_ChiTiet.cshtml" />
+    <Content Include="Views\SanPham\_SanPham.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
