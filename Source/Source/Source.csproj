@@ -205,6 +205,7 @@
     <Compile Include="Areas\Admin\Controllers\MatHangController.cs" />
     <Compile Include="Configuration\AppConfig.cs" />
     <Compile Include="Configuration\AuthorizeBusinessLogic.cs" />
+    <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
     <Compile Include="Controllers\Menu_ListLSPController.cs" />
@@ -6256,7 +6257,8 @@
     <Content Include="Areas\Admin\Views\MatHang\_SanPham_ChiTiet.cshtml" />
     <Content Include="Areas\Admin\Views\MatHang\Combo.cshtml" />
     <Content Include="Areas\Admin\Views\MatHang\_Combo.cshtml" />
-      <Content Include="Areas\Admin\Views\MatHang\Combo_ChiTiet.cshtml" />    <None Include="Project_Readme.html" />
+    <Content Include="Areas\Admin\Views\MatHang\Combo_ChiTiet.cshtml" />
+    <None Include="Project_Readme.html" />
     <Content Include="Areas\Admin\Views\MatHang\Combo_ChiTiet.cshtml" />
     <Content Include="Areas\Admin\Views\ChiPhi\_DanhSachChiPhi.cshtml" />
     <Content Include="Areas\Admin\Views\ChiPhi\_ChiPhi_ChiTiet.cshtml" />

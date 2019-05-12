@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace Source.Areas.Admin.Controllers
 {
-    //[AuthorizeBusinessLogic]
+    [AuthorizeBusinessLogic]
     public class BaseController : Controller
     {
         protected LoaiChiPhiBL LoaiChiPhi_Service = new LoaiChiPhiBL();
