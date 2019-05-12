@@ -1,4 +1,5 @@
 ﻿using Common;
+using DAO;
 using DTO;
 using Source.Configuration;
 using System;
@@ -24,7 +25,7 @@ namespace Source.Areas.Admin.Controllers
                     string path = Path.Combine(Server.MapPath(AppConfig.uploadFolder), fileName);
                     file.SaveAs(path);
                     Result.Code = 0;
-                    Result.Message = AppConfig.uploadFolder+fileName;
+                    Result.Message = fileName;
                 }
             }
             catch (Exception e)
@@ -36,7 +37,7 @@ namespace Source.Areas.Admin.Controllers
 
         }
         #region ExpenseType
-        public JsonResult addOrUpdateExpenseType(LoaiChiPhiDTO obj,bool isUpdate)
+        public JsonResult addOrUpdateExpenseType(LoaiChiPhiDAO obj,bool isUpdate)
         {
             AjaxResultModel Result = new AjaxResultModel();
 
@@ -234,18 +235,44 @@ namespace Source.Areas.Admin.Controllers
         }
 
         #endregion
-        public bool test()
+
+        #region Expense
+        public JsonResult addOrUpdateExpense(ChiPhiDAO obj, bool isUpdate)
         {
+            AjaxResultModel Result = new AjaxResultModel();
+
+            bool check = true;
             try
             {
-                ChiNhanhDTO dto = ChiNhanh_Service.GetByID(1002);
+                if (isUpdate)
+                {
+                    check = ChiPhi_Service.Update(obj);
+                }
+                else
+                {
+                    obj.NgayTao = DateTime.Now;
+                    check = ChiPhi_Service.Insert(obj);
+                }
+                if (check)
+                {
+                    Result.Code = 0;
+                    Result.Message = "Thành công";
+                }
+                else
+                {
+                    Result.Code = 1;
+                    Result.Message = "Đã có lỗi xảy ra. Vui lòng thử lại.";
+                }
             }
             catch (Exception e)
             {
-                throw e;
+                Result.Code = 1;
+                Result.Message = e.Message;
+                //throw;
             }
-            return true;
+            return Json(new JsonResult() { Data = Result });
         }
+        #endregion Expense
 
     }
 }

@@ -20,6 +20,5 @@ namespace BusinessLogic
         List<T> GetAllBy(int pageNumber, int pageSize, string keyText,out int totalEntries);
         List<T> GetAll();
 
-        int GetAllEntries();
     }
 }

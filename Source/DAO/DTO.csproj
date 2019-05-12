@@ -42,10 +42,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChiNhanhDTO.cs" />
+    <Compile Include="ChiPhiDAO.cs" />
     <Compile Include="Combo_Insert.cs" />
     <Compile Include="Combo_REL.cs" />
     <Compile Include="Combo_SanPham.cs" />
-    <Compile Include="LoaiChiPhiDTO.cs" />
+    <Compile Include="LoaiChiPhiDAO.cs" />
     <Compile Include="LoaiSanPhamDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SanPhamDTO.cs" />

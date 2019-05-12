@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DTO
+namespace DAO
 {
-    public class ChiPhiDTO
+    public class ChiPhiDAO
     {
         public int MaChiPhi { set; get; }
         public decimal GiaTien { set; get; }

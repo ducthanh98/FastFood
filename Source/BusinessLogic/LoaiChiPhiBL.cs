@@ -5,44 +5,44 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
-using DTO;
+using DAO;
 
 namespace BusinessLogic
 {
-    public class LoaiChiPhiBL:BusinessLogic<LoaiChiPhiDTO>
+    public class LoaiChiPhiBL:BusinessLogic<LoaiChiPhiDAO>
     {
-        public bool Insert(LoaiChiPhiDTO obj)
+        public bool Insert(LoaiChiPhiDAO obj)
         {
-            return new SqlHelper<LoaiChiPhiDTO>().ExecuteProc("CTLoaiChiPhi_Insert", obj);
+            return new SqlHelper<LoaiChiPhiDAO>().ExecuteProc("CTLoaiChiPhi_Insert", obj);
         }
-        public bool Update(LoaiChiPhiDTO obj)
+        public bool Update(LoaiChiPhiDAO obj)
         {
-            return new SqlHelper<LoaiChiPhiDTO>().ExecuteProc("CTLoaiChiPhi_Update", obj);
+            return new SqlHelper<LoaiChiPhiDAO>().ExecuteProc("CTLoaiChiPhi_Update", obj);
         }
 
         public bool Delete(int ID)
         {
-            return new SqlHelper<LoaiChiPhiDTO>().ExecuteProc("CTLoaiChiPhi_DeleteByPrimaryKey", "MaLoaiChiPhi", ID);
+            return new SqlHelper<LoaiChiPhiDAO>().ExecuteProc("CTLoaiChiPhi_DeleteByPrimaryKey", "MaLoaiChiPhi", ID);
         }
 
-        public LoaiChiPhiDTO GetByID(int ID)
+        public LoaiChiPhiDAO GetByID(int ID)
         {
-            return new SqlHelper<LoaiChiPhiDTO>().ExecuteProcAndGetData("CTLoaiChiPhi_SelectByPrimaryKey", "MaLoaiChiPhi",ID).FirstOrDefault();
+            return new SqlHelper<LoaiChiPhiDAO>().ExecuteProcAndGetData("CTLoaiChiPhi_SelectByPrimaryKey", "MaLoaiChiPhi",ID).FirstOrDefault();
         }
 
-        public List<LoaiChiPhiDTO> GetAllBy(int pageNumber,int pageSize,string keyText, out int totalEntries)
+        public List<LoaiChiPhiDAO> GetAllBy(int pageNumber,int pageSize,string keyText, out int totalEntries)
         {
-            return new SqlHelper<LoaiChiPhiDTO>().ExecuteProcAndGetData("CTLoaiChiPhi_GetAllBy",pageNumber,pageSize,keyText, out totalEntries);
+            return new SqlHelper<LoaiChiPhiDAO>().ExecuteProcAndGetData("CTLoaiChiPhi_GetAllBy",pageNumber,pageSize,keyText, out totalEntries);
         }
 
         public int GetAllEntries()
         {
-            return new SqlHelper<LoaiChiPhiDTO>().GetTotalRow("LoaiChiPhi");
+            return new SqlHelper<LoaiChiPhiDAO>().GetTotalRow("LoaiChiPhi");
         }
 
-        public List<LoaiChiPhiDTO> GetAll()
+        public List<LoaiChiPhiDAO> GetAll()
         {
-            return new SqlHelper<LoaiChiPhiDTO>().ExecuteProcAndGetData("CTLoaiChiPhi_SelectAll");
+            return new SqlHelper<LoaiChiPhiDAO>().ExecuteProcAndGetData("CTLoaiChiPhi_SelectAll");
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿@model DTO.Combo_SanPham
 @using DTO;
+@using Source.Configuration
 @{
     ViewBag.Title = "Combo_ChiTiet";
     List<SanPham_TypeInsertCombo> dsSanPham = ViewBag.dsSanPham;
@@ -23,7 +24,7 @@
                 <div class="col-6">
                     <div class="example-wrap">
                         <h4 class="example-title">Đơn giá</h4>
-                        <input type="text" class="form-control required" id="DonGia" value="@Model.DonGia" placeholder="Nhập giá combo">
+                        <input type="text" class="form-control required currency" onkeyup="formatCurrency(this)" id="DonGia" value="@Model.DonGia" placeholder="Nhập giá combo">
                         <input type="hidden" class="form-control required" id="HinhAnh" value="@Model.HinhAnh">
                     </div>
                 </div>
@@ -33,11 +34,11 @@
                 <div class="col-6">
                     <div class="example-wrap">
                         <h4 class="example-title">Hình ảnh</h4>
-                        <input type="file">
+                        <input type="file"  id="file">
                     </div>
                 </div>
                 <div class="col-6">
-                    <img src="@Model.HinhAnh" width='200px' height='200px' id="showImg" style='@if (Model.MaCombo.Equals(0)) { <text>display:none;</text> } else { <text>display:block;</text> } ' )>
+                    <img src=@Url.Content(AppConfig.uploadFolder + @Model.HinhAnh) width='200px' height='200px' id="showImg" style='@if (Model.MaCombo.Equals(0)) { <text>visibility:hidden;</text> } else { <text>visibility:visible ;</text> } ' )>
                 </div>
             </div>
             <div class="row row-lg">
@@ -58,7 +59,7 @@
                     </div>
                     <div class="col-4 row">
                         <label class="col-5">Số lượng</label>
-                        <input type="text" class="soLuong col-7" @if (Model.sanPham !=null) {<text>value="@Model.sanPham[i].SoLuong"</text> } />
+                        <input type="number" class="soLuong col-7" @if (Model.sanPham !=null) {<text>value="@Model.sanPham[i].SoLuong"</text> } />
                     </div>
 
 
@@ -78,6 +79,7 @@
                     </div>
 
 <script>
+    isUpdate=!!@ViewBag.MaCombo;
     var url_InsertUpdate = '/Admin/Ajax/addOrUpdateCombo';
 
     const htmlOptions = "@Html.Raw(@ViewBag.selectTag)";
@@ -99,7 +101,7 @@
                     </div>
                     <div class="col-4 row">
                         <label class="col-5">Số lượng</label>
-                        <input type="text" class="soLuong col-7" />
+                        <input type="number" class="soLuong col-7" />
                     </div>
                     <div class="col-2 row">
                           <i class="icon wb-plus-circle" onclick="addForm(this)"></i>
@@ -107,35 +109,124 @@
                     </div>
                     </div>`;
         $(element).parent().parent().after(html);
+        $(".MaSanPham").select2();
+
     }
 
     $(document).ready(function () {
         $(".MaSanPham").select2();
+
         $("#btnSave").click(function () {
             const obj = {};
+            obj.MaCombo = @ViewBag.MaCombo;
             obj.TenCombo = $("#TenCombo").val();
-            obj.DonGia = $("#DonGia").val();
-            obj.HinhAnh = '';
+            obj.DonGia = $("#DonGia").val().split(',').join('');
+            obj.HinhAnh = $("#HinhAnh").val();
             obj.sanPham = [];
-            $(".cb-sp").each(function () {
-                const sp = {};
-                sp.MaSanPham = $('.MaSanPham', this).val();
-                sp.SoLuong = $('.soLuong', this).val();
-                obj.sanPham.push(sp);
-            });
+            if (!file && !obj.HinhAnh) { // file có thể null
+                return toastr.error('Vui lòng chọn hình ảnh')
+            }
+            const check = checkInvalid(obj);
 
+            const lstSp = $(".cb-sp");
+            for(let i =0;i<lstSp.length;i++){
+                const sp = {};
+                sp.MaSanPham = $('.MaSanPham', lstSp[i]).val();
+                sp.SoLuong = $('.soLuong', lstSp[i]).val();
+                if(sp.SoLuong == '' || sp.SoLuong < 0){
+                    $('.soLuong', lstSp[i]).focus();
+                    return toastr.error('Số lương sản phẩm không được trống và phải lớn hơn 0');
+                }
+                obj.sanPham.push(sp);
+            }
+                
+            
+            if(check){
+                return toastr.error(check.message);
+            }
+
+            // gui file
+            if (file) {
+                const formData = new FormData();
+                formData.append('file', file);
+                $.ajax({
+                    method: 'post',
+                    url: '/Admin/Ajax/UploadFile',
+                    data: formData,
+                    "async": false,
+                    "contentType": false,
+                    "processData": false
+                }).done(result => {
+                    if (result.Data.Code == 0) {
+                        obj.HinhAnh=result.Data.Message;
+                    } else {
+                        $("#HinhAnh").val('');
+                        toastr.error(result.Data.Message);
+                        return false;
+                    }
+                });
+            }
+            
+            // cap nhat du lieu neu gui file thanh cong
             $.ajax({
                 url: url_InsertUpdate, // Md modal
                 type: "post",
                 data: {
                     obj: obj,
-                    isUpdate: false
+                    isUpdate: isUpdate
                 },
             }).done(function (result) {
-                alertMess(result);
+                if (result.Data.Code == 0) {
+                    toastr.success(result.Data.Message);
+                    setTimeout(() => {
+                        window.location.href = "/Admin/MatHang/Combo";
+                    }, 1000);
+                    changePage(1);
+                } else {
+                    toastr.error(result.Data.Message);
+                }
             });
 
         })
     });
+
+    var file=undefined;
+    $("#file").change(function (event) {
+        $("#showImg").css("visibility", "hidden");
+        if (event.target.files) {
+            file = event.target.files[0];
+            //const allowedExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
+            if (!file.type.includes('image')) {
+                this.value = '';
+                file = undefined;
+                toastr.error('Vui lòng chọn file ảnh');
+                return;
+            }
+            if (file.size / 1024 / 1024 >= 8) {
+                this.value = '';
+                file = undefined;
+                toastr.error('Dung lượng file không được vượt quá 8MB')
+                return;
+            }
+            const fd = new FileReader();
+            fd.readAsDataURL(file);
+            fd.onload = (result) => {
+                $("#showImg").attr("src", result.target.result);
+                $("#showImg").css("visibility", "visible");
+            }
+        }
+    });
+
+    function checkInvalid(obj){
+        
+        if(obj.TenCombo === ''){
+            $("#TenCombo").focus();
+            return {'message':'Tên combo không được trống'};
+        } else if(obj.DonGia === ''){
+            $("#DonGia").focus();
+            return {'message':'Đơn giá không được trống'};
+        }
+        return false;
+    }
 
 </script>

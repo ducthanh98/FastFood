@@ -12,6 +12,7 @@ namespace Source.Areas.Admin.Controllers
     public class BaseController : Controller
     {
         protected LoaiChiPhiBL LoaiChiPhi_Service = new LoaiChiPhiBL();
+        protected ChiPhiBL ChiPhi_Service = new ChiPhiBL();
         protected ChiNhanhBL ChiNhanh_Service = new ChiNhanhBL();
         protected TaiKhoanBL TaiKhoan_Service = new TaiKhoanBL();
         protected SanPhamBL SanPham_Service = new SanPhamBL();

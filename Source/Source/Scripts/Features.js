@@ -16,16 +16,21 @@ var id = 0;
                 }
                 let res = checkValid(modalItems[i]);
                 if (res.valid) {
-                    params[modalItems[i].id] = modalItems[i].value.trim().replace(/\n/g, "\\n");
+                    if (modalItems[i].classList.contains("currency")) {
+                        params[modalItems[i].id] = modalItems[i].value.trim().split(",").join("");
+
+                    } else {
+                        params[modalItems[i].id] = modalItems[i].value.trim().replace(/\n/g, "\\n");
+                    }
                 } else {
                     toastr.error(res.message);
                     return false;
-
                 }
             }
         }
         return params;
     }
+ 
     function checkValid(item) {
         if (item.classList.contains('required') && item.value.trim() == '') {
             $(`#${item.id}`).focus();
@@ -110,4 +115,16 @@ var id = 0;
             toastr.error(result.Data.Message);
         }
     }
+
+    function formatCurrency(element) {
+        let money = element.value.split(',').join('');
+        let regex = /\B(?=(\d{3})+(?!\d))/g;
+        money = money.replace(regex, ",");
+        element.value = money;
+    }
     
+    document.addEventListener("DOMContentLoaded", function () {
+        $(".currency").each(function () {
+            formatCurrency(this);
+        })
+    });

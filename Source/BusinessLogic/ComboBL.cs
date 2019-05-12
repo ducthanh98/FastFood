@@ -31,6 +31,10 @@ namespace BusinessLogic
                 cb_sp.MaCombo = id;
                 IEnumerable<Combo_REL> tmp = listCombo.Where(x => x.MaCombo.Equals(id));
                 cb_sp.TenCombo = tmp.FirstOrDefault().TenCombo;
+                cb_sp.HinhAnh = tmp.FirstOrDefault().HinhAnh;
+                cb_sp.DonGia = tmp.FirstOrDefault().DonGia;
+
+
                 cb_sp.sanPham= tmp.Select(x => new SanPham_REL() { TenSanPham = x.TenSanPham, SoLuong = x.SoLuong,MaSanPham=x.MaSanPham }).ToList();
                 listCombo_Product.Add(cb_sp);
             }

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DTO
+namespace DAO
 { 
-    public class LoaiChiPhiDTO 
+    public class LoaiChiPhiDAO 
     {
         public int MaLoaiChiPhi { get; set; }
         public string TenLoaiChiPhi { get; set; } 

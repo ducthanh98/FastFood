@@ -4,47 +4,41 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DTO;
 using Common;
-
+using DAO;
 
 namespace BusinessLogic
 {
-    public class ChiPhiBL : BusinessLogic<ChiPhiDTO>
+    public class ChiPhiBL : BusinessLogic<ChiPhiDAO>
     {
         public bool Delete(int ID)
         {
-            return new SqlHelper<ChiPhiDTO>().ExecuteProc("CTChiPhi_DeleteByPrimaryKey", "MaChiPhi", ID);
+            throw new NotImplementedException();
         }
 
-        public List<ChiPhiDTO> GetAll()
+        public List<ChiPhiDAO> GetAll()
         {
-            return new SqlHelper<ChiPhiDTO>().ExecuteProcAndGetData("CTChiPhi_SelectAll");
+            return new SqlHelper<ChiPhiDAO>().ExecuteProcAndGetData("CTChiPhi_SelectAll");
         }
 
-        public List<ChiPhiDTO> GetAllBy(int pageNumber, int pageSize, string keyText, out int totalEntries)
+        public List<ChiPhiDAO> GetAllBy(int pageNumber, int pageSize, string keyText, out int totalEntries)
         {
-            return new SqlHelper<ChiPhiDTO>().ExecuteProcAndGetData("CTChiPhi_GetAllBy", pageNumber, pageSize, keyText, out totalEntries);
+            return new SqlHelper<ChiPhiDAO>().ExecuteProcAndGetData("CTChiPhi_GetAllBy", pageNumber, pageSize, keyText, out totalEntries);
         }
 
-        public int GetAllEntries()
+        public ChiPhiDAO GetByID(int ID)
         {
-            return new SqlHelper<ChiPhiDTO>().GetTotalRow("ChiPhi");
+            throw new NotImplementedException();
         }
 
-        public ChiPhiDTO GetByID(int ID)
+        public bool Insert(ChiPhiDAO obj)
         {
-            return new SqlHelper<ChiPhiDTO>().ExecuteProcAndGetData("CTChiPhi_SelectbyPrimaryKey", "MaChiPhi", ID).FirstOrDefault();
+            return new SqlHelper<ChiPhiDAO>().ExecuteProc("CTChiPhi_Insert", obj);
         }
 
-        public bool Insert(ChiPhiDTO obj)
+        public bool Update(ChiPhiDAO obj)
         {
-            return new SqlHelper<ChiPhiDTO>().ExecuteProc("CTChiPhi_Insert", obj);
-        }
-
-        public bool Update(ChiPhiDTO obj)
-        {
-            return new SqlHelper<ChiPhiDTO>().ExecuteProc("CTChiPhi_Update", obj);
+            return new SqlHelper<ChiPhiDAO>().ExecuteProc("CTChiPhi_Update", obj);
         }
     }
 }

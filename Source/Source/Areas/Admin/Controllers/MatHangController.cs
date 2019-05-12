@@ -13,7 +13,7 @@ namespace Source.Areas.Admin.Controllers
         // GET: Admin/MatHang
         public ActionResult SanPham()
         {
-
+            TempData.Clear();
             return View();
         }
         public PartialViewResult _SanPham(int pageNumber =1,int pageSize =10,string keyText="")
@@ -81,6 +81,7 @@ namespace Source.Areas.Admin.Controllers
         }
         public ActionResult Combo_ChiTiet(int ID=0)
         {
+            ViewBag.MaCombo = ID;
             Combo_SanPham combo_sanPham = new Combo_SanPham();
             if (ID != 0)
             {
@@ -97,5 +98,7 @@ namespace Source.Areas.Admin.Controllers
             ViewBag.selectTag = selectHtml;
             return View(combo_sanPham);
         }
+
+
     }
 }
