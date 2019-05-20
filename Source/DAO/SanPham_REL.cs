@@ -11,7 +11,6 @@ namespace DTO
     {  
         public int MaSanPham { get; set; }
         public string TenSanPham { get; set; }
-
         public int SoLuong { get; set; }
     }
 

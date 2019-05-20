@@ -14,7 +14,7 @@
                         @foreach(var item in Model)
                         {
                             <li>
-                                <a href="#">@item.TenLoaiSanPham</a>
+                                <a href="@Url.Action("SanPham","SanPham", new {@MaLoaiSanPham = @item.MaLoaiSanPham})">@item.TenLoaiSanPham</a>
                             </li>
                         }
                     </ul>

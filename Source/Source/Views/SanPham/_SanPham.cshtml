@@ -1,2 +1,69 @@
-﻿@model List<DTO.SanPham_LoaiSanPham>
+﻿@using Source.Configuration;
 
+@{
+    List<DTO.SanPham_LoaiSanPham> lstSP = (List<DTO.SanPham_LoaiSanPham>)TempData["sanPham"];
+    List<DTO.ComBo_LoaiSanPham> lstCB = (List<DTO.ComBo_LoaiSanPham>)TempData["comBo"];
+}
+}
+<div class="title-menu">
+    <h2>@lstSP.FirstOrDefault().TenLoaiSanPham</h2>
+</div>
+<div class="cotent-top">
+    <div class="col-12" style="margin-bottom: 5%; ">
+        <div class="menu-product">
+            <ul>
+                @for (int i=0; i<lstCB.Count; i++)
+                {
+                    <li>
+                        <div class="product-describe">
+                            <img src="@Url.Content(AppConfig.loadSP + lstCB[i].HinhAnh)">
+                            <div class="description">
+                                @for (int j = 0; j < lstCB[i].moTa.Count; j++)
+                                {
+                                    <span>@lstCB[i].moTa[j].TenSanPham x  @lstCB[i].moTa[j].SoLuong</span><br>
+                                }
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h4>@lstCB[i].TenComBo</h4>
+                            <p>@lstCB[i].DonGia</p>
+                            <button class="cart-btn" data-toggle="modal" onclick="ThemVaoGioHang(@lstCB[i].MaComBo,false)" data-target="#addtocart">Đặt Mua</button>
+                        </div>
+                    </li>
+                }
+                @foreach (var item in lstSP)
+                {
+                    <li>
+                        <div class="product-describe">
+                            <img src="@Url.Content(AppConfig.loadSP + item.HinhAnh)">
+                            <div class="description">
+                                @item.MoTa
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h4>@item.TenSanPham</h4>
+                            <p>@item.DonGia</p>
+                            <button class="cart-btn" data-toggle="modal" onclick="ThemVaoGioHang(@item.MaSanPham,true)" data-target="#addtocart">Đặt Mua</button>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    function ThemVaoGioHang(id, laSanPham) {
+        debugger
+        $.ajax({
+            url: '/GioHang/SanPham_ChiTiet',
+            type: "post",
+            data: {
+                MaMatHang: id,
+                laSanPham: laSanPham
+            }
+        }).done((result) => {
+            console.log(result)
+        })
+    }
+</script>

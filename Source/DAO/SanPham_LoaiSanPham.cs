@@ -8,11 +8,13 @@ namespace DTO
 {
     public class SanPham_LoaiSanPham
     {
+        public int MaLoaiSanPham { set; get; }
         public string TenLoaiSanPham { set; get; }
-        public int MaSanPham { get; set; }
-        public string TenSanPham { get; set; }
-        public decimal DonGia { get; set; }
-        public string HinhAnh { get; set; }
-        public string MoTa { get; set; }
+        public int MaSanPham { set; get; }
+        public string TenSanPham { set; get; }
+        public string HinhAnh { set; get; }
+        public string MoTa { set; get; }
+        public Decimal DonGia { set; get; }
+        public bool TrangThai { set; get; }
     }
 }

@@ -20,27 +20,6 @@ namespace BusinessLogic
             throw new NotImplementedException();
         }
 
-        public List<Combo_SanPham> REL_GetAllBy(int pageNumber, int pageSize, string keyText, out int totalEntries)
-        {
-            List<Combo_REL> listCombo = this.GetAllBy(pageNumber, pageSize, keyText, out totalEntries);
-            List<Combo_SanPham> listCombo_Product = new List<Combo_SanPham>();
-            List<int> idList = listCombo.Select(x=>x.MaCombo).Distinct().ToList();
-            foreach(int id in idList)
-            {
-                Combo_SanPham cb_sp = new Combo_SanPham();
-                cb_sp.MaCombo = id;
-                IEnumerable<Combo_REL> tmp = listCombo.Where(x => x.MaCombo.Equals(id));
-                cb_sp.TenCombo = tmp.FirstOrDefault().TenCombo;
-                cb_sp.HinhAnh = tmp.FirstOrDefault().HinhAnh;
-                cb_sp.DonGia = tmp.FirstOrDefault().DonGia;
-
-
-                cb_sp.sanPham= tmp.Select(x => new SanPham_REL() { TenSanPham = x.TenSanPham, SoLuong = x.SoLuong,MaSanPham=x.MaSanPham }).ToList();
-                listCombo_Product.Add(cb_sp);
-            }
-            return listCombo_Product;
-        }
-
         public int GetAllEntries()
         {
             throw new NotImplementedException();
@@ -49,6 +28,25 @@ namespace BusinessLogic
         public Combo_REL GetByID(int ID)
         {
             throw new NotImplementedException();
+        }
+        public List<Combo_SanPham> REL_GetAllBy(int pageNumber, int pageSize, string keyText, out int totalEntries)
+        {
+            List<Combo_REL> listCombo = this.GetAllBy(pageNumber, pageSize, keyText, out totalEntries);
+            List<Combo_SanPham> listCombo_Product = new List<Combo_SanPham>();
+            List<int> idList = listCombo.Select(x => x.MaCombo).Distinct().ToList();
+            foreach (int id in idList)
+            {
+                Combo_SanPham cb_sp = new Combo_SanPham();
+                cb_sp.MaCombo = id;
+                IEnumerable<Combo_REL> tmp = listCombo.Where(x => x.MaCombo.Equals(id));
+                cb_sp.TenCombo = tmp.FirstOrDefault().TenCombo;
+                cb_sp.HinhAnh = tmp.FirstOrDefault().HinhAnh;
+                cb_sp.DonGia = tmp.FirstOrDefault().DonGia;
+
+                cb_sp.sanPham = tmp.Select(x => new SanPham_REL() { TenSanPham = x.TenSanPham, SoLuong = x.SoLuong, MaSanPham = x.MaSanPham }).ToList();
+                listCombo_Product.Add(cb_sp);
+            }
+            return listCombo_Product;
         }
         public Combo_SanPham SelectByPrimaryKey(int ID)
         {
@@ -84,5 +82,28 @@ namespace BusinessLogic
         {
             return new SqlHelper<Combo_REL>().ExecuteProcAndGetData("CTCombo_GetAllBy", pageNumber, pageSize, keyText, out totalEntries);
         }
+        public List<ComBo_LoaiSanPham> CB_GetAllBy(int ID)
+        {
+            List<CB_LSP> lstCB_LSP = new SqlHelper<CB_LSP>().ExecuteProcAndGetData("CTComBo_SelectByLSP", "MaLoaiSanPham", ID);
+            List<ComBo_LoaiSanPham> listComBo = new List<ComBo_LoaiSanPham>();
+            List<int> idCB = lstCB_LSP.Select(x => x.MaCB).Distinct().ToList();
+            foreach(int id in idCB)
+            {
+                ComBo_LoaiSanPham cb_lsp = new ComBo_LoaiSanPham();
+                cb_lsp.MaComBo = id;
+                IEnumerable<CB_LSP> t = lstCB_LSP.Where(x => x.MaCB.Equals(id));
+                cb_lsp.HinhAnh = t.FirstOrDefault().HinhAnhCB;
+                cb_lsp.DonGia = t.FirstOrDefault().DonGiaCB;
+                cb_lsp.TenComBo = t.FirstOrDefault().TenComBo;
+                cb_lsp.moTa = t.Select(x => new SanPham_REL() { TenSanPham = x.TenSanPham, SoLuong = x.SoLuong, MaSanPham = x.MaSP }).ToList();
+                listComBo.Add(cb_lsp);
+            }
+            return listComBo;
+        }
+
+        //public List<ComBo_LoaiSanPham> CB_AddToCart(int ID)
+        //{
+        //    List<CB_LSP> lstCB_LSP = new SqlHelper<CB_LSP>().ExecuteProcAndGetData("CTComBo_SelectByLSP", "MaLoaiSanPham", ID);
+        //}
     }
 }

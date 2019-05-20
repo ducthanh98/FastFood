@@ -17,24 +17,24 @@ namespace Source.Controllers
             return View(lstLSP);
         }
 
+
         public ActionResult SanPham()
         {
             return View();
         }
-        public PartialViewResult _SanPham()
+        public PartialViewResult _SanPham(int MaLoaiSanPham)
         {
+            List<SanPham_LoaiSanPham> lstSP = SanPham_Service.SP_GetAllBy(MaLoaiSanPham);
+            List<ComBo_LoaiSanPham> lstCB = Combo_Service.CB_GetAllBy(MaLoaiSanPham);
+            TempData["sanPham"] = lstSP;
+            TempData["comBo"] = lstCB;
             return PartialView();
         }
 
-        public PartialViewResult _SanPham_ChiTiet(int pageNumber = 1, int pageSize = 5, string keyText = "")
+        public PartialViewResult _KhuyenMai()
         {
-            int totalEntries;
-            List<SanPhamDTO> lst = SanPham_Service.GetAllBy(pageNumber, pageSize, keyText, out totalEntries);
-            ViewBag.maxNumber = Math.Ceiling(totalEntries / (double)pageSize);
-            ViewBag.pageNumber = pageNumber;
-            ViewBag.pageSize = pageSize;
-            return PartialView(lst);
+            List<KhuyenMaiDTO> lstKM = KhuyenMai_Service.GetAll();
+            return PartialView(lstKM);
         }
-
     }
 }

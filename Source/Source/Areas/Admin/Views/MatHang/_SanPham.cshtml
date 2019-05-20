@@ -1,4 +1,5 @@
 ﻿@model List<DTO.SanPhamDTO>
+@using Source.Configuration
 @{
     int pageFrom = ((ViewBag.pageNumber - 1) * ViewBag.pageSize) + 1;
 
@@ -14,7 +15,7 @@
                     <th>Loại sản phẩm</th>
                     <th class="text-center">Hình ảnh</th>
                     <th class="text-center">Đơn giá</th>
-                    <th>Mô tả</th>
+                    <th class="text-center" width="300">Mô tả</th>
                     <th class="text-center">Chỉnh sửa</th>
                 </tr>
             </thead>
@@ -29,9 +30,9 @@
                                 <td>@Model[i].TenSanPham</td>
 
                                 <td>@Model[i].MaLoaiSanPham</td>
-                                <td class="text-center"><img width="150px" height="150px" src="@Model[i].HinhAnh" alt="" /></td>
+                                <td class="text-center"><img width="150px" height="150px" @if (!string.IsNullOrEmpty(@Model[i].HinhAnh)) { <text>src=@Url.Content(AppConfig.uploadFolder + Model[i].HinhAnh) </text> } alt="" /></td>
                                 <td class="text-center">@Model[i].DonGia</td>
-                                <td>@Model[i].MoTa</td>
+                                <td width="300" >@Model[i].MoTa</td>
                                 <td class="text-center">
                                     <i class="icon wb-edit text-primary" onclick="setValueForModal(this,true)" data-id='@Model[i].MaSanPham' data-target="#info-modal" data-toggle="modal" aria-hidden="true"></i>
                                 </td>

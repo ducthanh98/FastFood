@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Title</title>
+    <title>FastFood Việt Nam</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,6 +20,8 @@
     <script src="~/Assets/global/vendor/popper-js/umd/popper.min.j"></script>
     <script src="~/Assets/global/vendor/bootstrap/bootstrap.js"></script>
     <script src="~/Assets/js/App/Calculation.js"></script>
+    <script src="~/Scripts/Features.js"/></script>
+
     <script>
         $(window).scroll(function () {
             if ($(window).scrollTop() == 0) {
@@ -35,7 +37,7 @@
         <div class="headertop-right">
             <ul>
                 <li>
-                    <a href="#">Đăng Nhập</a>
+                    <a href="@Url.Action("Login","Auth")">Đăng Nhập</a>
                 </li>
                 <img src="~/Assets/images/topbar.png">
                 <li style="margin-right: 3px">

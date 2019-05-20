@@ -11,6 +11,7 @@ namespace Source.Areas.Admin.Controllers
     [AuthorizeBusinessLogic]
     public class BaseController : Controller
     {
+        protected KhuyenMaiBL KhuyenMai_Service = new KhuyenMaiBL();
         protected LoaiChiPhiBL LoaiChiPhi_Service = new LoaiChiPhiBL();
         protected ChiPhiBL ChiPhi_Service = new ChiPhiBL();
         protected ChiNhanhBL ChiNhanh_Service = new ChiNhanhBL();

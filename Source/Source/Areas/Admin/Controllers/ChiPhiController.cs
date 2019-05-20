@@ -70,7 +70,6 @@ namespace Source.Areas.Admin.Controllers
         public ActionResult DanhSachLoaiChiPhi()
         {
             TempData.Clear();
-
             return View();
         }
 

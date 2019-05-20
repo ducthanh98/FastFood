@@ -1,0 +1,18 @@
+﻿@model List<DTO.KhuyenMaiDTO>
+@using Source.Configuration;
+
+<div class="row">
+    @foreach (var item in Model.Take(3))
+    {
+        <div class="col-4">
+            <div class="product-item">
+                <div class="km-item">
+                    <a class="item-pro"><img src=@Url.Content( AppConfig.loadSP + item.HinhAnh)></a>
+                    <div class="describe">
+                        <a href="#">@item.TenKhuyenMai</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

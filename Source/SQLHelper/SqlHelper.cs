@@ -107,6 +107,10 @@ namespace Common
             return check;
         }
 
+        public List<SanPham_LoaiSanPham> ExecuteProcAndGetData(string v, int pageNumber, int pageSize, out int totalEntries)
+        {
+            throw new NotImplementedException();
+        }
 
         public bool ExecuteProc(string name_proc,string Field, int ID)
         {
