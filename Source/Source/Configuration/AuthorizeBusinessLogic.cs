@@ -1,4 +1,4 @@
-﻿using DAO;
+﻿using DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +15,7 @@ namespace Source.Configuration
             ControllerDescriptor controller = filterContext.ActionDescriptor.ControllerDescriptor;
             if (controller.ControllerType.FullName.Contains(path))
             {
-                TaiKhoanDAO user = HttpContext.Current.Session["User"] == null ? null : (TaiKhoanDAO)HttpContext.Current.Session["User"];
+                TaiKhoanDTO user = HttpContext.Current.Session["User"] == null ? null : (TaiKhoanDTO)HttpContext.Current.Session["User"];
                 if (user == null)
                 {
                     string url = "/Auth/Login?url=/Admin/"+controller.ControllerName + "/" + filterContext.ActionDescriptor.ActionName;

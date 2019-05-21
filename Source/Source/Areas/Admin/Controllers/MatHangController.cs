@@ -1,4 +1,4 @@
-﻿using DAO;
+﻿using DTO;
 using Source.Configuration;
 using System;
 using System.Collections;
@@ -19,10 +19,10 @@ namespace Source.Areas.Admin.Controllers
         }
         public PartialViewResult _SanPham(int pageNumber =1,int pageSize =10,string keyText="")
         {
-            List<SanPhamDAO> list = new List<SanPhamDAO>();
+            List<SanPhamDTO> list = new List<SanPhamDTO>();
             try
             {
-                List<LoaiSanPhamDAO> productType = LoaiSanPham_Service.GetAll();
+                List<LoaiSanPhamDTO> productType = LoaiSanPham_Service.GetAll();
                 Hashtable hs = new Hashtable();
                 for (int i = 0; i < productType.Count; i++)
                 {
@@ -47,12 +47,12 @@ namespace Source.Areas.Admin.Controllers
 
         public PartialViewResult _SanPham_ChiTiet(int ID)
         {
-            List<SanPhamDAO> products = (List<SanPhamDAO>)TempData["products"];
+            List<SanPhamDTO> products = (List<SanPhamDTO>)TempData["products"];
             TempData.Keep();
-            SanPhamDAO product = products.Where(x => x.MaSanPham.Equals(ID)).FirstOrDefault();
+            SanPhamDTO product = products.Where(x => x.MaSanPham.Equals(ID)).FirstOrDefault();
             if(product == null)
             {
-                product = new SanPhamDAO();
+                product = new SanPhamDTO();
             } 
             return PartialView(product);
         }

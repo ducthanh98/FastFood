@@ -7,8 +7,8 @@
     <ProjectGuid>{3E98CFA3-D0A1-4DBA-BFF0-252FBD648545}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DAO</RootNamespace>
-    <AssemblyName>DAO</AssemblyName>
+    <RootNamespace>DTO</RootNamespace>
+    <AssemblyName>DTO</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -43,22 +43,22 @@
   <ItemGroup>
     <Compile Include="AddToCart.cs" />
     <Compile Include="CB_LSP.cs" />
-    <Compile Include="ChiNhanhDAO.cs" />
+    <Compile Include="ChiNhanhDTO.cs" />
     <Compile Include="ChiPhiDAO.cs" />
     <Compile Include="Combo_Insert.cs" />
     <Compile Include="ComBo_LoaiSanPham.cs" />
     <Compile Include="Combo_REL.cs" />
     <Compile Include="Combo_SanPham.cs" />
-    <Compile Include="KhuyenMaiDAO.cs" />
+    <Compile Include="KhuyenMaiDTO.cs" />
     <Compile Include="LoaiChiPhiDAO.cs" />
-    <Compile Include="LoaiSanPhamDAO.cs" />
+    <Compile Include="LoaiSanPhamDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SanPhamDAO.cs" />
+    <Compile Include="SanPhamDTO.cs" />
     <Compile Include="SanPham_InsertComboREL.cs" />
     <Compile Include="SanPham_LoaiSanPham.cs" />
     <Compile Include="SanPham_REL.cs" />
     <Compile Include="SanPham_TypeInsertCombo.cs" />
-    <Compile Include="TaiKhoanDAO.cs" />
+    <Compile Include="TaiKhoanDTO.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

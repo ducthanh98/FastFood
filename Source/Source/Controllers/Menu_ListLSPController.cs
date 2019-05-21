@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Source.Areas.Admin.Controllers;
-using DAO;
+using DTO;
     
 
 namespace Source.Controllers
@@ -19,7 +19,7 @@ namespace Source.Controllers
 
         public ActionResult MenuPartial()
         {
-            List<LoaiSanPhamDAO> lstLSP = LoaiSanPham_Service.GetAll();
+            List<LoaiSanPhamDTO> lstLSP = LoaiSanPham_Service.GetAll();
             return PartialView(lstLSP);
         }
     }

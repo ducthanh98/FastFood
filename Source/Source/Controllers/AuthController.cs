@@ -1,4 +1,4 @@
-﻿using DAO;
+﻿using DTO;
 using Source.Areas.Admin.Controllers;
 using Source.Helpers;
 using System;
@@ -15,7 +15,7 @@ namespace Source.Controllers
         public ActionResult Login()
         {
             Session.RemoveAll();
-            TaiKhoanDAO user = CookieHelper.checkCookie();
+            TaiKhoanDTO user = CookieHelper.checkCookie();
             return View(user);
         }
         public RedirectToRouteResult Logout()
@@ -27,7 +27,7 @@ namespace Source.Controllers
         [HttpPost]
         public ActionResult Login(string username, string password,string remember,string url)
         {
-            TaiKhoanDAO user = new TaiKhoanDAO();
+            TaiKhoanDTO user = new TaiKhoanDTO();
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
                 ViewBag.error = "Vui lòng nhập đầy đủ thông tin";

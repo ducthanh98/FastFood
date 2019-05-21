@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DAO
+namespace DTO
 {
     public class SanPham_TypeInsertCombo
     {

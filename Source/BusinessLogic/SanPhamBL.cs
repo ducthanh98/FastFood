@@ -1,5 +1,5 @@
 ﻿using Common;
-using DAO;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic
 {
-    public class SanPhamBL : BusinessLogic<SanPhamDAO>
+    public class SanPhamBL : BusinessLogic<SanPhamDTO>
     {
         public bool Delete(int ID)
         {
@@ -16,7 +16,7 @@ namespace BusinessLogic
         }
 
 
-        public List<SanPhamDAO> GetAll()
+        public List<SanPhamDTO> GetAll()
         {
             throw new NotImplementedException();
         }
@@ -26,9 +26,9 @@ namespace BusinessLogic
         }
 
 
-        public List<SanPhamDAO> GetAllBy(int pageNumber, int pageSize, string keyText, out int totalEntries)
+        public List<SanPhamDTO> GetAllBy(int pageNumber, int pageSize, string keyText, out int totalEntries)
         {
-            return new SqlHelper<SanPhamDAO>().ExecuteProcAndGetData("CTSanPham_GetAllBy", pageNumber, pageSize, keyText, out totalEntries);
+            return new SqlHelper<SanPhamDTO>().ExecuteProcAndGetData("CTSanPham_GetAllBy", pageNumber, pageSize, keyText, out totalEntries);
         }
 
         public int GetAllEntries()
@@ -36,20 +36,20 @@ namespace BusinessLogic
             throw new NotImplementedException();
         }
 
-        public SanPhamDAO GetByID(int ID)
+        public SanPhamDTO GetByID(int ID)
         {
-            return new SqlHelper<SanPhamDAO>().ExecuteProcAndGetData("CTSanPham_SelectByPrimaryKey", "MaSanPham", ID).FirstOrDefault(); 
+            return new SqlHelper<SanPhamDTO>().ExecuteProcAndGetData("CTSanPham_SelectByPrimaryKey", "MaSanPham", ID).FirstOrDefault(); 
         }
 
-        public bool Insert(SanPhamDAO obj)
+        public bool Insert(SanPhamDTO obj)
         {
-            return new SqlHelper<SanPhamDAO>().ExecuteProc("CTSanPham_Insert", obj);
+            return new SqlHelper<SanPhamDTO>().ExecuteProc("CTSanPham_Insert", obj);
 
         }
 
-        public bool Update(SanPhamDAO obj)
+        public bool Update(SanPhamDTO obj)
         {
-            return new SqlHelper<SanPhamDAO>().ExecuteProc("CTSanPham_Update", obj);
+            return new SqlHelper<SanPhamDTO>().ExecuteProc("CTSanPham_Update", obj);
         }
         public List<SanPham_LoaiSanPham> SP_GetAllBy(int ID)
         {

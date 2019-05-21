@@ -4,45 +4,45 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Common;
-using DAO;
+using DTO;
 
 namespace BusinessLogic
 {
-    public class ChiNhanhBL : BusinessLogic<ChiNhanhDAO>
+    public class ChiNhanhBL : BusinessLogic<ChiNhanhDTO>
     {
-        public bool Insert(ChiNhanhDAO obj)
+        public bool Insert(ChiNhanhDTO obj)
         {
-            return new SqlHelper<ChiNhanhDAO>().ExecuteProc("CTChiNhanh_Insert", obj);
+            return new SqlHelper<ChiNhanhDTO>().ExecuteProc("CTChiNhanh_Insert", obj);
         }
 
-        public bool Update(ChiNhanhDAO obj)
+        public bool Update(ChiNhanhDTO obj)
         {
-            return new SqlHelper<ChiNhanhDAO>().ExecuteProc("CTChiNhanh_Update", obj);
+            return new SqlHelper<ChiNhanhDTO>().ExecuteProc("CTChiNhanh_Update", obj);
         }
 
         public bool Delete(int ID)
         {
-            return new SqlHelper<ChiNhanhDAO>().ExecuteProc("CTChiNhanh_DeleteByPrimaryKey", "MaLoaiChiPhi", ID);
+            return new SqlHelper<ChiNhanhDTO>().ExecuteProc("CTChiNhanh_DeleteByPrimaryKey", "MaLoaiChiPhi", ID);
         }
 
-        public ChiNhanhDAO GetByID(int ID)
+        public ChiNhanhDTO GetByID(int ID)
         {
-            return new SqlHelper<ChiNhanhDAO>().ExecuteProcAndGetData("CTChiNhanh_SelectByPrimaryKey", "MaChiNhanh", ID).FirstOrDefault();
+            return new SqlHelper<ChiNhanhDTO>().ExecuteProcAndGetData("CTChiNhanh_SelectByPrimaryKey", "MaChiNhanh", ID).FirstOrDefault();
         }
 
-        public List<ChiNhanhDAO> GetAllBy(int pageNumber, int pageSize, string keyText,out int totalEntries)
+        public List<ChiNhanhDTO> GetAllBy(int pageNumber, int pageSize, string keyText,out int totalEntries)
         {
-            return new SqlHelper<ChiNhanhDAO>().ExecuteProcAndGetData("CTChiNhanh_GetAllBy", pageNumber, pageSize, keyText,out totalEntries);
+            return new SqlHelper<ChiNhanhDTO>().ExecuteProcAndGetData("CTChiNhanh_GetAllBy", pageNumber, pageSize, keyText,out totalEntries);
         }
 
-        public List<ChiNhanhDAO> GetAll()
+        public List<ChiNhanhDTO> GetAll()
         {
-            return new SqlHelper<ChiNhanhDAO>().ExecuteProcAndGetData("CTChiNhanh_SelectAll");
+            return new SqlHelper<ChiNhanhDTO>().ExecuteProcAndGetData("CTChiNhanh_SelectAll");
         }
 
         public int GetAllEntries()
         {
-            return new SqlHelper<ChiNhanhDAO>().GetTotalRow("ChiNhanh");
+            return new SqlHelper<ChiNhanhDTO>().GetTotalRow("ChiNhanh");
         }
     }
 }

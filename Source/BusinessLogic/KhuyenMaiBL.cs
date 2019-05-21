@@ -3,41 +3,41 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DAO;
+using DTO;
 using Common;
 
 namespace BusinessLogic
 {
-    public class KhuyenMaiBL : BusinessLogic<KhuyenMaiDAO>
+    public class KhuyenMaiBL : BusinessLogic<KhuyenMaiDTO>
     {
         public bool Delete(int ID)
         {
             throw new NotImplementedException();
         }
 
-        public List<KhuyenMaiDAO> GetAllBy(int pageNumber, int pageSize, string keyText, out int totalEntries)
+        public List<KhuyenMaiDTO> GetAllBy(int pageNumber, int pageSize, string keyText, out int totalEntries)
         {
             throw new NotImplementedException();
         }
 
-        public KhuyenMaiDAO GetByID(int ID)
+        public KhuyenMaiDTO GetByID(int ID)
         {
             throw new NotImplementedException();
         }
 
-        public bool Insert(KhuyenMaiDAO obj)
+        public bool Insert(KhuyenMaiDTO obj)
         {
             throw new NotImplementedException();
         }
 
-        public bool Update(KhuyenMaiDAO obj)
+        public bool Update(KhuyenMaiDTO obj)
         {
             throw new NotImplementedException();
         }
 
-        public List<KhuyenMaiDAO> GetAll()
+        public List<KhuyenMaiDTO> GetAll()
         {
-            return new SqlHelper<KhuyenMaiDAO>().ExecuteProcAndGetData("CTKhuyenMai_SelectAll");
+            return new SqlHelper<KhuyenMaiDTO>().ExecuteProcAndGetData("CTKhuyenMai_SelectAll");
         }
     }
 }
