@@ -19,12 +19,12 @@ namespace Source.Areas.Admin.Controllers
         {
             return View();
         }
-
+        [ChildActionOnly]
         public ActionResult _Menu()
         {
             return View();
         }
-
+        [ChildActionOnly]
         public PartialViewResult _Pagination(int maxNumber, int pageNumber)
         {
             ViewBag.maxNumber = maxNumber;
