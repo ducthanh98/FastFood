@@ -40,11 +40,18 @@ namespace Source.Areas.Admin.Controllers
         public JsonResult addOrUpdateExpenseType(LoaiChiPhiDAO obj,bool isUpdate)
         {
             AjaxResultModel Result = new AjaxResultModel();
-
+            string messageErr = "";
             bool check = true;
             try
             {
-                if (isUpdate)
+                if (!ModelState.IsValid)
+                {
+                    check = false;
+                    messageErr = string.Join("; ", ModelState.Values
+                                        .SelectMany(x => x.Errors)
+                                        .Select(x => x.ErrorMessage));
+                }
+                else if (isUpdate)
                 {
                     check = LoaiChiPhi_Service.Update(obj);
                 }
@@ -60,12 +67,12 @@ namespace Source.Areas.Admin.Controllers
                 else
                 {
                     Result.Code = 1;
-                    Result.Message = "Đã có lỗi xảy ra. Vui lòng thử lại.";
+                    Result.Message = messageErr == "" ? "Đã có lỗi xảy ra. Vui lòng thử lại." : messageErr;
                 }
             }
             catch (Exception e)
             {
-                Result.Code = 1;
+                Result.Code = 2;
                 Result.Message = e.Message;
                 //throw;
             }
@@ -92,7 +99,7 @@ namespace Source.Areas.Admin.Controllers
             }
             catch (Exception e)
             {
-                Result.Code = 1;
+                Result.Code = 2;
                 Result.Message = e.Message;
                 //throw;
             }

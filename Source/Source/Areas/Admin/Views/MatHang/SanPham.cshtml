@@ -91,7 +91,7 @@
     function saveProduct() {
         const obj = getValueFromModal();
         if (!file && !obj.HinhAnh) { // file có thể null 
-            return toastr.error('Vui lòng chọn hình ảnh')
+            return toastr.error('Vui lòng chọn hình ảnh');
         }
 
         if (!obj) { return; }
@@ -108,6 +108,7 @@
                 "processData": false
             }).done(result => {
                 if (result.Data.Code == 0) {
+
                     obj.HinhAnh = result.Data.Message;
                 } else {
                     $("#HinhAnh").val('');

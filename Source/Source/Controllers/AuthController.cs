@@ -18,7 +18,7 @@ namespace Source.Controllers
             TaiKhoanDTO user = CookieHelper.checkCookie();
             return View(user);
         }
-        public ActionResult Logout()
+        public RedirectToRouteResult Logout()
         {
             Session.RemoveAll();
             return RedirectToAction("Index","Home");
