@@ -69,7 +69,6 @@ namespace Source.Areas.Admin.Controllers
             {
                 int totalEntries;
                 list = Combo_Service.REL_GetAllBy(pageNumber, pageSize, keyText, out totalEntries);
-
                 ViewBag.maxNumber = Math.Ceiling(totalEntries / (double)pageSize);
                 ViewBag.pageNumber = pageNumber;
                 ViewBag.pageSize = pageSize;

@@ -206,6 +206,7 @@
     <Compile Include="Configuration\AppConfig.cs" />
     <Compile Include="Configuration\AuthorizeBusinessLogic.cs" />
     <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
     <Compile Include="Controllers\Menu_ListLSPController.cs" />
@@ -5216,18 +5217,17 @@
     <Content Include="Assets\images\Home\home_block_deli_V.jpg" />
     <Content Include="Assets\images\Home\home_block_menu_V.jpg" />
     <Content Include="Assets\images\img-sprite.png" />
-    <Content Include="Assets\images\KhuyenMai\menu_spicy_40off.png" />
+    <Content Include="Assets\images\menu_spicy_40off.png" />
     <Content Include="Assets\images\logo.png" />
-    <Content Include="Assets\images\LoaiSanPham\m4.png" />
-    <Content Include="Assets\images\LoaiSanPham\menu_bev_dessert.png" />
-    <Content Include="Assets\images\LoaiSanPham\menu_BURGER_fish.png" />
-    <Content Include="Assets\images\LoaiSanPham\menu_MILD_alacarte.png" />
-    <Content Include="Assets\images\LoaiSanPham\menu_SIDE_cajunfries-L.png" />
-    <Content Include="Assets\images\LoaiSanPham\menu_SPICY_alacarte_1.png" />
+    <Content Include="Assets\images\m4.png" />
+    <Content Include="Assets\images\menu_bev_dessert.png" />
+    <Content Include="Assets\images\menu_BURGER_fish.png" />
+    <Content Include="Assets\images\menu_MILD_alacarte.png" />
+    <Content Include="Assets\images\menu_SIDE_cajunfries-L.png" />
+    <Content Include="Assets\images\menu_SPICY_alacarte_1.png" />
+    <Content Include="Assets\images\menu_spicy_redboat1pc.png" />
     <Content Include="Assets\images\nav-top.png" />
     <Content Include="Assets\images\pen.png" />
-    <Content Include="Assets\images\SanPham\menu_spicy_redboat1pc.png" />
-    <Content Include="Assets\images\SanPham\pimgpsh_fullsize_distr.png" />
     <Content Include="Assets\images\scroll-top.png" />
     <Content Include="Assets\images\themes.gif" />
     <Content Include="Assets\images\top-menu-bg.png" />
@@ -6259,7 +6259,6 @@
     <Content Include="Areas\Admin\Views\MatHang\_Combo.cshtml" />
     <Content Include="Areas\Admin\Views\MatHang\Combo_ChiTiet.cshtml" />
     <None Include="Project_Readme.html" />
-    <Content Include="Areas\Admin\Views\MatHang\Combo_ChiTiet.cshtml" />
     <Content Include="Areas\Admin\Views\ChiPhi\_DanhSachChiPhi.cshtml" />
     <Content Include="Areas\Admin\Views\ChiPhi\_ChiPhi_ChiTiet.cshtml" />
     <None Include="Project_Readme.html" />
@@ -6272,10 +6271,11 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_layoutSanPham.cshtml" />
     <Content Include="Views\Menu_ListLSP\MenuPartial.cshtml" />
-    <Content Include="Views\SanPham\SanPham.cshtml" />
     <Content Include="Views\Home\_Pagination.cshtml" />
-    <Content Include="Views\SanPham\_SanPham_ChiTiet.cshtml" />
     <Content Include="Views\SanPham\_SanPham.cshtml" />
+    <Content Include="Views\SanPham\SanPham.cshtml" />
+    <Content Include="Views\SanPham\_KhuyenMai.cshtml" />
+    <Content Include="Views\GioHang\SanPham_ChiTiet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">

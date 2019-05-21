@@ -25,6 +25,7 @@ namespace BusinessLogic
             return new SqlHelper<SanPham_TypeInsertCombo>().ExecuteProcAndGetData("CTSanPham_SelectAll");
         }
 
+
         public List<SanPhamDTO> GetAllBy(int pageNumber, int pageSize, string keyText, out int totalEntries)
         {
             return new SqlHelper<SanPhamDTO>().ExecuteProcAndGetData("CTSanPham_GetAllBy", pageNumber, pageSize, keyText, out totalEntries);
@@ -37,7 +38,7 @@ namespace BusinessLogic
 
         public SanPhamDTO GetByID(int ID)
         {
-            throw new NotImplementedException();
+            return new SqlHelper<SanPhamDTO>().ExecuteProcAndGetData("CTSanPham_SelectByPrimaryKey", "MaSanPham", ID).FirstOrDefault(); 
         }
 
         public bool Insert(SanPhamDTO obj)
@@ -49,6 +50,10 @@ namespace BusinessLogic
         public bool Update(SanPhamDTO obj)
         {
             return new SqlHelper<SanPhamDTO>().ExecuteProc("CTSanPham_Update", obj);
+        }
+        public List<SanPham_LoaiSanPham> SP_GetAllBy(int ID)
+        {
+            return new SqlHelper<SanPham_LoaiSanPham>().ExecuteProcAndGetData("CTSanPham_SelectByLSP", "MaLoaiSanPham",ID);
         }
     }
 }

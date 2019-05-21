@@ -16,6 +16,5 @@ namespace DTO
         public string HinhAnh { get; set; }
         public decimal DonGia { get; set; }
 
-
     }
 }
