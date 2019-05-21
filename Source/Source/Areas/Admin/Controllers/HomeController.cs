@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,16 @@ namespace Source.Areas.Admin.Controllers
         // GET: Admin/Home
         public ActionResult Index()
         {
-            return View();
+            List<ChartReport> lstChart = new List<ChartReport>();
+            try
+            {
+                TaiKhoanDAO taiKhoan = (TaiKhoanDAO)System.Web.HttpContext.Current.Session["User"];
+                lstChart = Report_Service.DataForChart(taiKhoan.MaChiNhanh);
+            } catch(Exception e)
+            {
+                throw e;
+            }
+            return View(lstChart);
         }
 
         [ChildActionOnly]

@@ -1,4 +1,4 @@
-﻿
+﻿@model List<DAO.ChartReport>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -76,63 +76,18 @@
             </div>
             <!-- End Widget Linearea Four -->
         </div>
-        <div class="col-xxl-7 col-lg-7">
-            <!-- Widget Jvmap -->
-            <div class="card card-shadow">
-                <div class="card-block p-0">
-                    <div id="widgetJvmap" class="h-450"></div>
-                </div>
-            </div>
-            <!-- End Widget Jvmap -->
-        </div>
-        <div class="col-xxl-5 col-lg-5">
-            <!-- Widget Current Chart -->
-            @*<div class="card card-shadow" id="widgetCurrentChart">
-                <div class="p-30 white bg-green-500">
-                    <div class="font-size-20 mb-20">The current chart</div>
-                    <div class="ct-chart h-200">
-                    </div>
-                </div>
-                <div class="bg-white p-30 font-size-14">
-                    <div class="counter counter-lg text-left">
-                        <div class="counter-label mb-5">Approve rate are above average</div>
-                        <div class="counter-number-group">
-                            <span class="counter-number">12,673</span>
-                            <span class="counter-number-related text-uppercase font-size-14">pcs</span>
-                        </div>
-                    </div>
-                    <button type="button" class="btn-raised btn btn-info btn-floating">
-                        <i class="icon md-plus" aria-hidden="true"></i>
-                    </button>
-                </div>
-            </div>*@
-            <!-- End Widget Current Chart -->
-            <div class="col-xxl-5 col-lg-5" style="height: 490px;">
-                <!-- Widget Current Chart -->
-                <div class="card card-shadow" id="widgetCurrentChart" style="width: 408px;">
-                    <div class="p-30 white bg-green-500">
-                        <div class="font-size-20 mb-20">The current chart</div>
-                        <div class="ct-chart h-200">
-                            <svg xmlns:ct="http://gionkunz.github.com/chartist-js/ct" width="100%" height="100%" class="ct-chart-bar" style="width: 100%; height: 100%;"><g class="ct-grids"></g><g><g class="ct-series ct-series-a"><line x1="61.160714285714285" x2="61.160714285714285" y1="165" y2="125" class="ct-bar" ct:value="160"></line><line x1="103.48214285714286" x2="103.48214285714286" y1="165" y2="67.5" class="ct-bar" ct:value="390"></line><line x1="145.80357142857142" x2="145.80357142857142" y1="165" y2="95" class="ct-bar" ct:value="280"></line><line x1="188.125" x2="188.125" y1="165" y2="55" class="ct-bar" ct:value="440"></line><line x1="230.44642857142856" x2="230.44642857142856" y1="165" y2="62.5" class="ct-bar" ct:value="410"></line><line x1="272.7678571428571" x2="272.7678571428571" y1="165" y2="75" class="ct-bar" ct:value="360"></line><line x1="315.0892857142857" x2="315.0892857142857" y1="165" y2="115" class="ct-bar" ct:value="200"></line></g><g class="ct-series ct-series-b"><line x1="61.160714285714285" x2="61.160714285714285" y1="125" y2="15" class="ct-bar" ct:value="440"></line><line x1="103.48214285714286" x2="103.48214285714286" y1="67.5" y2="15" class="ct-bar" ct:value="210"></line><line x1="145.80357142857142" x2="145.80357142857142" y1="95" y2="15" class="ct-bar" ct:value="320"></line><line x1="188.125" x2="188.125" y1="55" y2="15" class="ct-bar" ct:value="160"></line><line x1="230.44642857142856" x2="230.44642857142856" y1="62.5" y2="15" class="ct-bar" ct:value="190"></line><line x1="272.7678571428571" x2="272.7678571428571" y1="75" y2="15" class="ct-bar" ct:value="240"></line><line x1="315.0892857142857" x2="315.0892857142857" y1="115" y2="15" class="ct-bar" ct:value="400"></line></g></g><g class="ct-labels"><foreignObject style="overflow: visible;" x="40" y="170" width="42.32142857142857" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 42px; height: 20px;">Mon</span></foreignObject><foreignObject style="overflow: visible;" x="82.32142857142857" y="170" width="42.32142857142857" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 42px; height: 20px;">Tue</span></foreignObject><foreignObject style="overflow: visible;" x="124.64285714285714" y="170" width="42.32142857142857" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 42px; height: 20px;">Wed</span></foreignObject><foreignObject style="overflow: visible;" x="166.96428571428572" y="170" width="42.32142857142857" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 42px; height: 20px;">Thu</span></foreignObject><foreignObject style="overflow: visible;" x="209.28571428571428" y="170" width="42.321428571428555" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 42px; height: 20px;">Fri</span></foreignObject><foreignObject style="overflow: visible;" x="251.60714285714283" y="170" width="42.321428571428584" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 42px; height: 20px;">Sat</span></foreignObject><foreignObject style="overflow: visible;" x="293.92857142857144" y="170" width="42.321428571428584" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 42px; height: 20px;">Sun</span></foreignObject><foreignObject style="overflow: visible;" y="155" x="10" height="25" width="20"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 25px; width: 20px;">0</span></foreignObject><foreignObject style="overflow: visible;" y="130" x="10" height="25" width="20"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 25px; width: 20px;">100</span></foreignObject><foreignObject style="overflow: visible;" y="105" x="10" height="25" width="20"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 25px; width: 20px;">200</span></foreignObject><foreignObject style="overflow: visible;" y="80" x="10" height="25" width="20"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 25px; width: 20px;">300</span></foreignObject><foreignObject style="overflow: visible;" y="55" x="10" height="25" width="20"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 25px; width: 20px;">400</span></foreignObject><foreignObject style="overflow: visible;" y="30" x="10" height="25" width="20"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 25px; width: 20px;">500</span></foreignObject><foreignObject style="overflow: visible;" y="0" x="10" height="30" width="20"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 30px; width: 20px;">600</span></foreignObject></g></svg>
-                        </div>
-                    </div>
-                    @*<div class="bg-white p-30 font-size-14">
-                        <div class="counter counter-lg text-left">
-                            <div class="counter-label mb-5">Approve rate are above average</div>
-                            <div class="counter-number-group">
-                                <span class="counter-number">12,673</span>
-                                <span class="counter-number-related text-uppercase font-size-14">pcs</span>
-                            </div>
-                        </div>
-                        <button type="button" class="btn-raised btn btn-info btn-floating waves-effect waves-classic waves-effect waves-light">
-                            <i class="icon md-plus" aria-hidden="true"></i>
-                        </button>
-                    </div>*@
-                </div>
-                <!-- End Widget Current Chart -->
-            </div>
-        </div>
+            <div class="col-lg-12 col-xl-12">
+                <!-- Example Line -->
+                <div class="example-wrap">
+                    <h4 class="example-title">Biểu đồ</h4>
 
-    </div>
+                    <div class="example text-center">
+                        <canvas id="exampleChartjsLine" height="300" width="600"></canvas>
+                    </div>
+                </div>
+                <!-- End Example Line -->
+            </div>
+
+</div>
 </div>
 

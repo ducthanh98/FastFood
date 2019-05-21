@@ -144,7 +144,7 @@ namespace Common
 
 
 
-        public List<T> ExecuteProcAndGetData(string name_proc,string Field, int ID)
+        public List<T> ExecuteProcAndGetData(string name_proc,string Field, int? ID)
         {
             List<T> result = new List<T>();
             DataSet ds = new DataSet();

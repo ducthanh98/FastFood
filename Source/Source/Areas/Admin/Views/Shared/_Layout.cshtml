@@ -30,11 +30,11 @@
     <link rel="stylesheet" href="~/Assets/global/vendor/slidepanel/slidePanel.css">
     <link rel="stylesheet" href="~/Assets/global/vendor/flag-icon-css/flag-icon.css">
     <link rel="stylesheet" href="~/Assets/global/vendor/waves/waves.css">
-    <link rel="stylesheet" href="~/Assets/global/vendor/chartist/chartist.css">
-    <link rel="stylesheet" href="~/Assets/global/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.css">
     <link rel="stylesheet" href="~/Assets/examples/css/dashboard/v1.css">
     <link rel="stylesheet" href="~/Assets/global/fonts/web-icons/web-icons.css">
     <link rel="stylesheet" href="~/Assets/global/vendor/select2/select2.css">
+    <link rel="stylesheet" href="~/Assets/examples/css/charts/chartist.css">
+
 
     <link rel="stylesheet" href="~/Content/customize.css">
 
@@ -54,6 +54,8 @@
     <script src="~/Assets/global/vendor/respond/respond.min.js"></script>
     <![endif]-->
     <!-- Scripts -->
+    <script src="~/Assets/global/vendor/chartist/chartist.js"></script>
+
     <script src="~/Assets/global/vendor/jquery/jquery.js"></script>
 
     <script src="~/Assets/global/vendor/breakpoints/breakpoints.js"></script>
@@ -82,7 +84,7 @@
     <!-- End Page -->
     <!-- Footer -->
     <footer class="site-footer">
-        <div class="site-footer-legal">© 2019 Fast Food</a></div>
+        <div class="site-footer-legal">© 2019 Fast Food</div>
         <div class="site-footer-right">
             Crafted with <i class="red-600 icon md-favorite"></i> by <a href="https://themeforest.net/user/creation-studio">ThanhLD</a>
         </div>
@@ -111,7 +113,6 @@
     </div>
     <!-- End Modal -->
     <!-- Core  -->
-    <script src="~/Assets/global/vendor/chartist/chartist.min.js"></script>
     <script src="~/Assets/global/vendor/babel-external-helpers/babel-external-helpers.js"></script>
     <script src="~/Assets/global/vendor/popper-js/umd/popper.min.js"></script>
     <script src="~/Assets/global/vendor/bootstrap/bootstrap.js"></script>
@@ -127,7 +128,6 @@
     <script src="~/Assets/global/vendor/select2/select2.full.min.js"></script>
     <script src="~/Assets/global/vendor/screenfull/screenfull.js"></script>
     <script src="~/Assets/global/vendor/slidepanel/jquery-slidePanel.js"></script>
-    <script src="~/Assets/global/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.js"></script>
     <script src="~/Assets/global/vendor/jvectormap/jquery-jvectormap.min.js"></script>
     <script src="~/Assets/global/vendor/jvectormap/maps/jquery-jvectormap-world-mill-en.js"></script>
     <script src="~/Assets/global/vendor/matchheight/jquery.matchHeight-min.js"></script>
@@ -138,6 +138,7 @@
     <script src="~/Assets/global/js/Plugin.js"></script>
     <script src="~/Assets/global/js/Base.js"></script>
     <script src="~/Assets/global/js/Config.js"></script>
+    <script src="~/Assets/global/vendor/chart-js/Chart.js"></script>
 
     <script src="~/Assets/js/Section/Menubar.js"></script>
     <script src="~/Assets/js/Section/GridMenu.js"></script>
@@ -160,9 +161,91 @@
 
     <script src="~/Assets/examples/js/dashboard/v1.js"></script>
     <script type="text/javascript" src="~/Scripts/toastr.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            const className = location.pathname.split("/")[2];
+            setTimeout(() => {
+                $(`.${className}`).click();
+            }, 200);
+        })
+    </script>
 
+    <script>
 
+        (function () {
+            let lstdata = @Html.Raw(Json.Encode(Model));
+            let chartData = {
+                Thang:[],
+                DoanhThu:[],
+                ChiPhi:[],
+                LoiNhuan:[]
+            };
+            for(let i=0;i<lstdata.length;i++){
+                chartData.Thang.push(lstdata[i].ThoiGian);
+                chartData.DoanhThu.push(lstdata[i].DoanhThu);
+                chartData.ChiPhi.push(lstdata[i].ChiPhi);
+                chartData.LoiNhuan.push(lstdata[i].DoanhThu - lstdata[i].ChiPhi);
+            }
+            var lineChartData = {
+                labels: chartData.Thang,
+                datasets: [{
+                    label: "Doanh Thu",
+                    fill: true,
+                    backgroundColor: "rgba(204, 213, 219, .1)",
+                    borderColor: Config.colors("grey", 300),
+                    pointRadius: 4,
+                    borderDashOffset: 2,
+                    pointBorderColor: "#fff",
+                    pointBackgroundColor: Config.colors("grey", 300),
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: Config.colors("grey", 300),
+                    data: chartData.DoanhThu
+                }, {
+                    label: "ChiPhi",
+                    fill: true,
+                    backgroundColor: "rgba(98, 168, 234, .1)",
+                    borderColor: Config.colors("primary", 600),
+                    pointRadius: 4,
+                    borderDashOffset: 2,
+                    pointBorderColor: "#fff",
+                    pointBackgroundColor: Config.colors("primary", 600),
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: Config.colors("primary", 600),
+                    data: chartData.ChiPhi
+                },{
+                    label: "LoiNhuan",
+                    fill: true,
+                    backgroundColor: "rgba(250,122,122,0.25)",
+                    borderColor: Config.colors("red", 500),
+                    pointRadius: 4,
+                    borderDashOffset: 2,
+                    pointBorderColor: "#fff",
+                    pointBackgroundColor: Config.colors("red", 500),
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: Config.colors("red", 500),
+                    data: chartData.LoiNhuan
+                }
 
+                ]
+            };
+
+            var myLine = new Chart(document.getElementById("exampleChartjsLine").getContext("2d"), {
+                type: 'line',
+                data: lineChartData,
+                options: {
+                    responsive: true,
+                    scales: {
+                        xAxes: [{
+                            display: true
+                        }],
+                        yAxes: [{
+                            display: true
+                        }]
+                    }
+                }
+            });
+        })();
+    </script>
 </body>
 </html>
 
