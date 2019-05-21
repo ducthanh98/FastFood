@@ -48,9 +48,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DAO\DTO.csproj">
+    <ProjectReference Include="..\DAO\DAO.csproj">
       <Project>{3E98CFA3-D0A1-4DBA-BFF0-252FBD648545}</Project>
-      <Name>DTO</Name>
+      <Name>DAO</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,5 +1,5 @@
 ﻿using Common;
-using DTO;
+using DAO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,19 +8,19 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic
 {
-    public class LoaiSanPhamBL : BusinessLogic<LoaiSanPhamDTO>
+    public class LoaiSanPhamBL : BusinessLogic<LoaiSanPhamDAO>
     {
         public bool Delete(int ID)
         {
             throw new NotImplementedException();
         }
 
-        public List<LoaiSanPhamDTO> GetAll()
+        public List<LoaiSanPhamDAO> GetAll()
         {
-            return new SqlHelper<LoaiSanPhamDTO>().ExecuteProcAndGetData("CTLoaiSanPham_SelectAll");
+            return new SqlHelper<LoaiSanPhamDAO>().ExecuteProcAndGetData("CTLoaiSanPham_SelectAll");
         }
 
-        public List<LoaiSanPhamDTO> GetAllBy(int pageNumber, int pageSize, string keyText, out int totalEntries)
+        public List<LoaiSanPhamDAO> GetAllBy(int pageNumber, int pageSize, string keyText, out int totalEntries)
         {
             throw new NotImplementedException();
         }
@@ -30,17 +30,17 @@ namespace BusinessLogic
             throw new NotImplementedException();
         }
 
-        public LoaiSanPhamDTO GetByID(int ID)
+        public LoaiSanPhamDAO GetByID(int ID)
         {
             throw new NotImplementedException();
         }
 
-        public bool Insert(LoaiSanPhamDTO obj)
+        public bool Insert(LoaiSanPhamDAO obj)
         {
             throw new NotImplementedException();
         }
 
-        public bool Update(LoaiSanPhamDTO obj)
+        public bool Update(LoaiSanPhamDAO obj)
         {
             throw new NotImplementedException();
         }

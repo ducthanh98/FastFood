@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DTO
+namespace DAO
 {
-    public class SanPhamDTO
+    public class SanPhamDAO
     { 
         public int MaSanPham { get; set; } 
         public string TenSanPham { get; set; }

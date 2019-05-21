@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using DTO;
+using DAO;
 using Source.Areas.Admin.Controllers;
 
 namespace Source.Controllers
@@ -25,7 +25,7 @@ namespace Source.Controllers
             }
             else
             {
-                SanPhamDTO sp = SanPham_Service.GetByID(MaMatHang);
+                SanPhamDAO sp = SanPham_Service.GetByID(MaMatHang);
                 TempData["mh"] = sp;
             }
             return PartialView();
