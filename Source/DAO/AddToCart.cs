@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DTO
+namespace DAO
 {
     public class AddToCart
     {
         List<ComBo_LoaiSanPham> dsCB { set; get; }
-        List<SanPhamDTO> dsSP { set; get; }
+        List<SanPhamDAO> dsSP { set; get; }
     }
 }

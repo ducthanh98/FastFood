@@ -1,5 +1,4 @@
-﻿using DTO;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Linq;
@@ -79,7 +78,7 @@ namespace Source.Areas.Admin.Controllers
             List<LoaiChiPhiDAO> list = new List<LoaiChiPhiDAO>();
             try
             {
-                List<ChiNhanhDTO> listBoxes = ChiNhanh_Service.GetAll();
+                List<ChiNhanhDAO> listBoxes = ChiNhanh_Service.GetAll();
                 Hashtable hs = new Hashtable();
                 for(int i = 0; i < listBoxes.Count; i++)
                 {

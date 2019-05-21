@@ -1,4 +1,4 @@
-﻿using DTO;
+﻿using DAO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +8,9 @@ namespace Source.Helpers
 
     public class CookieHelper
     {
-        public static TaiKhoanDTO  checkCookie()
+        public static TaiKhoanDAO  checkCookie()
         {
-            TaiKhoanDTO user = new TaiKhoanDTO();
+            TaiKhoanDAO user = new TaiKhoanDAO();
             if(HttpContext.Current.Request.Cookies["username"]!= null)
             {
                 user.TenTaiKhoan = HttpContext.Current.Request.Cookies["username"].Value;

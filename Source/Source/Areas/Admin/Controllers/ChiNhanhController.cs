@@ -1,4 +1,4 @@
-﻿using DTO;
+﻿using DAO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +16,7 @@ namespace Source.Areas.Admin.Controllers
         }
         public PartialViewResult _DanhSach(int pageNumber = 1, int pageSize = 10, string keyText = "")
         {
-            List<ChiNhanhDTO> list = new List<ChiNhanhDTO>();
+            List<ChiNhanhDAO> list = new List<ChiNhanhDAO>();
             try
             {
                 int totalEntries;

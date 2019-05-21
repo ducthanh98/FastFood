@@ -1,7 +1,7 @@
 ﻿@model DAO.LoaiChiPhiDAO
-@using DTO;
+@using DAO;
 @{ 
-    List<ChiNhanhDTO> listBoxes = (List<ChiNhanhDTO>)TempData["Boxes"];
+    List<ChiNhanhDAO> listBoxes = (List<ChiNhanhDAO>)TempData["Boxes"];
 }
 <div class="panel-body container-fluid">
     <form autocomplete="off">

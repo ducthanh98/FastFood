@@ -1,6 +1,5 @@
 ﻿using Common;
 using DAO;
-using DTO;
 using Source.Configuration;
 using System;
 using System.Collections.Generic;
@@ -107,7 +106,7 @@ namespace Source.Areas.Admin.Controllers
         }
         #endregion ExpenseType
         #region BOXES
-        public bool addOrUpdateBoxes(ChiNhanhDTO obj,bool isUpdate)
+        public bool addOrUpdateBoxes(ChiNhanhDAO obj,bool isUpdate)
         {
             bool check = true;
             try
@@ -144,7 +143,7 @@ namespace Source.Areas.Admin.Controllers
         #endregion BOXES
 
         #region PRODUCT
-        public JsonResult addOrUpdateProduct(SanPhamDTO obj, bool isUpdate)
+        public JsonResult addOrUpdateProduct(SanPhamDAO obj, bool isUpdate)
         {
             AjaxResultModel Result = new AjaxResultModel();
 

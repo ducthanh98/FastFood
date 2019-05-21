@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using DTO;
+using DAO;
 using Source.Areas.Admin.Controllers;
 
 namespace Source.Controllers
@@ -13,7 +13,7 @@ namespace Source.Controllers
         // GET: MenuProduct
         public ActionResult LoaiSanPham()
         {
-            List<LoaiSanPhamDTO> lstLSP = LoaiSanPham_Service.GetAll();
+            List<LoaiSanPhamDAO> lstLSP = LoaiSanPham_Service.GetAll();
             return View(lstLSP);
         }
 
@@ -33,7 +33,7 @@ namespace Source.Controllers
 
         public PartialViewResult _KhuyenMai()
         {
-            List<KhuyenMaiDTO> lstKM = KhuyenMai_Service.GetAll();
+            List<KhuyenMaiDAO> lstKM = KhuyenMai_Service.GetAll();
             return PartialView(lstKM);
         }
     }

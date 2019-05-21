@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DTO;
+using DAO;
 using Common;
 
 namespace BusinessLogic
@@ -15,12 +15,12 @@ namespace BusinessLogic
             throw new NotImplementedException();
         }
 
-        public List<TaiKhoanDTO> GetAll()
+        public List<TaiKhoanDAO> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public List<TaiKhoanDTO> GetAllBy(int pageNumber, int pageSize, string keyText,out int totalEntries)
+        public List<TaiKhoanDAO> GetAllBy(int pageNumber, int pageSize, string keyText,out int totalEntries)
         {
             throw new NotImplementedException();
         }
@@ -30,23 +30,23 @@ namespace BusinessLogic
             throw new NotImplementedException();
         }
 
-        public TaiKhoanDTO GetByID(int ID)
+        public TaiKhoanDAO GetByID(int ID)
         {
             throw new NotImplementedException();
         }
 
-        public bool Insert(TaiKhoanDTO obj)
+        public bool Insert(TaiKhoanDAO obj)
         {
             throw new NotImplementedException();
         }
 
-        public bool Update(TaiKhoanDTO obj)
+        public bool Update(TaiKhoanDAO obj)
         {
             throw new NotImplementedException();
         }
-        public TaiKhoanDTO checkExistAcc(string TenTaiKhoan,string MatKhau)
+        public TaiKhoanDAO checkExistAcc(string TenTaiKhoan,string MatKhau)
         {
-            return new SqlHelper<TaiKhoanDTO>().ExecuteProcAndGetData("CTTaiKhoan_CheckExistLogin", TenTaiKhoan, MatKhau);
+            return new SqlHelper<TaiKhoanDAO>().ExecuteProcAndGetData("CTTaiKhoan_CheckExistLogin", TenTaiKhoan, MatKhau);
         }
     }
 }
