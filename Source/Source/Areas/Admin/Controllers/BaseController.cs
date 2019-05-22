@@ -19,6 +19,7 @@ namespace Source.Areas.Admin.Controllers
         protected SanPhamBL SanPham_Service = new SanPhamBL();
         protected LoaiSanPhamBL LoaiSanPham_Service = new LoaiSanPhamBL();
         protected ComboBL Combo_Service = new ComboBL();
+        protected ReportBL Report_Service = new ReportBL();
 
 
     }

@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="AddToCart.cs" />
     <Compile Include="CB_LSP.cs" />
+    <Compile Include="ChartReport.cs" />
     <Compile Include="ChiNhanhDAO.cs" />
     <Compile Include="ChiPhiDAO.cs" />
     <Compile Include="Combo_Insert.cs" />

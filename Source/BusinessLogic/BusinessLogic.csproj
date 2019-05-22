@@ -49,6 +49,7 @@
     <Compile Include="LoaiChiPhiBL.cs" />
     <Compile Include="LoaiSanPhamBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportBL.cs" />
     <Compile Include="SanPhamBL.cs" />
     <Compile Include="TaiKhoanBL.cs" />
   </ItemGroup>
