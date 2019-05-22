@@ -26,13 +26,20 @@ namespace Source.Helpers
         {
             if (remember)
             {
-                HttpContext.Current.Request.Cookies.Add(new HttpCookie("username", user));
-                HttpContext.Current.Request.Cookies.Add(new HttpCookie("password", pass));
+                HttpCookie userCookie = new HttpCookie("username", user);
+                HttpContext.Current.Response.Cookies.Add(userCookie);
+                HttpCookie passCookie = new HttpCookie("password", pass);
+                HttpContext.Current.Response.Cookies.Add(passCookie);
+
             } else
             {
-                HttpContext.Current.Request.Cookies.Clear();
+                HttpContext.Current.Request.Cookies.Remove("username");
+                HttpContext.Current.Request.Cookies.Remove("password");
+                HttpContext.Current.Response.Cookies["username"].Expires = DateTime.Now.AddDays(-1);
+                HttpContext.Current.Response.Cookies["password"].Expires= DateTime.Now.AddDays(-1);
+
             }
-            
+
         }
     }
 }

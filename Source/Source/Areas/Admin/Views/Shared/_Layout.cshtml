@@ -54,7 +54,6 @@
     <script src="~/Assets/global/vendor/respond/respond.min.js"></script>
     <![endif]-->
     <!-- Scripts -->
-    <script src="~/Assets/global/vendor/chartist/chartist.js"></script>
 
     <script src="~/Assets/global/vendor/jquery/jquery.js"></script>
 
@@ -113,7 +112,9 @@
     </div>
     <!-- End Modal -->
     <!-- Core  -->
+
     <script src="~/Assets/global/vendor/babel-external-helpers/babel-external-helpers.js"></script>
+    <script src="~/Assets/global/vendor/jquery/jquery.js"></script>
     <script src="~/Assets/global/vendor/popper-js/umd/popper.min.js"></script>
     <script src="~/Assets/global/vendor/bootstrap/bootstrap.js"></script>
     <script src="~/Assets/global/vendor/animsition/animsition.js"></script>
@@ -122,15 +123,12 @@
     <script src="~/Assets/global/vendor/asscrollable/jquery-asScrollable.js"></script>
     <script src="~/Assets/global/vendor/ashoverscroll/jquery-asHoverScroll.js"></script>
     <script src="~/Assets/global/vendor/waves/waves.js"></script>
+
     <!-- Plugins -->
     <script src="~/Assets/global/vendor/switchery/switchery.js"></script>
     <script src="~/Assets/global/vendor/intro-js/intro.js"></script>
-    <script src="~/Assets/global/vendor/select2/select2.full.min.js"></script>
     <script src="~/Assets/global/vendor/screenfull/screenfull.js"></script>
     <script src="~/Assets/global/vendor/slidepanel/jquery-slidePanel.js"></script>
-    <script src="~/Assets/global/vendor/jvectormap/jquery-jvectormap.min.js"></script>
-    <script src="~/Assets/global/vendor/jvectormap/maps/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="~/Assets/global/vendor/matchheight/jquery.matchHeight-min.js"></script>
     <script src="~/Assets/global/vendor/peity/jquery.peity.min.js"></script>
 
     <!-- Scripts -->
@@ -138,6 +136,7 @@
     <script src="~/Assets/global/js/Plugin.js"></script>
     <script src="~/Assets/global/js/Base.js"></script>
     <script src="~/Assets/global/js/Config.js"></script>
+
     <script src="~/Assets/global/vendor/chart-js/Chart.js"></script>
 
     <script src="~/Assets/js/Section/Menubar.js"></script>
@@ -148,103 +147,29 @@
 
     <script src="~/Assets/global/js/config/colors.js"></script>
     <script src="~/Assets/js/config/tour.js"></script>
-    <script>Config.set('assets', '../assets');</script>
+    <script>Config.set('assets', '../../assets');</script>
 
     <!-- Page -->
-    <script src="~/Assets/global/js/Plugin/select2.js"></script>
     <script src="~/Assets/js/Site.js"></script>
     <script src="~/Assets/global/js/Plugin/asscrollable.js"></script>
     <script src="~/Assets/global/js/Plugin/slidepanel.js"></script>
     <script src="~/Assets/global/js/Plugin/switchery.js"></script>
-    <script src="~/Assets/global/js/Plugin/matchheight.js"></script>
     <script src="~/Assets/global/js/Plugin/peity.js"></script>
+    <script src="~/Assets/global/js/Plugin/asselectable.js"></script>
+    <script src="~/Assets/global/js/Plugin/selectable.js"></script>
+    <script src="~/Assets/global/js/Plugin/table.js"></script>
 
-    <script src="~/Assets/examples/js/dashboard/v1.js"></script>
+    <script src="../../assets/examples/js/charts/peity.js"></script>
+
+
     <script type="text/javascript" src="~/Scripts/toastr.min.js"></script>
     <script>
         $(document).ready(function () {
             const className = location.pathname.split("/")[2];
             setTimeout(() => {
                 $(`.${className}`).click();
-            }, 200);
+            }, 400);
         })
-    </script>
-
-    <script>
-
-        (function () {
-            let lstdata = @Html.Raw(Json.Encode(Model));
-            let chartData = {
-                Thang:[],
-                DoanhThu:[],
-                ChiPhi:[],
-                LoiNhuan:[]
-            };
-            for(let i=0;i<lstdata.length;i++){
-                chartData.Thang.push(lstdata[i].ThoiGian);
-                chartData.DoanhThu.push(lstdata[i].DoanhThu);
-                chartData.ChiPhi.push(lstdata[i].ChiPhi);
-                chartData.LoiNhuan.push(lstdata[i].DoanhThu - lstdata[i].ChiPhi);
-            }
-            var lineChartData = {
-                labels: chartData.Thang,
-                datasets: [{
-                    label: "Doanh Thu",
-                    fill: true,
-                    backgroundColor: "rgba(204, 213, 219, .1)",
-                    borderColor: Config.colors("grey", 300),
-                    pointRadius: 4,
-                    borderDashOffset: 2,
-                    pointBorderColor: "#fff",
-                    pointBackgroundColor: Config.colors("grey", 300),
-                    pointHoverBackgroundColor: "#fff",
-                    pointHoverBorderColor: Config.colors("grey", 300),
-                    data: chartData.DoanhThu
-                }, {
-                    label: "ChiPhi",
-                    fill: true,
-                    backgroundColor: "rgba(98, 168, 234, .1)",
-                    borderColor: Config.colors("primary", 600),
-                    pointRadius: 4,
-                    borderDashOffset: 2,
-                    pointBorderColor: "#fff",
-                    pointBackgroundColor: Config.colors("primary", 600),
-                    pointHoverBackgroundColor: "#fff",
-                    pointHoverBorderColor: Config.colors("primary", 600),
-                    data: chartData.ChiPhi
-                },{
-                    label: "LoiNhuan",
-                    fill: true,
-                    backgroundColor: "rgba(250,122,122,0.25)",
-                    borderColor: Config.colors("red", 500),
-                    pointRadius: 4,
-                    borderDashOffset: 2,
-                    pointBorderColor: "#fff",
-                    pointBackgroundColor: Config.colors("red", 500),
-                    pointHoverBackgroundColor: "#fff",
-                    pointHoverBorderColor: Config.colors("red", 500),
-                    data: chartData.LoiNhuan
-                }
-
-                ]
-            };
-
-            var myLine = new Chart(document.getElementById("exampleChartjsLine").getContext("2d"), {
-                type: 'line',
-                data: lineChartData,
-                options: {
-                    responsive: true,
-                    scales: {
-                        xAxes: [{
-                            display: true
-                        }],
-                        yAxes: [{
-                            display: true
-                        }]
-                    }
-                }
-            });
-        })();
     </script>
 </body>
 </html>

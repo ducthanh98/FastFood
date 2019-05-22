@@ -91,3 +91,81 @@
 </div>
 </div>
 
+<script>
+
+    $(document).ready(function () {
+        (function () {
+            let lstdata = @Html.Raw(Json.Encode(Model));
+            let chartData = {
+                Thang:[],
+                DoanhThu:[],
+                ChiPhi:[],
+                LoiNhuan:[]
+            };
+            for(let i=0;i<lstdata.length;i++){
+                chartData.Thang.push(lstdata[i].ThoiGian);
+                chartData.DoanhThu.push(lstdata[i].DoanhThu);
+                chartData.ChiPhi.push(lstdata[i].ChiPhi);
+                chartData.LoiNhuan.push(lstdata[i].DoanhThu - lstdata[i].ChiPhi);
+            }
+            var lineChartData = {
+                labels: chartData.Thang,
+                datasets: [{
+                    label: "Doanh Thu",
+                    fill: true,
+                    backgroundColor: "rgba(204, 213, 219, .1)",
+                    borderColor: Config.colors("grey", 300),
+                    pointRadius: 4,
+                    borderDashOffset: 2,
+                    pointBorderColor: "#fff",
+                    pointBackgroundColor: Config.colors("grey", 300),
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: Config.colors("grey", 300),
+                    data: chartData.DoanhThu
+                }, {
+                    label: "ChiPhi",
+                    fill: true,
+                    backgroundColor: "rgba(98, 168, 234, .1)",
+                    borderColor: Config.colors("primary", 600),
+                    pointRadius: 4,
+                    borderDashOffset: 2,
+                    pointBorderColor: "#fff",
+                    pointBackgroundColor: Config.colors("primary", 600),
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: Config.colors("primary", 600),
+                    data: chartData.ChiPhi
+                },{
+                    label: "LoiNhuan",
+                    fill: true,
+                    backgroundColor: "rgba(250,122,122,0.25)",
+                    borderColor: Config.colors("red", 500),
+                    pointRadius: 4,
+                    borderDashOffset: 2,
+                    pointBorderColor: "#fff",
+                    pointBackgroundColor: Config.colors("red", 500),
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: Config.colors("red", 500),
+                    data: chartData.LoiNhuan
+                }
+
+                ]
+            };
+
+            var myLine = new Chart(document.getElementById("exampleChartjsLine").getContext("2d"), {
+                type: 'line',
+                data: lineChartData,
+                options: {
+                    responsive: true,
+                    scales: {
+                        xAxes: [{
+                            display: true
+                        }],
+                        yAxes: [{
+                            display: true
+                        }]
+                    }
+                }
+            });
+        })();
+    })
+</script>
