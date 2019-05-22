@@ -8,7 +8,7 @@ namespace DAO
 {
     public class AddToCart
     {
-        List<ComBo_LoaiSanPham> dsCB { set; get; }
+        List<Combo_SanPham> dsCB { set; get; }
         List<SanPhamDAO> dsSP { set; get; }
     }
 }

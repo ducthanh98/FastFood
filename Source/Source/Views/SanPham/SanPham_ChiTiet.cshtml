@@ -1,0 +1,45 @@
+﻿@{
+    DAO.Combo_SanPham dscb = (DAO.Combo_SanPham)ViewBag.cbdetail;
+    DAO.SanPhamDAO dssp = (DAO.SanPhamDAO)ViewBag.spdetail;
+}
+
+@if (dssp != null)
+{
+    <div class="extra-product">
+        <div class="bundle-title">
+            Phần Ăn Chi Tiết
+        </div>
+        <div class="bundle-content">
+            <div class="bundle-option-content">
+                <div class="span-1">
+                    <div class="name">@dssp.TenSanPham</div>
+                    </div>
+                    <div class="span-1-option">
+                        <input value="1">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="count-product">
+            <div class="span-1">
+                <div class="name">Số Lượng</div>
+            </div>
+            <div class="span-1-option">
+                <button class="control-count" type="button" id="btn-1">
+                    <span>-</span>
+                </button>
+                <input class="count" maxlength="10" value="1">
+                <button class="control-count" onclick="Calculation(this,'.count');" type="button" id="btn-2">
+                    <span>+</span>
+                </button>
+            </div>
+        </div>
+        <div class="total-payment">
+            <span>Tổng tiền phải thanh toán: </span>
+            <span class="total"> 150.000</span>
+        </div>
+}
+
+
+
+

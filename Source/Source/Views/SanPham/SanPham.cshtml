@@ -1,39 +1,12 @@
 ﻿@{
     ViewBag.Title = "SanPham";
     Layout = "~/Views/Shared/_layoutSanPham.cshtml";
-    List<DTO.SanPham_LoaiSanPham> lstSP = (List<DTO.SanPham_LoaiSanPham>)TempData["sanPham"];
-    List<DTO.ComBo_LoaiSanPham> lstCB = (List<DTO.ComBo_LoaiSanPham>)TempData["comBo"];
+
 }
 
 <div class="container">
     @{Html.RenderAction("_SanPham", "SanPham");}
 </div>
 
-<div class="modal fade" id="addtocart" tabindex="-1" role="dialog" aria-labelledby="Title" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header" style="font-weight: bold;color: black;background-color: gainsboro;padding: 5px 5px 5px">
-                <h5 class="modal-title" id="Title">Thay đổi chi tiết phần ăn</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                @foreach (var item in lstCB)
-                {
-                    Html.RenderAction("SanPham_ChiTiet", "GioHang", new { MaMatHang = item.MaComBo });
-                }
-                
-            </div>
-            <div class="modal-footer">
-                <button data-toggle="modal" data-target="#cart" type="button" class="add-to-cart" data-dismiss="modal">Thêm vào giỏ hàng</button>
-                <button type="button" class="payment">Thanh Toán</button>
-            </div>
 
-        </div>
-    </div>
-</div>
 
-<script>
-    var url_GetTb = '/SanPham/_SanPham';
-</script>

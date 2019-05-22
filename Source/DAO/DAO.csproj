@@ -46,9 +46,9 @@
     <Compile Include="ChiNhanhDAO.cs" />
     <Compile Include="ChiPhiDAO.cs" />
     <Compile Include="Combo_Insert.cs" />
-    <Compile Include="ComBo_LoaiSanPham.cs" />
     <Compile Include="Combo_REL.cs" />
     <Compile Include="Combo_SanPham.cs" />
+    <Compile Include="GioHang.cs" />
     <Compile Include="KhuyenMaiDAO.cs" />
     <Compile Include="LoaiChiPhiDAO.cs" />
     <Compile Include="LoaiSanPhamDAO.cs" />

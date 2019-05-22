@@ -20,7 +20,7 @@
     <script src="~/Assets/global/vendor/popper-js/umd/popper.min.j"></script>
     <script src="~/Assets/global/vendor/bootstrap/bootstrap.js"></script>
     <script src="~/Assets/js/App/Calculation.js"></script>
-    <script src="~/Scripts/Features.js"/></script>
+    <script src="~/Scripts/Features.js"></script>
 
     <script>
         $(window).scroll(function () {
@@ -49,6 +49,7 @@
             <div class="logo">
                 <a href="@Url.Action("Index","Home")"><img src="~/Assets/images/logo.png"></a>
             </div>
+            @Html.Action("MenuPartial", "Menu_ListLSP")
         </div>
     </div>
     @RenderBody()
@@ -70,109 +71,6 @@
                 FastFood WebSite | Design by team 413 Hoàng Quốc Việt
                 <a href="#" class="backtop backtop-visible"></a>
             </p>
-        </div>
-    </div>
-    <div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="cart" aria-hidden="true">
-        <div class="modal-dialog modal-dialog" role="document" style="max-width: none;width:auto;padding-left: 3%;padding-right: 3%;">
-            <div class="modal-content">
-                <div class="modal-header" style="font-weight: bold;color: #ffffff;background-color: #EF5F21;padding: 5px 5px 5px">
-                    <h5 class="modal-title">Phần Ăn Bạn Đã Chọn</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-right:0">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="contaner">
-                        <div class="cart-info">
-                            <table>
-                                <tr style="font-size: 23px;font-weight: bold">
-                                    <td>Tên sản phẩm</td>
-                                    <td>Giá</td>
-                                    <td>Số lượng</td>
-                                    <td colspan="2">Thay Đổi</td>
-                                </tr>
-                                <tr>
-                                    <td id="td1">
-                                        <div class="row" style="margin: 0">
-                                            <div class="col-4">
-                                                <a href="Update-Cart.html">
-                                                    <img src="./imagesPro/menu_mild_40off.png">
-                                                </a>
-                                            </div>
-                                            <div class="col-8" style="margin-top: 10px">
-                                                <div class="col align-self-start">
-                                                    <a href="Update-Cart.html" style="font-size: 20px">Đây là tên sản phẩm</a>
-                                                </div>
-                                                <div class="col align-self-end" style="margin-top:3%">
-                                                    <a class="adetail" href="#detail" data-toggle="collapse">
-                                                        Xem chi tiết
-                                                        <!-- <i class="btn-arrow-down"> ↓</i>
-                                                        <i class="btn-arrow-up"> ↑</i> -->
-
-                                                    </a>
-                                                    <div class="collapse" id="detail">
-                                                        <div class="show-detail">
-                                                            <dl>
-                                                                <dt>Gà rán:</dt>
-                                                                <dd>2 x 1 gà rán</dd>
-                                                                <dt>Món ăn kèm:</dt>
-                                                                <dd>1 Khoai tây chiên vừa</dd>
-                                                            </dl>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </td>
-                                    <td id="td2">35.000</td>
-                                    <td id="td3">
-                                        <div class="count-product">
-                                            <div class="span-1-option">
-                                                <button class="control-count" onclick="decreaseValue()" type="button" id="btn-1">
-                                                    <span>-</span>
-                                                </button>
-                                                <input type="text" id="number" class="count" maxlength="10" value="1">
-                                                <button class="control-count" onclick="increaseValue()" type="button" id="btn-2">
-                                                    <span>+</span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td id="td4">
-                                        <a href="Update-Cart.html"><img src="~/Assets/images/pen.png"> Thay đổi chi tiết phần ăn</a>
-                                    </td>
-                                    <td id="td5">
-                                        <button><img src="~/Assets/images/trash.png">Xóa</button>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                    <div style="font-weight: bold">
-                        <div class="row" style="padding-top: 1%">
-                            <div class="col-6" style="text-align: right; color: black; padding-top: 5px;">
-                                <p>Tổng Cộng:</p>
-                            </div>
-                            <div class="col-6" style="text-align: left; color: green; font-size: 23px; padding-left:0;">
-                                <p>200.0000</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <div class="col-6" style="text-align: right; margin-right:0">
-                        <button class="add-to-cart">
-                            <a href="@Url.Action("LoaiSanPham","SanPham")">Tiếp tục mua hàng</a>
-                        </button>
-                    </div>
-                    <div class="col-6 " style="text-align: left; margin-left:0">
-                        <button class="payment">
-                            <a>Thanh toán</a>
-                        </button>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </body>

@@ -6275,7 +6275,7 @@
     <Content Include="Views\SanPham\_SanPham.cshtml" />
     <Content Include="Views\SanPham\SanPham.cshtml" />
     <Content Include="Views\SanPham\_KhuyenMai.cshtml" />
-    <Content Include="Views\GioHang\SanPham_ChiTiet.cshtml" />
+    <Content Include="Views\SanPham\SanPham_ChiTiet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">

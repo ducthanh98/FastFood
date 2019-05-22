@@ -38,6 +38,7 @@ namespace BusinessLogic
 
         public SanPhamDAO GetByID(int ID)
         {
+
             return new SqlHelper<SanPhamDAO>().ExecuteProcAndGetData("CTSanPham_SelectByPrimaryKey", "MaSanPham", ID).FirstOrDefault(); 
         }
 

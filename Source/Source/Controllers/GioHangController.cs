@@ -16,20 +16,5 @@ namespace Source.Controllers
             return View();
         }
 
-        public PartialViewResult SanPham_ChiTiet(int MaMatHang, bool laSanPham)
-        {
-            if (laSanPham == false)
-            {
-                Combo_SanPham sp_cb = Combo_Service.SelectByPrimaryKey(MaMatHang);
-                TempData["mh"] = sp_cb;
-            }
-            else
-            {
-                SanPhamDAO sp = SanPham_Service.GetByID(MaMatHang);
-                TempData["mh"] = sp;
-            }
-            return PartialView();
-        }
-
     }
 }
