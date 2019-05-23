@@ -13,10 +13,13 @@ namespace Source.Areas.Admin.Controllers
         public ActionResult Index()
         {
             List<ChartReport> lstChart = new List<ChartReport>();
+            List<Dashboard_OverView> overviewData = new List<Dashboard_OverView>();
             try
             {
                 TaiKhoanDAO taiKhoan = (TaiKhoanDAO)System.Web.HttpContext.Current.Session["User"];
-                lstChart = Report_Service.DataForChart(taiKhoan.MaChiNhanh);
+                lstChart = Report_Service.GetDataForChart(taiKhoan.MaChiNhanh);
+                overviewData = Report_Service.GetOverviewData();
+                ViewBag.overview = overviewData;
             } catch(Exception e)
             {
                 throw e;

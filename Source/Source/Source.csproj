@@ -210,10 +210,12 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
     <Compile Include="Controllers\Menu_ListLSPController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TaiKhoanController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CookieHelper.cs" />
+    <Compile Include="Helpers\Encrypt.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -5311,7 +5313,6 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Ajax\" />
     <Folder Include="Areas\Admin\Views\Base\" />
-    <Folder Include="Areas\Admin\Views\KhuyenMai\" />
     <Folder Include="Areas\Admin\Views\SanPham\" />
     <Folder Include="Views\Ajax\" />
   </ItemGroup>
@@ -6258,6 +6259,14 @@
     <Content Include="Areas\Admin\Views\MatHang\Combo.cshtml" />
     <Content Include="Areas\Admin\Views\MatHang\_Combo.cshtml" />
     <Content Include="Areas\Admin\Views\MatHang\Combo_ChiTiet.cshtml" />
+    <Content Include="Areas\Admin\Views\MatHang\LoaiSanPham.cshtml" />
+    <Content Include="Areas\Admin\Views\MatHang\_LoaiSanPham.cshtml" />
+    <Content Include="Areas\Admin\Views\MatHang\_LoaiSanPham_ChiTiet.cshtml" />
+    <Content Include="Areas\Admin\Views\KhuyenMai\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\KhuyenMai\DanhSach.cshtml" />
+    <Content Include="Areas\Admin\Views\KhuyenMai\_DanhSach.cshtml" />
+    <Content Include="Areas\Admin\Views\KhuyenMai\_KhuyenMai_ChiTiet.cshtml" />
+    <Content Include="Areas\Admin\Views\TaiKhoan\_ChiTiet.cshtml" />
     <None Include="Project_Readme.html" />
     <Content Include="Areas\Admin\Views\ChiPhi\_DanhSachChiPhi.cshtml" />
     <Content Include="Areas\Admin\Views\ChiPhi\_ChiPhi_ChiTiet.cshtml" />
@@ -6276,6 +6285,8 @@
     <Content Include="Views\SanPham\SanPham.cshtml" />
     <Content Include="Views\SanPham\_KhuyenMai.cshtml" />
     <Content Include="Views\SanPham\SanPham_ChiTiet.cshtml" />
+    <Content Include="Areas\Admin\Views\TaiKhoan\DanhSach.cshtml" />
+    <Content Include="Areas\Admin\Views\TaiKhoan\_DanhSach.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">

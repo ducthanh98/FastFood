@@ -59,6 +59,7 @@ namespace Source.Areas.Admin.Controllers
 
         public ActionResult Combo()
         {
+            TempData.Clear();
             return View();
         }
 
@@ -98,6 +99,52 @@ namespace Source.Areas.Admin.Controllers
             ViewBag.selectTag = selectHtml;
             return View(combo_sanPham);
         }
+
+        public ActionResult LoaiSanPham()
+        {
+            TempData.Clear();
+            return View();
+        }
+        public PartialViewResult _LoaiSanPham(int pageNumber = 1, int pageSize = 10, string keyText = "")
+        {
+            List<LoaiSanPhamDAO> list = new List<LoaiSanPhamDAO>();
+            try
+            {
+
+                int totalEntries;
+                list = LoaiSanPham_Service.GetAllBy(pageNumber, pageSize, keyText, out totalEntries);
+                ViewBag.maxNumber = Math.Ceiling(totalEntries / (double)pageSize);
+                ViewBag.pageNumber = pageNumber;
+                ViewBag.pageSize = pageSize;
+                TempData["productType"] = list;
+                TempData.Keep();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            return PartialView(list);
+        }
+
+        public PartialViewResult _LoaiSanPham_ChiTiet(int ID)
+        {
+            LoaiSanPhamDAO productType;
+            try
+            {
+                List<LoaiSanPhamDAO> productTypes = (List<LoaiSanPhamDAO>)TempData["productType"];
+                TempData.Keep();
+                productType = productTypes.Where(x => x.MaLoaiSanPham.Equals(ID)).FirstOrDefault();
+                if (productType == null)
+                {
+                    productType = new LoaiSanPhamDAO();
+                }
+            } catch(Exception e)
+            {
+                throw e;
+            }
+            return PartialView(productType);
+        }
+
 
 
     }

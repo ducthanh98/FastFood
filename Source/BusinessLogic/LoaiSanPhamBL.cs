@@ -22,7 +22,8 @@ namespace BusinessLogic
 
         public List<LoaiSanPhamDAO> GetAllBy(int pageNumber, int pageSize, string keyText, out int totalEntries)
         {
-            throw new NotImplementedException();
+            return new SqlHelper<LoaiSanPhamDAO>().ExecuteProcAndGetData("CTLoaiSanPham_GetAllBy", pageNumber, pageSize, keyText, out totalEntries);
+
         }
 
         public int GetAllEntries()
@@ -37,12 +38,12 @@ namespace BusinessLogic
 
         public bool Insert(LoaiSanPhamDAO obj)
         {
-            throw new NotImplementedException();
+            return new SqlHelper<LoaiSanPhamDAO>().ExecuteProc("CTLoaiSanPham_Insert", obj);
         }
 
         public bool Update(LoaiSanPhamDAO obj)
         {
-            throw new NotImplementedException();
+            return new SqlHelper<LoaiSanPhamDAO>().ExecuteProc("CTLoaiSanPham_Update", obj);
         }
        
     }

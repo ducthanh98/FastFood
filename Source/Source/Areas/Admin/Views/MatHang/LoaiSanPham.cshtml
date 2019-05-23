@@ -1,15 +1,17 @@
-﻿@{
-    ViewBag.Title = "SanPham";
+﻿
+@{
+    ViewBag.Title = "LoaiSanPham";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+
 
 <div class="page-header">
     <h1 class="page-title">Danh Sách Sản phẩm</h1>
     <div class="page-header-actions">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
-            <li class="breadcrumb-item"><a href="javascript:void(0)">Sản phẩm</a></li>
-            <li class="breadcrumb-item active">Danh Sách Sản Phẩm</li>
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Loại Sản phẩm</a></li>
+            <li class="breadcrumb-item active">Danh Sách Loại Sản Phẩm</li>
         </ol>
     </div>
 </div>
@@ -42,16 +44,16 @@
                         <button type="button" class="btn btn-block btn-sm btn-primary waves-effect waves-classic" onclick="changePage(1)"><i class="icon wb-search" aria-hidden="true"></i></button>
                     </div>
                 </div>
-                
+
             </div>
             <div class="row">
                 <div class="col-12 d-flex justify-content-end">
                     <button class="btn btn-primary" onclick="setValueForModal(this,false)" data-id='0' data-target="#info-modal" data-toggle="modal" aria-hidden="true">Thêm mới</button>
                 </div>
-            </div> 
+            </div>
             <div class="row row-lg">
                 <div class="col-lg data-table">
-                    @{Html.RenderAction("_SanPham", "MatHang");}
+                    @{Html.RenderAction("_LoaiSanPham", "MatHang");}
                 </div>
             </div>
         </div>
@@ -72,11 +74,12 @@
                 <h4 class="modal-title">Thông tin</h4>
             </div>
             <div class="modal-body">
-                @{Html.RenderAction("_SanPham_ChiTiet", "MatHang", new { ID = -1 });}
+                @{Html.RenderAction("_LoaiSanPham_ChiTiet", "MatHang", new { ID = -1 });}
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default btn-pure" data-dismiss="modal">Đóng</button>
-                <button type="button" class="btn btn-primary" onclick="saveProduct()">Gửi</button>
+                <button type="button" class="btn btn-primary" onclick="saveProductType()">Gửi</button>
             </div>
         </div>
     </div>
@@ -85,10 +88,10 @@
 
 <script>
     var path = '';
-    var url_GetTb = '/Admin/MatHang/_SanPham';
-    var url_GetMd = '/Admin/MatHang/_SanPham_ChiTiet';
-    var url_InsertUpdate = '/Admin/Ajax/addOrUpdateProduct';
-    function saveProduct() {
+    var url_GetTb = '/Admin/MatHang/_LoaiSanPham';
+    var url_GetMd = '/Admin/MatHang/_LoaiSanPham_ChiTiet';
+    var url_InsertUpdate = '/Admin/Ajax/addOrUpdateProductType';
+    function saveProductType() {
         const obj = getValueFromModal();
         if (!obj) { return; }
 
@@ -115,6 +118,7 @@
             });
         }
         insertOrUpdate(obj);
-        
+
     }
 </script>
+

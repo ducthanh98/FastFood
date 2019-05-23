@@ -280,5 +280,80 @@ namespace Source.Areas.Admin.Controllers
         }
         #endregion Expense
 
+        #region Product Type
+        public JsonResult addOrUpdateProductType(LoaiSanPhamDAO obj, bool isUpdate)
+        {
+            AjaxResultModel Result = new AjaxResultModel();
+
+            bool check = true;
+            try
+            {
+                if (isUpdate)
+                {
+                    check = LoaiSanPham_Service.Update(obj);
+                }
+                else
+                {
+                    check = LoaiSanPham_Service.Insert(obj);
+                }
+                if (check)
+                {
+                    Result.Code = 0;
+                    Result.Message = "Thành công";
+                }
+                else
+                {
+                    Result.Code = 1;
+                    Result.Message = "Đã có lỗi xảy ra. Vui lòng thử lại.";
+                }
+            }
+            catch (Exception e)
+            {
+                Result.Code = 1;
+                Result.Message = e.Message;
+                //throw;
+            }
+            return Json(new JsonResult() { Data = Result });
+        }
+        #endregion Product type
+
+        #region Promotion
+        public JsonResult addOrUpdatePromotion(KhuyenMaiDAO obj, bool isUpdate)
+        {
+            AjaxResultModel Result = new AjaxResultModel();
+
+            bool check = true;
+            try
+            {
+                if (isUpdate)
+                {
+                    check = KhuyenMai_Service.Update(obj);
+                }
+                else
+                {
+                    check = KhuyenMai_Service.Insert(obj);
+                }
+                if (check)
+                {
+                    Result.Code = 0;
+                    Result.Message = "Thành công";
+                }
+                else
+                {
+                    Result.Code = 1;
+                    Result.Message = "Đã có lỗi xảy ra. Vui lòng thử lại.";
+                }
+            }
+            catch (Exception e)
+            {
+                Result.Code = 1;
+                Result.Message = e.Message;
+                //throw;
+            }
+            return Json(new JsonResult() { Data = Result });
+        }
+
+        #endregion Promotion
+
     }
 }

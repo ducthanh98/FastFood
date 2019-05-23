@@ -9,5 +9,7 @@ namespace Source.Configuration
     {
         public static readonly string uploadFolder = "../../Assets/images/";
         public static readonly string loadSP = "../../Assets/images/";
+        public static readonly string salts = "thanhld";
+
     }
 }

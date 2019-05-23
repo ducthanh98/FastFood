@@ -57,7 +57,9 @@
 </div>
 <script>
     var file=undefined;
-    $("#MaLoaiSanPham").select2();
+    $(document).ready(function () {
+        $("#MaLoaiSanPham").select2();
+    })
     $("#file").change(function (event) {
         $("#showImg").css("display", "none");
         if (event.target.files) {

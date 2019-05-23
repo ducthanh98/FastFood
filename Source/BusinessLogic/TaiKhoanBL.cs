@@ -20,9 +20,9 @@ namespace BusinessLogic
             throw new NotImplementedException();
         }
 
-        public List<TaiKhoanDAO> GetAllBy(int pageNumber, int pageSize, string keyText,out int totalEntries)
+        public List<TaiKhoanDAO> GetAllBy(int pageNumber, int pageSize, string keyText,out int totalEntries,int QuyenHan)
         {
-            throw new NotImplementedException();
+            return new SqlHelper<TaiKhoanDAO>().ExecuteProcAndGetData("CTTaiKhoan_GetAllBy", pageNumber, pageSize, keyText, out totalEntries,QuyenHan,"QuyenHan");
         }
 
         public int GetAllEntries()
@@ -37,12 +37,13 @@ namespace BusinessLogic
 
         public bool Insert(TaiKhoanDAO obj)
         {
-            throw new NotImplementedException();
+            return new SqlHelper<TaiKhoanDAO>().ExecuteProc("CTTaiKhoan_Insert", obj);
+
         }
 
         public bool Update(TaiKhoanDAO obj)
         {
-            throw new NotImplementedException();
+            return new SqlHelper<TaiKhoanDAO>().ExecuteProc("CTUpdate_Insert", obj);
         }
         public TaiKhoanDAO checkExistAcc(string TenTaiKhoan,string MatKhau)
         {

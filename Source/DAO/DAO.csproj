@@ -49,6 +49,7 @@
     <Compile Include="Combo_Insert.cs" />
     <Compile Include="Combo_REL.cs" />
     <Compile Include="Combo_SanPham.cs" />
+    <Compile Include="Dashboard_OverView.cs" />
     <Compile Include="GioHang.cs" />
     <Compile Include="KhuyenMaiDAO.cs" />
     <Compile Include="LoaiChiPhiDAO.cs" />

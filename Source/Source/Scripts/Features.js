@@ -13,14 +13,17 @@ var id = 0;
 
                     params[modalItems[i].id] = modalItems[i].checked;
                     continue;
-                }
+                } 
                 let res = checkValid(modalItems[i]);
                 if (res.valid) {
                     if (modalItems[i].classList.contains("currency")) {
                         params[modalItems[i].id] = modalItems[i].value.trim().split(",").join("");
 
+                    } else if (modalItems[i].classList.contains("datepicker")) {
+                        params[modalItems[i].id] = modalItems[i].value.trim().split("/").reverse().join("/");
+
                     } else {
-                        params[modalItems[i].id] = modalItems[i].value.trim().replace(/\n/g, "\\n");
+                        params[modalItems[i].id] = modalItems[i].value.trim();
                     }
                 } else {
                     toastr.error(res.message);
@@ -35,6 +38,9 @@ var id = 0;
         if (item.classList.contains('required') && item.value.trim() == '') {
             $(`#${item.id}`).focus();
             return { valid: false, message: 'Vui lòng nhập đủ các ô có dấu *' };
+        } else if (item.classList.contains('percent') && (+item.value <= 0 || +item.value > 100)) {
+            $(`#${item.id}`).focus();
+            return { valid: false, message: 'Phần trăm phải lớn hơn 0 và nhỏ hơn 100 ' };
         }
         return { valid: true};
     }

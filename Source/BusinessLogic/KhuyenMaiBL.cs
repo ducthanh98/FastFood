@@ -17,7 +17,7 @@ namespace BusinessLogic
 
         public List<KhuyenMaiDAO> GetAllBy(int pageNumber, int pageSize, string keyText, out int totalEntries)
         {
-            throw new NotImplementedException();
+            return new SqlHelper<KhuyenMaiDAO>().ExecuteProcAndGetData("CTKhuyenMai_GetAllBy", pageNumber, pageSize, keyText, out totalEntries);
         }
 
         public KhuyenMaiDAO GetByID(int ID)
@@ -27,12 +27,12 @@ namespace BusinessLogic
 
         public bool Insert(KhuyenMaiDAO obj)
         {
-            throw new NotImplementedException();
+            return new SqlHelper<KhuyenMaiDAO>().ExecuteProc("CTKhuyenMai_Insert", obj);
         }
 
         public bool Update(KhuyenMaiDAO obj)
         {
-            throw new NotImplementedException();
+            return new SqlHelper<KhuyenMaiDAO>().ExecuteProc("CTKhuyenMai_Update", obj);
         }
 
         public List<KhuyenMaiDAO> GetAll()

@@ -107,11 +107,7 @@ namespace Common
             return check;
         }
 
-        public List<SanPham_LoaiSanPham> ExecuteProcAndGetData(string v, int pageNumber, int pageSize, out int totalEntries)
-        {
-            throw new NotImplementedException();
-        }
-
+ 
         public bool ExecuteProc(string name_proc,string Field, int ID)
         {
             bool check = true;
@@ -223,7 +219,7 @@ namespace Common
             return total;
         }
 
-        public List<T> ExecuteProcAndGetData(string name_proc,int pageNumber,int pageSize, string keyText,out int totalEntries)
+        public List<T> ExecuteProcAndGetData(string name_proc,int pageNumber,int pageSize, string keyText,out int totalEntries,int? extendParamValue=null,string extendParamName="")
         {
             List<T> result = new List<T>();
             DataSet ds = new DataSet();
@@ -238,7 +234,12 @@ namespace Common
                 cmdObject.Parameters.Add(new SqlParameter("keyText", keyText));
 
                 // Do something with propValue
+                if (extendParamValue != null)
+                {
+                    cmdObject.Parameters.Add(new SqlParameter(extendParamName, extendParamValue));
+                }
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmdObject);
+
                 sqlDataAdapter.Fill(ds);
                 result = ConvertData.ConvertDataTableToList<T>(ds.Tables[0]);
                 totalEntries = (int)ds.Tables[1].Rows[0]["totalEntires"];
