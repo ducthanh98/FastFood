@@ -5235,7 +5235,7 @@
     <Content Include="Assets\images\topbar-separator.png" />
     <Content Include="Assets\images\topbar.png" />
     <Content Include="Assets\images\trash.png" />
-    <Content Include="Assets\js\App\Calculation.js" />
+    <Content Include="Assets\js\App\website.js" />
     <Content Include="Assets\js\App\Calendar.js" />
     <Content Include="Assets\js\App\Contacts.js" />
     <Content Include="Assets\js\App\Documents.js" />
@@ -5296,7 +5296,9 @@
     <Content Include="Scripts\Features.js" />
     <Content Include="Scripts\map.js" />
     <Content Include="Scripts\toastr.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -6276,6 +6278,7 @@
     <Content Include="Views\SanPham\SanPham.cshtml" />
     <Content Include="Views\SanPham\_KhuyenMai.cshtml" />
     <Content Include="Views\SanPham\SanPham_ChiTiet.cshtml" />
+    <Content Include="Views\GioHang\GioHang_ChiTiet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
