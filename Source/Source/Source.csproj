@@ -6317,14 +6317,11 @@
     <Content Include="Views\SanPham\SanPham.cshtml" />
     <Content Include="Views\SanPham\_KhuyenMai.cshtml" />
     <Content Include="Views\SanPham\SanPham_ChiTiet.cshtml" />
-<<<<<<< HEAD
     <Content Include="Areas\Admin\Views\TaiKhoan\DanhSach.cshtml" />
     <Content Include="Areas\Admin\Views\TaiKhoan\_DanhSach.cshtml" />
-=======
     <Content Include="Views\GioHang\GioHang_ChiTiet.cshtml" />
     <Content Include="Views\TimKiem\KQTimKiem.cshtml" />
     <Content Include="Views\GioiThieu\Index.cshtml" />
->>>>>>> origin/sp
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
