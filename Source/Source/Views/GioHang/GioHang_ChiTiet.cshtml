@@ -1,161 +1,134 @@
-﻿@model List<DAO.GioHang>
+﻿
 @using Source.Configuration;
 @{
     DAO.Combo_SanPham cb = (DAO.Combo_SanPham)ViewBag.cb;
     DAO.SanPhamDAO sp = (DAO.SanPhamDAO)ViewBag.sp;
 }
+<div class="contaner">
+    <div class="cart-info">
+        <table>
+            <tr style="font-size: 23px;font-weight: bold">
+                <td>Tên Sản Phẩm</td>
+                <td>Giá</td>
+                <td>Số Lượng</td>
+                <td colspan="2">Thay Đổi</td>
+            </tr>
 
-@foreach (var item in Model)
-{
-    if (item.MaSanPham != 0)
-    {
-        <div class="contaner">
-            <div class="cart-info">
-                <table>
-                    <tr style="font-size: 23px;font-weight: bold">
-                        <td>Tên Sản Phẩm</td>
-                        <td>Giá</td>
-                        <td>Số Lượng</td>
-                        <td colspan="2">Thay Đổi</td>
-                    </tr>
-                    <tr>
-                        <td id="td1">
-                            <div class="row" style="margin: 0">
-                                <div class="col-4">
-                                    <a href="update-cart.html">
-                                        <img src="@Url.Content(AppConfig.loadSP +sp.HinhAnh)">
-                                    </a>
+            @if (cb == null)
+            {
+                <tr>
+                    <td id="td1">
+                        <div class="row" style="margin: 0">
+                            <div class="col-4">
+                                <a href="update-cart.html">
+                                    <img src="@Url.Content(AppConfig.loadSP +sp.HinhAnh)">
+                                </a>
+                            </div>
+                            <div class="col-8" style="margin-top: 10px">
+                                <div class="col align-self-start">
+                                    <a href="update-cart.html" style="font-size: 20px">@sp.TenSanPham</a>
                                 </div>
-                                <div class="col-8" style="margin-top: 10px">
-                                    <div class="col align-self-start">
-                                        <a href="update-cart.html" style="font-size: 20px">@sp.TenSanPham</a>
-                                    </div>
-                                    <div class="col align-self-end" style="margin-top:3%">
-                                        <a class="adetail" href="#detail" data-toggle="collapse">
-                                           Xem Chi Tiết
-                                        </a>
-                                        <div class="collapse" id="detail">
-                                            <div class="show-detail">
-                                                <dl>
-                                                    @sp.TenSanPham
-                                                </dl>
-                                            </div>
+                                <div class="col align-self-end" style="margin-top:3%">
+                                    <a class="adetail" href="#detail" data-toggle="collapse">
+                                        Xem Chi Tiết
+                                    </a>
+                                    <div class="collapse" id="detail">
+                                        <div class="show-detail">
+                                            <dl>
+                                                @sp.TenSanPham
+                                            </dl>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </td>
-                        <td id="td2">@sp.DonGia</td>
-                        <td id="td3">
-                            <div class="count-product">
-                                <div class="span-1-option">
-                                    <button class="control-count" onclick="decreasevalue()" type="button" id="btn-1">
-                                        <span>-</span>
-                                    </button>
-                                    <input type="text" id="number" class="count" maxlength="10" value="@item.SoLuong">
-                                    <button class="control-count" onclick="increasevalue()" type="button" id="btn-2">
-                                        <span>+</span>
-                                    </button>
-                                </div>
+                        </div>
+                    </td>
+                    <td id="td2">@sp.DonGia</td>
+                    <td id="td3">
+                        <div class="count-product">
+                            <div class="span-1-option">
+                                <button class="control-count" onclick="decreasevalue()" type="button" id="btn-1">
+                                    <span>-</span>
+                                </button>
+                                <input type="text" id="number" class="count" maxlength="10" value="1">
+                                <button class="control-count" onclick="increasevalue()" type="button" id="btn-2">
+                                    <span>+</span>
+                                </button>
                             </div>
-                        </td>
-                        <td id="td4">
-                            <a href="update-cart.html"><img src="./imagescart/pen.png"> thay đổi chi tiết phần ăn</a>
-                        </td>
-                        <td id="td5">
-                            <button><img src="~/assets/images/trash.png">xóa</button>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <div style="font-weight: bold">
-            <div class="row" style="padding-top: 1%">
-                <div class="col-6" style="text-align: right; color: black; padding-top: 5px;">
-                    <p>Tổng Cộng:</p>
-                </div>
-                <div class="col-6" style="text-align: left; color: green; font-size: 23px; padding-left:0;">
-                    <p>200.0000</p>
-                </div>
-            </div>
-        </div>
-    }
-    else if (item.MaCombo !=0)
-    {
-        <div class="contaner">
-            <div class="cart-info">
-                <table>
-                    <tr style="font-size: 23px;font-weight: bold">
-                        <td>Tên Sản Phẩm</td>
-                        <td>Giá</td>
-                        <td>Số Lượng</td>
-                        <td colspan="2">Thay Đổi</td>
-                    </tr>
-                    <tr>
-                        <td id="td1">
-                            <div class="row" style="margin: 0">
-                                <div class="col-4">
-                                    <a href="update-cart.html">
-                                        <img src="@Url.Content(AppConfig.loadSP +cb.HinhAnh)">
-                                    </a>
+                        </div>
+                    </td>
+                    <td id="td4">
+                        <a href="update-cart.html"><img src="./imagescart/pen.png"> thay đổi chi tiết phần ăn</a>
+                    </td>
+                    <td id="td5">
+                        <button><img src="~/assets/images/trash.png">xóa</button>
+                    </td>
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <td id="td1">
+                        <div class="row" style="margin: 0">
+                            <div class="col-4">
+                                <a href="update-cart.html">
+                                    <img src="@Url.Content(AppConfig.loadSP +cb.HinhAnh)">
+                                </a>
+                            </div>
+                            <div class="col-8" style="margin-top: 10px">
+                                <div class="col align-self-start">
+                                    <a href="update-cart.html" style="font-size: 20px">@cb.TenCombo</a>
                                 </div>
-                                <div class="col-8" style="margin-top: 10px">
-                                    <div class="col align-self-start">
-                                        <a href="update-cart.html" style="font-size: 20px">@cb.TenCombo</a>
-                                    </div>
-                                    <div class="col align-self-end" style="margin-top:3%">
-                                        <a class="adetail" href="#detail" data-toggle="collapse">
-                                            Xem chi tiết
-                                        </a>
-                                        <div class="collapse" id="detail">
-                                            <div class="show-detail">
-                                                <dl>
-                                                    <dt>Gà rán:</dt>
-                                                    <dd>2 x 1 gà rán</dd>
-                                                    <dt>Món ăn kèm:</dt>
-                                                    <dd>1 Khoai tây chiên vừa</dd>
-                                                </dl>
-                                            </div>
+                                <div class="col align-self-end" style="margin-top:3%">
+                                    <a class="adetail" href="#detail" data-toggle="collapse">
+                                        Xem chi tiết
+                                    </a>
+                                    <div class="collapse" id="detail">
+                                        <div class="show-detail">
+                                            <dl>
+                                                <dt>Gà rán:</dt>
+                                                <dd>2 x 1 gà rán</dd>
+                                                <dt>Món ăn kèm:</dt>
+                                                <dd>1 Khoai tây chiên vừa</dd>
+                                            </dl>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </td>
-                        <td id="td2">@cb.DonGia</td>
-                        <td id="td3">
-                            <div class="count-product">
-                                <div class="span-1-option">
-                                    <button class="control-count" onclick="decreasevalue()" type="button" id="btn-1">
-                                        <span>-</span>
-                                    </button>
-                                    <input type="text" id="number" class="count" maxlength="10" value="@item.SoLuong">
-                                    <button class="control-count" onclick="increasevalue()" type="button" id="btn-2">
-                                        <span>+</span>
-                                    </button>
-                                </div>
+                        </div>
+                    </td>
+                    <td id="td2">@cb.DonGia</td>
+                    <td id="td3">
+                        <div class="count-product">
+                            <div class="span-1-option">
+                                <button class="control-count" onclick="decreasevalue()" type="button" id="btn-1">
+                                    <span>-</span>
+                                </button>
+                                <input type="text" id="number" class="count" maxlength="10" value="1">
+                                <button class="control-count" onclick="increasevalue()" type="button" id="btn-2">
+                                    <span>+</span>
+                                </button>
                             </div>
-                        </td>
-                        <td id="td4">
-                            <a href="update-cart.html"><img src="./imagescart/pen.png"> thay đổi chi tiết phần ăn</a>
-                        </td>
-                        <td id="td5">
-                            <button><img src="~/assets/images/trash.png">xóa</button>
-                        </td>
-                    </tr>
-                </table>
-            </div>
+                        </div>
+                    </td>
+                    <td id="td4">
+                        <a href="update-cart.html"><img src="./imagescart/pen.png"> thay đổi chi tiết phần ăn</a>
+                    </td>
+                    <td id="td5">
+                        <button><img src="~/assets/images/trash.png">xóa</button>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+<div style="font-weight: bold">
+    <div class="row" style="padding-top: 1%">
+        <div class="col-6" style="text-align: right; color: black; padding-top: 5px;">
+            <p>Tổng Cộng:</p>
         </div>
-        <div style="font-weight: bold">
-            <div class="row" style="padding-top: 1%">
-                <div class="col-6" style="text-align: right; color: black; padding-top: 5px;">
-                    <p>Tổng Cộng:</p>
-                </div>
-                <div class="col-6" style="text-align: left; color: green; font-size: 23px; padding-left:0;">
-                    <p>200.0000</p>
-                </div>
-            </div>
+        <div class="col-6" style="text-align: left; color: green; font-size: 23px; padding-left:0;">
+            <p>200.0000</p>
         </div>
-    }
-}
-
-
+    </div>
+</div>
