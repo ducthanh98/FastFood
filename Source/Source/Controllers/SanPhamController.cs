@@ -44,8 +44,7 @@ namespace Source.Controllers
                 ViewBag.spdetail = sp;
             }
             return PartialView();
-        }
-
+       }
         public PartialViewResult _KhuyenMai()
         {
             List<KhuyenMaiDAO> lstKM = KhuyenMai_Service.GetAll();

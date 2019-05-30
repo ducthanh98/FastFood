@@ -14,10 +14,16 @@
     <link rel="stylesheet" href="~/Assets/css/product.css">
     <link rel="stylesheet" href="~/Assets/css/menu-product.css">
     <link rel="stylesheet" href="~/Assets/css/product.css">
+    <link rel="stylesheet" href="~/Assets/css/introduce.css" />
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 </head>
 <body>
+    @*@using (Html.BeginForm("KQTimKiem","TimKiem"))
+    {
+        <input type="text" name="sTuKhoa" placeholder="nhapj tu khoa" />
+        <button type="submit">tim kiem</button>
+    }*@
     <div class="header">
         <div class="headertop-right">
             <ul>
@@ -69,9 +75,9 @@
                 </div>
                 <div class="modal-body">
                     <div class="contaner">
-                        @{ 
+                        @*@{ 
                             Html.RenderAction("GioHang_ChiTiet", "GioHang", new { MaMatHang = 1, laSanPham = false, soLuong = 1});
-                        }
+                        }*@
                     </div>
                 </div>
                 <div class="modal-footer">

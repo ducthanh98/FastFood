@@ -171,7 +171,33 @@ namespace Common
             }
             return result;
         }
-
+        public List<T> ExecuteProcAndGetData(string name_proc, string value)
+        {
+            List<T> result = new List<T>();
+            DataSet ds = new DataSet();
+            SqlCommand cmdObject = null;
+            try
+            {
+                cmdObject = new SqlCommand(name_proc, Connection);
+                cmdObject.CommandType = CommandType.StoredProcedure;
+                SqlParameter par = new SqlParameter("keyText", value);
+                cmdObject.Parameters.Add(par);
+                // Do something with propValue
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmdObject);
+                sqlDataAdapter.Fill(ds);
+                result = ConvertData.ConvertDataTableToList<T>(ds.Tables[0]);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                cmdObject.Dispose();
+                CloseConnection();
+            }
+            return result;
+        }
         public List<T> ExecuteProcAndGetData(string name_proc)
         {
             List<T> result = new List<T>();

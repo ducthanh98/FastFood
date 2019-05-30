@@ -56,5 +56,10 @@ namespace BusinessLogic
         {
             return new SqlHelper<SanPham_LoaiSanPham>().ExecuteProcAndGetData("CTSanPham_SelectByLSP", "MaLoaiSanPham",ID);
         }
+
+        public List<SanPhamDAO> SelectBy(string sTuKhoa)
+        {
+            return new SqlHelper<SanPhamDAO>().ExecuteProcAndGetData("SanPham_SelectBy",sTuKhoa);
+        }
     }
 }
