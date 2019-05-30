@@ -1,0 +1,212 @@
+.main-container {
+    max-width: 100% !important;
+}
+
+.story-head .description {
+    color: #6b6b75;
+    font-size: 14px;
+    line-height: 18px;
+    margin-top: 20px;
+    width: 700px;
+}
+
+.main-container {
+    padding: 0;
+}
+
+.col1-layout .col-main {
+    margin-bottom: 0;
+}
+
+.container.content-story {
+    width: 985px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.main-container {
+    background: rgba(0, 0, 0, 0) url(../imgesIntro/bg-coupon.png) no-repeat scroll;
+    background-size: 100%;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.story-head {
+    margin-top: 170px;
+}
+
+.title-head-story {
+    font-size: 36px;
+    color: #fc6719;
+}
+
+.story-head .description p {
+    line-height: 18px;
+}
+
+.std p {
+    font-family: 'Verdana';
+    font-style: normal;
+}
+
+.content-story .row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.history-date ul {
+    height: 40px;
+    margin: 0;
+    padding: 0;
+}
+
+.history-date ul .start-year {
+    background: url(../imgesIntro/left-story-year.png) no-repeat;
+    height: 35px;
+    width: 13px;
+}
+
+.history-date ul li {
+    display: inline-block;
+    float: left;
+    height: 35px;
+    line-height: 35px;
+    list-style-type: none;
+    padding-left: 5px;
+    width: 21%;
+}
+
+.history-date ul li a {
+    color: #c4112f;
+    font-size: 16px;
+    font-style: italic;
+    font-weight: bold;
+    line-height: 35px;
+}
+
+.history-date ul .dot-line {
+    background: rgba(0, 0, 0, 0) url(../imgesIntro/dot-story-year.png) no-repeat scroll 0 0;
+    float: right;
+    height: 15px;
+    margin-top: 9px;
+    vertical-align: middle;
+    width: 54%;
+}
+
+.history-date ul .end-year {
+    background: url(../imgesIntro/right-story-year.png) no-repeat;
+    height: 35px;
+    width: 13px;
+}
+
+.std .history-date ul li {
+    margin-left: 0;
+}
+
+.history-date ul .end {
+    list-style-type: none;
+    display: inline-block;
+    float: left;
+    width: auto;
+    height: 35px;
+    line-height: 35px;
+}
+
+.chunk-font {
+    font-family: "Verdana";
+}
+
+.mod-head img {
+    width: 100%;
+    margin: 20px 0px;
+}
+
+.text-his {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    padding: 20px;
+    background: #f4e3c5;
+    margin-bottom: 20px;
+}
+
+.content-story h4 {
+    color: #333;
+    font-size: 24px;
+    font-family: "Verdana";
+}
+
+.std .content-story p {
+    color: #000;
+}
+
+.image-his.right>img {
+    width: 70%;
+    height: 100%;
+}
+
+.image-his.right .desc {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 5px;
+    color: #333;
+    background: #f4e3c5;
+}
+
+.image-his.right {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.std .image-his.right .desc p {
+    font-size: 14px;
+}
+
+.std .image-his.bottom .desc p {
+    font-size: 14px;
+}
+
+.image-his.bottom {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.image-his.bottom .desc {
+    padding: 15px;
+    width: 100%;
+    text-align: left;
+    color: #333;
+    background: #f4e3c5;
+}
+
+.row,
+.col-md-7 .row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.story-head .description {
+    margin-top: 20px;
+}
+
+.story-head .logo-poperyes img {
+    width: auto;
+}
+
+.col-md-12,
+.col-md-7 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px
+}
+
+.col-md-7 {
+    width: 59%;
+}

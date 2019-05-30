@@ -1,0 +1,38 @@
+﻿@model List<DAO.LoaiSanPhamDAO>
+
+<div class="menu">
+    <div class="listmenu">
+        <ul>
+            <li>
+                <a href="#">Khuyễn Mãi</a>
+            </li>
+            <img src="~/Assets/images/topbar-separator.png">
+            <li>
+                <a href="@Url.Action("LoaiSanPham","SanPham")">Thực Đơn</a>
+                <div class="memenu">
+                    <ul>
+                        @foreach(var item in Model)
+                        {
+                            <li>
+                                <a href="@Url.Action("SanPham","SanPham", new {@MaLoaiSanPham = @item.MaLoaiSanPham})">@item.TenLoaiSanPham</a>
+                            </li>
+                        }
+                    </ul>
+                    
+                </div>
+            </li>
+            <img src="~/Assets/images/topbar-separator.png">
+            <li>
+                <a href="#">Chi Nhánh</a>
+            </li>
+            <img src="~/Assets/images/topbar-separator.png">
+            <li>
+                <a href="@Url.Action("Index","GioiThieu")">Giới Thiệu</a>
+            </li>
+            <img src="~/Assets/images/topbar-separator.png">
+            @*<li>
+                <button data-toggle="modal" data-target="#cart"><img src="~/Assets/images/cart.png"> Giỏ Hàng</button>
+            </li>*@
+        </ul>
+    </div>
+</div>

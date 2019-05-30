@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "_layoutSanPham";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="content">
+        @RenderBody()
+
+        <div class="content-bottom">
+            <div class="title-menu">
+                <h4>Khuyễn Mãi Hiện Có</h4>
+            </div>
+            @Html.Action("_KhuyenMai", "SanPham")
+        </div>
+    
+        <div class="modal fade" id="showdetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" style="font-weight: bold;color: black;background-color: gainsboro;padding: 5px 5px 5px">
+                        <h5 class="modal-title" id="exampleModalScrollableTitle">Thay đổi chi tiết phần ăn</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            @{
+                                Html.RenderAction("SanPham_ChiTiet", "SanPham", new { MaMatHang = 1, laSanPham = true });
+                            }
+                        </div>
+                    </div>
+                    @*<div class="modal-footer">
+                        <button data-toggle="modal" data-target="#cart" type="button" class="add-to-cart" data-dismiss="modal" onclick="getsp(MaMatHang, laSanPham)">Thêm vào giỏ hàng</button>
+                        <button type="button" class="payment">Thanh Toán</button>
+                    </div>*@
+                </div>
+            </div>
+        </div>   
+    </div>
+</div>
+
+
+

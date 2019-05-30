@@ -1,0 +1,16 @@
+﻿@model DAO.LoaiChiPhiDAO
+
+<div class="panel-body container-fluid">
+    <form autocomplete="off">
+        <input type="hidden"value='@Model.MaLoaiChiPhi' id="MaLoaiChiPhi" name="inputText" placeholder="Text" />
+        <div class="form-group form-material" data-plugin="formMaterial">
+            <label class="form-control-label" for="TenLoaiChiPhi">Tên Loại Chi Phí *</label>
+            <input type="text" class="form-control " value='@Model.TenLoaiChiPhi' id="TenLoaiChiPhi"/>
+        </div>
+
+        <div class="form-group form-material" data-plugin="formMaterial">
+            <label class="form-control-label" for="MoTa">Mô tả</label>
+            <textarea id="MoTa" class="form-control border-form" rows="8">@Model.MoTa</textarea>
+        </div>
+    </form>
+</div>

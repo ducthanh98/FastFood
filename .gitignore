@@ -1,0 +1,13 @@
+/Source/Source/bin
+/Source/Source/bin/Antlr3.Runtime.dll
+/Source/Source/bin/Antlr3.Runtime.pdb
+/Source/Source/obj/Release
+/Source/Source/obj/Debug
+Source/.vs/config/applicationhost.config
+Source/.vs/Source/v14/.suo
+/Source/BusinessLogic/obj
+/Source/BusinessLogic/bin
+/Source/DAO/obj
+/Source/DAO/bin
+/Source/SQLHelper/obj
+/Source/SQLHelper/bin

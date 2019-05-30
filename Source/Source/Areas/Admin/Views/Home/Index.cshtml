@@ -1,0 +1,174 @@
+﻿@using DAO
+@model List<ChartReport>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    Dashboard_OverView overviewData = ((List<Dashboard_OverView>)ViewBag.overview).FirstOrDefault();
+
+}
+
+
+
+<div class="page-content container-fluid">
+    <div class="row" data-plugin="matchHeight" data-by-row="true">
+        <div class="col-xl-3 col-md-6">
+            <!-- Widget Linearea One-->
+            <div class="card card-shadow" id="widgetLineareaOne">
+                <div class="card-block p-20 pt-10">
+                    <div class="clearfix">
+                        <div class="grey-800 float-left py-10">
+                            <i class="icon md-account grey-600 font-size-24 vertical-align-bottom mr-5"></i>                    Người dùng
+                        </div>
+                        <span class="float-right grey-700 font-size-30">@overviewData.TaiKhoan</span>
+                    </div>
+                    <div class="mb-20 grey-500">
+                        <i class="icon md-assignment-o green-500 font-size-16"></i>                  <a href="/Admin/TaiKhoan/DanhSach">Xem Chi Tiết</a>
+                    </div>
+                </div>
+            </div>
+            <!-- End Widget Linearea One -->
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <!-- Widget Linearea Two -->
+            <div class="card card-shadow" id="widgetLineareaTwo">
+                <div class="card-block p-20 pt-10">
+                    <div class="clearfix">
+                        <div class="grey-800 float-left py-10">
+                            <i class="icon md-cake grey-600 font-size-24 vertical-align-bottom mr-5"></i>                    Sản phẩm
+                        </div>
+                        <span class="float-right grey-700 font-size-30">@overviewData.SanPham</span>
+                    </div>
+                    <div class="mb-20 grey-500">
+                        <i class="icon md-assignment-o green-500 font-size-16"></i>                  <a href="/Admin/MatHang/SanPham">Xem Chi Tiết</a>
+                    </div>
+                </div>
+            </div>
+            <!-- End Widget Linearea Two -->
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <!-- Widget Linearea Three -->
+            <div class="card card-shadow" id="widgetLineareaThree">
+                <div class="card-block p-20 pt-10">
+                    <div class="clearfix">
+                        <div class="grey-800 float-left py-10">
+                            <i class="icon md-cake grey-600 font-size-24 vertical-align-bottom mr-5"></i>                    Combo
+                        </div>
+                        <span class="float-right grey-700 font-size-30">@overviewData.Combo</span>
+                    </div>
+                    <div class="mb-20 grey-500">
+                        <i class="icon md-assignment-o red-500 font-size-16"></i>                  <a href="/Admin/MatHang/Combo">Xem Chi Tiết</a>
+                    </div>
+                </div>
+            </div>
+            <!-- End Widget Linearea Three -->
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <!-- Widget Linearea Four -->
+            <div class="card card-shadow" id="widgetLineareaFour">
+                <div class="card-block p-20 pt-10">
+                    <div class="clearfix">
+                        <div class="grey-800 float-left py-10">
+                            <i class="icon md-long-arrow-down grey-600 font-size-24 vertical-align-bottom mr-5"></i>                    Khuyến mãi
+                        </div>
+                        <span class="float-right grey-700 font-size-30">@overviewData.KhuyenMai</span>
+                    </div>
+                    <div class="mb-20 grey-500">
+                        <i class="icon md-assignment-o green-500 font-size-16"></i>                  <a href="/Admin/KhuyenMai/DanhSach">Xem Chi Tiết</a>
+                    </div>
+                </div>
+            </div>
+            <!-- End Widget Linearea Four -->
+        </div>
+            <div class="col-lg-12 col-xl-12">
+                <!-- Example Line -->
+                <div class="example-wrap">
+                    <h4 class="example-title">Biểu đồ</h4>
+
+                    <div class="example text-center">
+                        <canvas id="exampleChartjsLine" height="300" width="600"></canvas>
+                    </div>
+                </div>
+                <!-- End Example Line -->
+            </div>
+
+</div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        (function () {
+            let lstdata = @Html.Raw(Json.Encode(Model));
+            let chartData = {
+                Thang:[],
+                DoanhThu:[],
+                ChiPhi:[],
+                LoiNhuan:[]
+            };
+            for(let i=0;i<lstdata.length;i++){
+                chartData.Thang.push(lstdata[i].ThoiGian);
+                chartData.DoanhThu.push(lstdata[i].DoanhThu);
+                chartData.ChiPhi.push(lstdata[i].ChiPhi);
+                chartData.LoiNhuan.push(lstdata[i].DoanhThu - lstdata[i].ChiPhi);
+            }
+            var lineChartData = {
+                labels: chartData.Thang,
+                datasets: [{
+                    label: "Doanh Thu",
+                    fill: true,
+                    backgroundColor: "rgba(204, 213, 219, .1)",
+                    borderColor: Config.colors("yellow", 300),
+                    pointRadius: 4,
+                    borderDashOffset: 2,
+                    pointBorderColor: "#fff",
+                    pointBackgroundColor: Config.colors("yellow", 300),
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: Config.colors("yellow", 300),
+                    data: chartData.DoanhThu
+                }, {
+                    label: "ChiPhi",
+                    fill: true,
+                    backgroundColor: "rgba(98, 168, 234, .1)",
+                    borderColor: Config.colors("primary", 600),
+                    pointRadius: 4,
+                    borderDashOffset: 2,
+                    pointBorderColor: "#fff",
+                    pointBackgroundColor: Config.colors("primary", 600),
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: Config.colors("primary", 600),
+                    data: chartData.ChiPhi
+                },{
+                    label: "LoiNhuan",
+                    fill: true,
+                    backgroundColor: "rgba(250,122,122,0.25)",
+                    borderColor: Config.colors("red", 500),
+                    pointRadius: 4,
+                    borderDashOffset: 2,
+                    pointBorderColor: "#fff",
+                    pointBackgroundColor: Config.colors("red", 500),
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: Config.colors("red", 500),
+                    data: chartData.LoiNhuan
+                }
+
+                ]
+            };
+
+            var myLine = new Chart(document.getElementById("exampleChartjsLine").getContext("2d"), {
+                type: 'line',
+                data: lineChartData,
+                options: {
+                    responsive: true,
+                    scales: {
+                        xAxes: [{
+                            display: true
+                        }],
+                        yAxes: [{
+                            display: true
+                        }]
+                    }
+                }
+            });
+        })();
+    })
+</script>

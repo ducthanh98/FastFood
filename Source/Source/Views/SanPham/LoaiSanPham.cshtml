@@ -1,0 +1,25 @@
+﻿@model  List<DAO.LoaiSanPhamDAO>
+@using Source.Configuration;
+@{
+    ViewBag.Title = "LoaiSanPham";
+    Layout = "~/Views/Shared/_LayoutSanPham.cshtml";
+}
+
+<div class="title-menu">
+    <h2>Thực Đơn</h2>
+</div>
+<div class="content-top">
+    <div class="row" style="margin-bottom: 5%; ">
+        @foreach(var item in Model)
+            {
+            <div class="col-4">
+                <div class="product-item">
+                    <a class="item-pro" href="#"><img src="@Url.Content( AppConfig.loadSP +item.HinhAnh)" alt=""></a>
+                    <a class="item-btn" href="#">@item.TenLoaiSanPham</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+

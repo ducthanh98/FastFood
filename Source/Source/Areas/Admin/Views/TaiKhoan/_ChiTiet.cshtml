@@ -1,0 +1,55 @@
+﻿@model DAO.TaiKhoanDAO
+@using DAO;
+
+<div class="panel-body container-fluid">
+    <form autocomplete="off">
+        <input type="hidden" value='@Model.MaTaiKhoan' id="MaTaiKhoan" />
+        <div class="form-group form-material" data-plugin="formMaterial">
+            <label class="form-control-label" for="TenTaiKhoan">Tên Tài Khoản *:</label>
+            <input type="text" class="form-control required"  value='@Model.TenTaiKhoan' id="TenTaiKhoan" />
+        </div>
+        <div class="form-group form-material" data-plugin="formMaterial">
+            <label class="form-control-label" for="MatKhau">Mật khẩu *:</label>
+            <input type="password" class="form-control required"  value='@Model.MatKhau' id="MatKhau" />
+        </div>
+        <div class="form-group form-material" data-plugin="formMaterial">
+            <label class="form-control-label" for="DiaChi">Địa chỉ *:</label>
+            <input type="text" class="form-control required" value='@Model.DiaChi' id="DiaChi" />
+        </div>
+        
+        <div class="form-group form-material" data-plugin="formMaterial">
+            <label class="form-control-label" for="SDT">Số điện thoại *:</label>
+            <input type="text" class="form-control required" maxlength="11" onkeypress="return onlyNumber(event)" value='@Model.SDT' id="SDT" />
+        </div>
+        <div class="form-group form-material row" data-plugin="formMaterial">
+            <div class="col-6">
+                <label class="form-control-label">Kích hoạt *</label>
+                <input type="checkbox" style="transform: scale(3);width:44px;" id="KichHoat" @if (Model.KichHoat) { <text> checked</text> } />
+            </div>
+            <div class="col-6">
+                <label class="form-control-label">Giới tính *</label>
+                <input type="checkbox" style="transform: scale(3);width:44px;" id="GioiTinh" @if (Model.GioiTinh) { <text> checked</text> } />
+                <label for="TrangThai">Nam</label>
+
+            </div>
+        </div>
+
+        <div class="form-group form-material" data-plugin="formMaterial">
+            <label class="form-control-label" for="QuyenHan">Quyền hạn *</label>
+            <select class="form-control required" id="QuyenHan" data-plugin="select2">
+                <option @if (Model.QuyenHan == 0) { <text> selected</text> } value='0'>Admin</option>
+                <option @if (Model.QuyenHan == 1) { <text> selected</text> } value='1'>Quản lí</option>
+                <option @if (Model.QuyenHan == 2) { <text> selected</text> } value='2'>Nhân viên</option>
+                <option @if (Model.QuyenHan == 3) { <text> selected</text> } value='3'>Khách Hàng</option>
+            </select>
+        </div>
+
+    </form>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#QuyenHan").select2();
+    })
+
+</script>
