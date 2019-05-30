@@ -18,7 +18,7 @@ namespace BusinessLogic
 
         public List<SanPhamDAO> GetAll()
         {
-            throw new NotImplementedException();
+            return new SqlHelper<SanPhamDAO>().ExecuteProcAndGetData("CTSanPham_GetAll");
         }
         public List<SanPham_TypeInsertCombo> SelectAllForCombo()
         {
