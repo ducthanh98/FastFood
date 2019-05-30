@@ -15,7 +15,7 @@
         </div>
 
         <div class="form-group form-material" data-plugin="formMaterial">
-            <label class="form-control-label" for="MaChiNhanh">Loại chi phí</label>
+            <label class="form-control-label" for="MaLoaiChiPhi">Loại chi phí</label>
             <select class="form-control" id="MaLoaiChiPhi" data-plugin="select2">
                 @for (int i = 0; i < dsLoaiChiPhi.Count; i++)
                 {
@@ -36,4 +36,5 @@
 
 <script>
     $("#MaLoaiChiPhi").select2();
+    formatCurrency(document.getElementsByClassName('currency')[0]);
 </script>

@@ -28,7 +28,7 @@
 
                             <td >@ViewBag.dsLoaiChiPhi[Model[i].MaLoaiChiPhi]</td>
 
-                            <td class="currency">@Model[i].GiaTien</td>
+                            <td class="money">@Model[i].GiaTien</td>
                             <td>@Model[i].NgayTao</td>
                             <td class="text-center">
                                 <i class="icon wb-edit text-primary" onclick="setValueForModal(this,true)" data-id='@Model[i].MaChiPhi' data-target="#info-modal" data-toggle="modal" aria-hidden="true"></i> @*/ <i class="icon wb-trash text-danger" aria-hidden="true" data-target="#confirm-modal" onclick="setIDForDelete(@Model[i].MaChiPhi)" data-toggle="modal"></i>*@
@@ -49,3 +49,8 @@
 <!-- End Table -->
 @{ Html.RenderAction("_Pagination", "Home", new { maxNumber = ViewBag.maxNumber, pageNumber = ViewBag.pageNumber });}
 
+<script>
+    $(".money").each(function () {
+        formatTableCurrency(this);
+    })
+</script>

@@ -17,7 +17,7 @@ namespace Source.Areas.Admin.Controllers
             try
             {
                 TaiKhoanDAO taiKhoan = (TaiKhoanDAO)System.Web.HttpContext.Current.Session["User"];
-                lstChart = Report_Service.GetDataForChart(taiKhoan.MaChiNhanh);
+                lstChart = Report_Service.GetDataForChart();
                 overviewData = Report_Service.GetOverviewData();
                 ViewBag.overview = overviewData;
             } catch(Exception e)

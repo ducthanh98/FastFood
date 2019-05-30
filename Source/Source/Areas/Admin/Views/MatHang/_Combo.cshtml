@@ -13,6 +13,7 @@
                 <tr>
                     <th>STT</th>
                     <th>Tên combo</th>
+                    <th>Đơn giá</th>
                     <th>Hình ảnh</th>
                     <th>Thành phần</th>
                     <th class="text-center">Chỉnh sửa</th>
@@ -23,10 +24,11 @@
                 {
                     for (int i = 0; i < Model.Count; i++)
                     {
-                        <tr>
+                        <tr @if (!Model[i].TrangThai) { <text> class="text-danger"</text> }>
                             <td>@(pageFrom + i)</td>
 
                             <td>@Model[i].TenCombo</td>
+                            <td class="money">@Model[i].DonGia</td>
                             <td><img width="150px" height="150px" src=@Url.Content(AppConfig.uploadFolder + Model[i].HinhAnh) alt="" /></td>
                             <td>
                                 @for (int j = 0; j < Model[i].sanPham.Count; j++)
@@ -55,3 +57,8 @@
 <!-- End Table -->
 @{ Html.RenderAction("_Pagination", "Home", new { maxNumber = ViewBag.maxNumber, pageNumber = ViewBag.pageNumber });}
 
+<script>
+    $(".money").each(function () {
+        formatTableCurrency(this);
+    })
+</script>

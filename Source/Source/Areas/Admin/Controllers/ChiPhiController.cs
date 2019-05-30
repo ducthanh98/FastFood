@@ -78,20 +78,13 @@ namespace Source.Areas.Admin.Controllers
             List<LoaiChiPhiDAO> list = new List<LoaiChiPhiDAO>();
             try
             {
-                List<ChiNhanhDAO> listBoxes = ChiNhanh_Service.GetAll();
-                Hashtable hs = new Hashtable();
-                for(int i = 0; i < listBoxes.Count; i++)
-                {
-                    hs.Add(listBoxes[i].MaChiNhanh, listBoxes[i].TenChiNhanh);
-                }
-                ViewBag.listboxes = hs;
+
                 int totalEntries;
                 list = LoaiChiPhi_Service.GetAllBy(pageNumber, pageSize, keyText,out totalEntries);
                 ViewBag.maxNumber = Math.Ceiling(totalEntries / (double)pageSize);
                 ViewBag.pageNumber = pageNumber;
                 ViewBag.pageSize = pageSize;
                 TempData["ExpenseType"] = list;
-                TempData["Boxes"] = listBoxes;
                 TempData.Keep();
             }
             catch (Exception e)

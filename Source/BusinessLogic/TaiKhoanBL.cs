@@ -43,7 +43,7 @@ namespace BusinessLogic
 
         public bool Update(TaiKhoanDAO obj)
         {
-            return new SqlHelper<TaiKhoanDAO>().ExecuteProc("CTUpdate_Insert", obj);
+            return new SqlHelper<TaiKhoanDAO>().ExecuteProc("CTTaiKhoan_Update", obj);
         }
         public TaiKhoanDAO checkExistAcc(string TenTaiKhoan,string MatKhau)
         {

@@ -1,8 +1,5 @@
 ﻿@model DAO.LoaiChiPhiDAO
-@using DAO;
-@{ 
-    List<ChiNhanhDAO> listBoxes = (List<ChiNhanhDAO>)TempData["Boxes"];
-}
+
 <div class="panel-body container-fluid">
     <form autocomplete="off">
         <input type="hidden"value='@Model.MaLoaiChiPhi' id="MaLoaiChiPhi" name="inputText" placeholder="Text" />
@@ -12,29 +9,8 @@
         </div>
 
         <div class="form-group form-material" data-plugin="formMaterial">
-            <label class="form-control-label" for="MaChiNhanh">Chi Nhánh</label>
-            <select class="form-control" id="MaChiNhanh" data-plugin="select2">
-                @for (int i = 0; i < listBoxes.Count; i++)
-                {
-                    if (listBoxes[i].MaChiNhanh == Model.MaChiNhanh)
-                    {
-                        <option selected value='@listBoxes[i].MaChiNhanh'>@listBoxes[i].DiaChi</option>
-                    }
-                    else
-                    {
-                        <option value='@listBoxes[i].MaChiNhanh'>@listBoxes[i].DiaChi</option>
-                    }
-                }
-            </select>
-        </div>
-
-        <div class="form-group form-material" data-plugin="formMaterial">
             <label class="form-control-label" for="MoTa">Mô tả</label>
             <textarea id="MoTa" class="form-control border-form" rows="8">@Model.MoTa</textarea>
         </div>
     </form>
 </div>
-
-<script>
-    $("#MaChiNhanh").select2();
-</script>

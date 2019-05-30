@@ -11,6 +11,7 @@ namespace DAO
         public int MaCombo { get; set; } 
         public string TenCombo { get; set; } 
         public string TenSanPham { get; set; }
+        public bool TrangThai { get; set; }
         public int SoLuong { get; set; }
         public int MaSanPham { get; set; }
         public string HinhAnh { get; set; }

@@ -28,25 +28,41 @@ namespace Source.Controllers
         public ActionResult Login(string username, string password,string remember,string url)
         {
             TaiKhoanDAO user = new TaiKhoanDAO();
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            try
             {
-                ViewBag.error = "Vui lòng nhập đầy đủ thông tin";
-                return View(user);
-            }
-            CookieHelper.set(username, password, remember == "on");
-             user = TaiKhoan_Service.checkExistAcc(username, password);
-            if(user == null)
+                if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+                {
+                    ViewBag.error = "Vui lòng nhập đầy đủ thông tin";
+                    return View(user);
+                }
+                CookieHelper.set(username, password, remember == "on");
+                user = TaiKhoan_Service.checkExistAcc(username, password);
+                if (user == null)
+                {
+                    ViewBag.error = "Tài khoản không tồn tại hoặc chưa chính xác!";
+                    user = CookieHelper.checkCookie();
+                    return View(user);
+                }
+                else if (!user.KichHoat)
+                {
+                    ViewBag.error = "Tài khoản đã bị khóa hoặc chưa được kích hoạt !";
+                    user = CookieHelper.checkCookie();
+                    return View(user);
+                }
+                else
+                {
+                    Session["User"] = user;
+                    if (!string.IsNullOrEmpty(url))
+                    {
+                        return Redirect(url);
+                    }
+                }
+            }catch(Exception e)
             {
-                ViewBag.error = "Tài khoản hoặc mật khẩu không chính xác!";
+
+                ViewBag.error = e.Message;
                 user = CookieHelper.checkCookie();
                 return View(user);
-            } else
-            {
-                Session["User"] = user;
-                if (!string.IsNullOrEmpty(url))
-                {
-                    return Redirect(url);
-                }
             }
             return RedirectToAction("Index", "Home");
         }

@@ -24,8 +24,7 @@
                 <div class="col-6">
                     <div class="example-wrap">
                         <h4 class="example-title">Đơn giá</h4>
-                        <input type="text" class="form-control required currency" onkeyup="formatCurrency(this)" id="DonGia" value="@Model.DonGia" placeholder="Nhập giá combo">
-                        <input type="hidden" class="form-control required" id="HinhAnh" value="@Model.HinhAnh">
+                        <input type="text" onkeypress="return onlyNumber(event)"  onkeyup="formatCurrency(this)"  class="form-control required currency" onkeyup="formatCurrency(this)" id="DonGia" value="@Model.DonGia" placeholder="Nhập giá combo">
                     </div>
                 </div>
             </div>
@@ -35,12 +34,25 @@
                     <div class="example-wrap">
                         <h4 class="example-title">Hình ảnh</h4>
                         <input type="file"  id="file">
+                        <input type="hidden" class="form-control required" id="HinhAnh" value="@Model.HinhAnh">
+
                     </div>
                 </div>
                 <div class="col-6">
                     <img src=@Url.Content(AppConfig.uploadFolder + @Model.HinhAnh) width='200px' height='200px' id="showImg" style='@if (Model.MaCombo.Equals(0)) { <text>visibility:hidden;</text> } else { <text>visibility:visible ;</text> } ' )>
                 </div>
             </div>
+
+            <div class="row row-lg">
+                <div class="col-12">
+                    <div class="example-wrap">
+                        <label class="form-control-label">Trạng thái *</label>
+                        <input type="checkbox" style="transform: scale(3);width:44px;" id="TrangThai" @if (Model.TrangThai) { <text> checked</text> } />
+                        <label for="TrangThai">Hiện bán</label>
+                    </div>
+                </div>
+            </div>
+            
             <div class="row row-lg">
                 <h4 class="example-title">Danh sách sản phẩm: </h4>
             </div>
@@ -122,6 +134,8 @@
             obj.TenCombo = $("#TenCombo").val();
             obj.DonGia = $("#DonGia").val().split(',').join('');
             obj.HinhAnh = $("#HinhAnh").val();
+            obj.TrangThai = $("#TrangThai").prop("checked");
+
             obj.sanPham = [];
             if (!file && !obj.HinhAnh) { // file có thể null
                 return toastr.error('Vui lòng chọn hình ảnh')

@@ -105,42 +105,7 @@ namespace Source.Areas.Admin.Controllers
             return Json(new JsonResult() { Data = Result });
         }
         #endregion ExpenseType
-        #region BOXES
-        public bool addOrUpdateBoxes(ChiNhanhDAO obj,bool isUpdate)
-        {
-            bool check = true;
-            try
-            {
-                if (isUpdate)
-                {
-                     check = ChiNhanh_Service.Update(obj);
-                } else
-                {
-                    check = ChiNhanh_Service.Insert(obj);
-                }
 
-            } catch(Exception e)
-            {
-                throw e;
-            }
-            return check;
-        }
-
-        public bool DeleteBoxes(int ID)
-        {
-            bool check = true;
-            try
-            {
-                check = ChiNhanh_Service.Delete(ID);
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-            return check;
-        }
-
-        #endregion BOXES
 
         #region PRODUCT
         public JsonResult addOrUpdateProduct(SanPhamDAO obj, bool isUpdate)
@@ -354,6 +319,57 @@ namespace Source.Areas.Admin.Controllers
         }
 
         #endregion Promotion
+
+        #region Users
+        public JsonResult addOrUpdateUsers(TaiKhoanDAO obj, bool isUpdate)
+        {
+            AjaxResultModel Result = new AjaxResultModel();
+
+            bool check = true;
+            try
+            {
+                TaiKhoanDAO user  = ((TaiKhoanDAO)HttpContext.Session["User"]);
+                if(user.QuyenHan > obj.QuyenHan)
+                {
+                    Result.Code = 2;
+                    Result.Message = "Bạn không thể tạo tài khoản vượt quyền hạn";
+                    return Json(new JsonResult() { Data = Result });
+                } 
+
+                if (isUpdate && obj.MaTaiKhoan == 1 && obj.QuyenHan != 0)
+                {
+                    Result.Code = 3;
+                    Result.Message = "Bạn không thể chỉnh sửa quyền hạn tài khoản cấp cao nhất";
+                    return Json(new JsonResult() { Data = Result });
+
+                } else if (isUpdate){
+                    check = TaiKhoan_Service.Update(obj);
+                }
+                else
+                {
+                    check = TaiKhoan_Service.Insert(obj);
+                }
+                if (check)
+                {
+                    Result.Code = 0;
+                    Result.Message = "Thành công";
+                }
+                else
+                {
+                    Result.Code = 1;
+                    Result.Message = "Đã có lỗi xảy ra. Vui lòng thử lại.";
+                }
+            }
+            catch (Exception e)
+            {
+                Result.Code = 999;
+                Result.Message = e.Message;
+                //throw;
+            }
+            return Json(new JsonResult() { Data = Result });
+        }
+
+        #endregion Users
 
     }
 }

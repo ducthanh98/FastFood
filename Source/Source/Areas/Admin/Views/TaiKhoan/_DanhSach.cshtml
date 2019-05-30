@@ -28,10 +28,10 @@
                             <td>@Model[i].DiaChi</td>
                             <td>@Model[i].SDT</td>
                             <td>@if (Model[i].GioiTinh) {<text>Nam</text> } else { <text>Nữ</text> }</td>
-                            <td>@if (@Model[i].QuyenHan == 1) { <text>Admin</text>} else if (@Model[i].QuyenHan == 2) {<text>Quản lý</text>} else if (@Model[i].QuyenHan == 3) {<text>Nhân viên</text>} else {<text>Khách hàng</text>}</td>
+                            <td>@if (@Model[i].QuyenHan == 0) { <text>Admin</text>} else if (@Model[i].QuyenHan == 1) {<text>Quản lý</text>} else if (@Model[i].QuyenHan == 2) {<text>Nhân viên</text>} else {<text>Khách hàng</text>}</td>
                             <td class="text-center">
-                                <a class="icon wb-edit text-primary"></a> / <i class="icon wb-trash text-danger" aria-hidden="true" data-target="#confirm-modal" data-toggle="modal"></i>
-                            </td>
+                                <i class="icon wb-edit text-primary" onclick="setValueForModal(this,true)" data-id='@Model[i].MaTaiKhoan' data-target="#info-modal" data-toggle="modal" aria-hidden="true">
+</td>
                         </tr>
                         }
                     }
@@ -47,9 +47,3 @@
 </div>
 <!-- End Table -->
 @{ Html.RenderAction("_Pagination", "Home", new { maxNumber = ViewBag.maxNumber, pageNumber = ViewBag.pageNumber });}
-
-<script>
-    var url_GetTb = '/Admin/ChiNhanh/_DanhSach';
-    var url_GetMd = '/Admin/ChiNhanh/_ChiTiet';
-    var url_InsertUpdate = '/Admin/Ajax/addOrUpdateBoxes';
-</script>

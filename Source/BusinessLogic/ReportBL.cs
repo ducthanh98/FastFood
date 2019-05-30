@@ -10,9 +10,9 @@ namespace BusinessLogic
 {
     public class ReportBL
     {
-        public List<ChartReport> GetDataForChart(int? MaChiNhanh)
+        public List<ChartReport> GetDataForChart()
         {
-            return new SqlHelper<ChartReport>().ExecuteProcAndGetData("CTReport_Dashboard_Chart", "MaChiNhanh", MaChiNhanh);
+            return new SqlHelper<ChartReport>().ExecuteProcAndGetData("CTReport_Dashboard_Chart");
         }
         public List<Dashboard_OverView> GetOverviewData()
         {

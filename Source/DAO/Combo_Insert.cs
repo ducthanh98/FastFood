@@ -12,6 +12,7 @@ namespace DAO
         public string HinhAnh { get; set; }
         public decimal DonGia { get; set; }
         public string TenCombo { get; set; }
+        public bool TrangThai { get; set; }
         public List<SanPham_InsertComboREL> sanPham { get; set; }
     } 
 }

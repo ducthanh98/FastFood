@@ -15,7 +15,7 @@
 
         <div class="form-group form-material" data-plugin="formMaterial">
             <label class="form-control-label" for="DonGia">Đơn giá *</label>
-            <input type="text" class="form-control required" value='@Model.DonGia' id="DonGia" />
+            <input type="text" class="form-control currency required"  onkeyup="formatCurrency(this)"   onkeypress="return onlyNumber(event)" value='@Model.DonGia' id="DonGia" />
         </div>
 
         <div class="form-group form-material" data-plugin="formMaterial">
@@ -56,7 +56,9 @@
     </form>
 </div>
 <script>
-    var file=undefined;
+    var file = undefined;
+    formatCurrency(document.getElementsByClassName('currency')[0]);
+
     $(document).ready(function () {
         $("#MaLoaiSanPham").select2();
     })

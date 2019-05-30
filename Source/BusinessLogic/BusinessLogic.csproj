@@ -42,7 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessLogic.cs" />
-    <Compile Include="ChiNhanhBL.cs" />
     <Compile Include="ChiPhiBL.cs" />
     <Compile Include="ComboBL.cs" />
     <Compile Include="KhuyenMaiBL.cs" />

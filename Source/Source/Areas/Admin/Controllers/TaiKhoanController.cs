@@ -28,7 +28,6 @@ namespace Source.Areas.Admin.Controllers
                 ViewBag.pageNumber = pageNumber;
                 ViewBag.pageSize = pageSize;
                 TempData["Users"] = list;
-                TempData["Boxes"] = ChiNhanh_Service.GetAll();
                 TempData.Keep();
 
             }

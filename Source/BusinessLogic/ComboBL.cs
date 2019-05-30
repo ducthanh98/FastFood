@@ -42,8 +42,10 @@ namespace BusinessLogic
                 cb_sp.TenCombo = tmp.FirstOrDefault().TenCombo;
                 cb_sp.HinhAnh = tmp.FirstOrDefault().HinhAnh;
                 cb_sp.DonGia = tmp.FirstOrDefault().DonGia;
+                cb_sp.TrangThai = tmp.FirstOrDefault().TrangThai;
 
-                cb_sp.sanPham = tmp.Select(x => new SanPham_REL() { TenSanPham = x.TenSanPham, SoLuong = x.SoLuong, MaSanPham = x.MaSanPham }).ToList();
+
+                cb_sp.sanPham = tmp.Select(x => new SanPham_REL() {  TenSanPham = x.TenSanPham, SoLuong = x.SoLuong, MaSanPham = x.MaSanPham }).ToList();
                 listCombo_Product.Add(cb_sp);
             }
             return listCombo_Product;
@@ -59,6 +61,8 @@ namespace BusinessLogic
                 cb_sp.TenCombo = listCombo.FirstOrDefault().TenCombo;
                 cb_sp.DonGia = listCombo.FirstOrDefault().DonGia;
                 cb_sp.HinhAnh = listCombo.FirstOrDefault().HinhAnh;
+                cb_sp.TrangThai = listCombo.FirstOrDefault().TrangThai;
+
                 cb_sp.sanPham = listCombo.Select(x => new SanPham_REL() { TenSanPham = x.TenSanPham, SoLuong = x.SoLuong, MaSanPham = x.MaSanPham }).ToList();
             } 
             return cb_sp;

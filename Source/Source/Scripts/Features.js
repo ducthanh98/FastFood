@@ -124,9 +124,16 @@ var id = 0;
 
     function formatCurrency(element) {
         let money = element.value.split(',').join('');
+        element.value = regexCurrency(money);;
+    }
+    function formatTableCurrency(element) {
+        let money = element.innerHTML.split(',').join('');
+        element.innerHTML = regexCurrency(money) + ' VNĐ' ;
+    }
+    function regexCurrency(money) {
         let regex = /\B(?=(\d{3})+(?!\d))/g;
         money = money.replace(regex, ",");
-        element.value = money;
+        return money;
     }
     
     document.addEventListener("DOMContentLoaded", function () {
@@ -134,3 +141,8 @@ var id = 0;
             formatCurrency(this);
         })
     });
+
+    function onlyNumber(event$) {
+        if (event$.keyCode > 47 && event$.keyCode < 58) return true;
+        return false;
+    }

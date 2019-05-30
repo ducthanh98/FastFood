@@ -23,6 +23,5 @@ namespace DAO
 
         public string DiaChi { get; set;  }
 
-        public int? MaChiNhanh { get; set; }
     }
 }

@@ -10,7 +10,9 @@ namespace DAO
     {
         public int MaCombo { get; set; } 
         public string HinhAnh { get; set; }
-        public decimal DonGia { get; set; } 
+        public decimal DonGia { get; set; }
+        public bool TrangThai { get; set; }
+
         public string TenCombo { get; set; }
         public List<SanPham_REL> sanPham { get; set; }
     }

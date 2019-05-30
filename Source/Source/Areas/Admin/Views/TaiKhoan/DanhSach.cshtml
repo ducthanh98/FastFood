@@ -10,8 +10,8 @@
     <div class="page-header-actions">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
-            <li class="breadcrumb-item"><a href="/ChiPhi/DanhSachChiPhi">Chi Phí</a></li>
-            <li class="breadcrumb-item active">Danh Sách Chi Phí</li>
+            <li class="breadcrumb-item"><a href="/ChiPhi/DanhSachChiPhi">Tài khoản</a></li>
+            <li class="breadcrumb-item active">Danh Sách tài khoản</li>
         </ol>
     </div>
 </div>
@@ -44,6 +44,12 @@
                         <button type="button" class="btn btn-block btn-sm btn-primary waves-effect waves-classic" onclick="changePage(1)"><i class="icon wb-search" aria-hidden="true"></i></button>
                     </div>
                 </div>
+
+            </div>
+            <div class="row">
+                <div class="col-12 d-flex justify-content-end">
+                    <button class="btn btn-primary" onclick="setValueForModal(this,false)" data-id='0' data-target="#info-modal" data-toggle="modal" aria-hidden="true">Thêm mới</button>
+                </div>
             </div>
             <div class="row row-lg">
                 <div class="col-lg data-table">
@@ -56,7 +62,6 @@
 
 </div>
 <!-- End Page -->
-
 <!-- Modal -->
 <div class="modal fade modal-3d-flip-vertical" id="info-modal" aria-hidden="true"
      aria-labelledby="exampleModalTitle" role="dialog">
@@ -73,11 +78,18 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default btn-pure" data-dismiss="modal">Đóng</button>
-                <button type="button" class="btn btn-primary" onclick="saveProduct()">Gửi</button>
+                <button type="button" class="btn btn-primary" onclick="saveChanges(this)">Gửi</button>
             </div>
         </div>
     </div>
 </div>
 <!-- End Modal -->
+
+<script>
+    var url_GetTb = '/Admin/TaiKhoan/_DanhSach';
+    var url_GetMd = '/Admin/TaiKhoan/_ChiTiet';
+    var url_InsertUpdate = '/Admin/Ajax/addOrUpdateUsers';
+
+</script>
 
 

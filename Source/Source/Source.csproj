@@ -198,7 +198,6 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AjaxController.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
-    <Compile Include="Areas\Admin\Controllers\ChiNhanhController.cs" />
     <Compile Include="Areas\Admin\Controllers\ChiPhiController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\KhuyenMaiController.cs" />
@@ -6250,10 +6249,6 @@
     <Content Include="Areas\Admin\Views\Home\_Pagination.cshtml" />
     <Content Include="Areas\Admin\Views\MatHang\SanPham.cshtml" />
     <Content Include="Areas\Admin\Views\ChiPhi\DanhSachChiPhi.cshtml" />
-    <Content Include="Areas\Admin\Views\ChiNhanh\DanhSach.cshtml" />
-    <Content Include="Areas\Admin\Views\ChiNhanh\_DanhSach.cshtml" />
-    <Content Include="Areas\Admin\Views\ChiNhanh\ChiTiet.cshtml" />
-    <Content Include="Areas\Admin\Views\ChiNhanh\ChiTiet_ChiNhanh.cshtml" />
     <Content Include="Areas\Admin\Views\MatHang\_SanPham.cshtml" />
     <Content Include="Areas\Admin\Views\MatHang\_SanPham_ChiTiet.cshtml" />
     <Content Include="Areas\Admin\Views\MatHang\Combo.cshtml" />

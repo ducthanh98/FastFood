@@ -23,14 +23,14 @@ namespace Source.Configuration
                 } else if(user.QuyenHan == 3)
                 {
                     filterContext.Result = new RedirectResult("/Auth/Unauthorized");
-                } else if(user.QuyenHan == 2)
+                } /*else if(user.QuyenHan == 2)
                 {
                     
                     if (controller.ControllerName != "DonHang")
                     {
                         filterContext.Result = new RedirectResult("/Auth/Unauthorized");
                     }
-                }
+                }*/
             }
         }
     }
