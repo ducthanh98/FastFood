@@ -27,14 +27,14 @@
                     <div class="modal-body">
                         <div class="container">
                             @{
-                                Html.RenderAction("SanPham_ChiTiet", "SanPham", new { MaMatHang = 1, laSanPham = false });
+                                Html.RenderAction("SanPham_ChiTiet", "SanPham", new { MaMatHang = 1, laSanPham = true });
                             }
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button data-toggle="modal" data-target="#cart" type="button" class="add-to-cart" data-dismiss="modal">Thêm vào giỏ hàng</button>
+                    @*<div class="modal-footer">
+                        <button data-toggle="modal" data-target="#cart" type="button" class="add-to-cart" data-dismiss="modal" onclick="getsp(MaMatHang, laSanPham)">Thêm vào giỏ hàng</button>
                         <button type="button" class="payment">Thanh Toán</button>
-                    </div>
+                    </div>*@
                 </div>
             </div>
         </div>   

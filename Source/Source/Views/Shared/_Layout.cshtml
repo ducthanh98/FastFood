@@ -14,30 +14,21 @@
     <link rel="stylesheet" href="~/Assets/css/product.css">
     <link rel="stylesheet" href="~/Assets/css/menu-product.css">
     <link rel="stylesheet" href="~/Assets/css/product.css">
+    <link rel="stylesheet" href="~/Assets/css/introduce.css" />
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="~/Assets/global/vendor/jquery/jquery.js"></script>
-    <script src="~/Assets/global/vendor/popper-js/umd/popper.min.j"></script>
-    <script src="~/Assets/global/vendor/bootstrap/bootstrap.js"></script>
-    <script src="~/Assets/js/App/Calculation.js"></script>
-    <script src="~/Scripts/Features.js"></script>
-
-    <script>
-        $(window).scroll(function () {
-            if ($(window).scrollTop() == 0) {
-                $(".header").css("position", "relative");
-            } else {
-                $(".header").css("position", "fixed");
-            }
-        });
-    </script>
 </head>
 <body>
+    @*@using (Html.BeginForm("KQTimKiem","TimKiem"))
+    {
+        <input type="text" name="sTuKhoa" placeholder="nhapj tu khoa" />
+        <button type="submit">tim kiem</button>
+    }*@
     <div class="header">
         <div class="headertop-right">
             <ul>
                 <li>
-                    <a href="@Url.Action("Login","Auth")">Đăng Nhập</a>
+                    <a href="@Url.Action("Login", "Auth")">Đăng Nhập</a>
                 </li>
                 <img src="~/Assets/images/topbar.png">
                 <li style="margin-right: 3px">
@@ -47,7 +38,7 @@
         </div>
         <div class="container">
             <div class="logo">
-                <a href="@Url.Action("Index","Home")"><img src="~/Assets/images/logo.png"></a>
+                <a href="@Url.Action("Index", "Home")"><img src="~/Assets/images/logo.png"></a>
             </div>
             @Html.Action("MenuPartial", "Menu_ListLSP")
         </div>
@@ -68,10 +59,56 @@
         <div class="clearfix"> </div>
         <div class="footer-class ">
             <p>
-                FastFood WebSite | Design by team 413 Hoàng Quốc Việt
+                FastFood WebSite | Design by HungNT
                 <a href="#" class="backtop backtop-visible"></a>
             </p>
         </div>
     </div>
+    <div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="cart" aria-hidden="true">
+        <div class="modal-dialog modal-dialog" role="document" style="max-width: none;width:auto;padding-left: 3%;padding-right: 3%;">
+            <div class="modal-content">
+                <div class="modal-header" style="font-weight: bold;color: #ffffff;background-color: #EF5F21;padding: 5px 5px 5px">
+                    <h5 class="modal-title">Phần Ăn Bạn Đã Chọn</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-right:0">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="contaner">
+                        @*@{ 
+                            Html.RenderAction("GioHang_ChiTiet", "GioHang", new { MaMatHang = 1, laSanPham = false, soLuong = 1});
+                        }*@
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="col-6" style="text-align: right; margin-right:0">
+                        <button class="add-to-cart">
+                            <a href="@Url.Action("LoaiSanPham","SanPham")">Tiếp tục mua hàng</a>
+                        </button>
+                    </div>
+                    <div class="col-6 " style="text-align: left; margin-left:0">
+                        <button class="payment">
+                            <a>Thanh toán</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
+<script src="~/Assets/global/vendor/jquery/jquery.js"></script>
+<script src="~/Assets/global/vendor/popper-js/umd/popper.min.j"></script>
+<script src="~/Assets/global/vendor/bootstrap/bootstrap.js"></script>
+<script src="~/Assets/js/App/website.js"></script>
+<script src="~/Scripts/Features.js"></script>
+<script>
+        $(window).scroll(function () {
+            if ($(window).scrollTop() == 0) {
+                $(".header").css("position", "relative");
+            } else {
+                $(".header").css("position", "fixed");
+            }
+        });
+</script>
 </html>

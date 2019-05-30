@@ -206,10 +206,13 @@
     <Compile Include="Configuration\AuthorizeBusinessLogic.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
+    <Compile Include="Controllers\GioiThieuController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
     <Compile Include="Controllers\Menu_ListLSPController.cs" />
     <Compile Include="Areas\Admin\Controllers\TaiKhoanController.cs" />
+    <Compile Include="Controllers\TimKiemController.cs" />
+
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -223,6 +226,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\css\font-awesome.css" />
+    <Content Include="Assets\css\introduce.css" />
     <Content Include="Assets\css\layout.css" />
     <Content Include="Assets\css\menu-product.css" />
     <Content Include="Assets\css\product.css" />
@@ -5208,16 +5212,46 @@
     <Content Include="Assets\global\vendor\x-editable\bootstrap-editable.min.js" />
     <Content Include="Assets\global\vendor\x-editable\images\clear.png" />
     <Content Include="Assets\global\vendor\x-editable\images\loading.gif" />
+    <Content Include="Assets\images\1970-8.png" />
+    <Content Include="Assets\images\1980-8.png" />
+    <Content Include="Assets\images\1990-8.png" />
+    <Content Include="Assets\images\2000.png" />
+    <Content Include="Assets\images\2010.png" />
+    <Content Include="Assets\images\bac.jpg" />
     <Content Include="Assets\images\Banner\banner1.jpg" />
     <Content Include="Assets\images\Banner\banner2.png" />
     <Content Include="Assets\images\Banner\banner3.png" />
+    <Content Include="Assets\images\bg-coupon.png" />
     <Content Include="Assets\images\body-bg.png" />
     <Content Include="Assets\images\cart.png" />
+    <Content Include="Assets\images\dot-story-year.png" />
     <Content Include="Assets\images\footer-bg.jpg" />
+    <Content Include="Assets\images\his-1976.png" />
+    <Content Include="Assets\images\his-1980-1.jpg" />
+    <Content Include="Assets\images\his-1980-2.jpg" />
+    <Content Include="Assets\images\his-1993.jpg" />
+    <Content Include="Assets\images\his-1997.jpg" />
+    <Content Include="Assets\images\his-1999-1.jpg" />
+    <Content Include="Assets\images\his-2001.jpg" />
+    <Content Include="Assets\images\his-2008-1.jpg" />
+    <Content Include="Assets\images\his-2009-2.jpg" />
+    <Content Include="Assets\images\his-2010-2.jpg" />
+    <Content Include="Assets\images\his-2011-1.jpg" />
+    <Content Include="Assets\images\his-2011-3.jpg" />
+    <Content Include="Assets\images\his-2011-4.jpg" />
+    <Content Include="Assets\images\his-2011-5.jpg" />
+    <Content Include="Assets\images\his-2012-1.jpg" />
+    <Content Include="Assets\images\his-2012-2.jpg" />
+    <Content Include="Assets\images\his-2013-2.jpg" />
+    <Content Include="Assets\images\his-2013-3.jpg" />
+    <Content Include="Assets\images\his-2013-4.jpg" />
+    <Content Include="Assets\images\his-2013.jpg" />
     <Content Include="Assets\images\Home\home_block_career_V.jpg" />
     <Content Include="Assets\images\Home\home_block_deli_V.jpg" />
     <Content Include="Assets\images\Home\home_block_menu_V.jpg" />
     <Content Include="Assets\images\img-sprite.png" />
+    <Content Include="Assets\images\left-story-year.png" />
+    <Content Include="Assets\images\logolouisiana.jpg" />
     <Content Include="Assets\images\menu_spicy_40off.png" />
     <Content Include="Assets\images\logo.png" />
     <Content Include="Assets\images\m4.png" />
@@ -5229,6 +5263,7 @@
     <Content Include="Assets\images\menu_spicy_redboat1pc.png" />
     <Content Include="Assets\images\nav-top.png" />
     <Content Include="Assets\images\pen.png" />
+    <Content Include="Assets\images\right-story-year.png" />
     <Content Include="Assets\images\scroll-top.png" />
     <Content Include="Assets\images\themes.gif" />
     <Content Include="Assets\images\top-menu-bg.png" />
@@ -5236,7 +5271,7 @@
     <Content Include="Assets\images\topbar-separator.png" />
     <Content Include="Assets\images\topbar.png" />
     <Content Include="Assets\images\trash.png" />
-    <Content Include="Assets\js\App\Calculation.js" />
+    <Content Include="Assets\js\App\website.js" />
     <Content Include="Assets\js\App\Calendar.js" />
     <Content Include="Assets\js\App\Contacts.js" />
     <Content Include="Assets\js\App\Documents.js" />
@@ -5297,7 +5332,9 @@
     <Content Include="Scripts\Features.js" />
     <Content Include="Scripts\map.js" />
     <Content Include="Scripts\toastr.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -6280,8 +6317,14 @@
     <Content Include="Views\SanPham\SanPham.cshtml" />
     <Content Include="Views\SanPham\_KhuyenMai.cshtml" />
     <Content Include="Views\SanPham\SanPham_ChiTiet.cshtml" />
+<<<<<<< HEAD
     <Content Include="Areas\Admin\Views\TaiKhoan\DanhSach.cshtml" />
     <Content Include="Areas\Admin\Views\TaiKhoan\_DanhSach.cshtml" />
+=======
+    <Content Include="Views\GioHang\GioHang_ChiTiet.cshtml" />
+    <Content Include="Views\TimKiem\KQTimKiem.cshtml" />
+    <Content Include="Views\GioiThieu\Index.cshtml" />
+>>>>>>> origin/sp
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">

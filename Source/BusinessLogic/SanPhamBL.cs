@@ -18,7 +18,7 @@ namespace BusinessLogic
 
         public List<SanPhamDAO> GetAll()
         {
-            throw new NotImplementedException();
+            return new SqlHelper<SanPhamDAO>().ExecuteProcAndGetData("CTSanPham_GetAll");
         }
         public List<SanPham_TypeInsertCombo> SelectAllForCombo()
         {
@@ -55,6 +55,11 @@ namespace BusinessLogic
         public List<SanPham_LoaiSanPham> SP_GetAllBy(int ID)
         {
             return new SqlHelper<SanPham_LoaiSanPham>().ExecuteProcAndGetData("CTSanPham_SelectByLSP", "MaLoaiSanPham",ID);
+        }
+
+        public List<SanPhamDAO> SelectBy(string sTuKhoa)
+        {
+            return new SqlHelper<SanPhamDAO>().ExecuteProcAndGetData("SanPham_SelectBy",sTuKhoa);
         }
     }
 }

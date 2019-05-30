@@ -31,6 +31,8 @@ namespace Source.Controllers
 
         public PartialViewResult SanPham_ChiTiet(int MaMatHang, bool laSanPham)
         {
+            //List<DAO.SanPhamDAO> lstsp = SanPham_Service.GetAll().Where(x => x.MaLoaiSanPham == 5).ToList();
+            //ViewBag.lstNuoc = lstsp;
             if (laSanPham == false)
             {
                 Combo_SanPham sp_cb = Combo_Service.SelectByPrimaryKey(MaMatHang);
@@ -42,8 +44,7 @@ namespace Source.Controllers
                 ViewBag.spdetail = sp;
             }
             return PartialView();
-        }
-
+       }
         public PartialViewResult _KhuyenMai()
         {
             List<KhuyenMaiDAO> lstKM = KhuyenMai_Service.GetAll();

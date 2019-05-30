@@ -27,7 +27,7 @@
                         <div class="product-info">
                             <h4>@lstCB[i].TenCombo</h4>
                             <p>@lstCB[i].DonGia</p>
-                            <button class="cart-btn" data-toggle="modal" onclick="ThemVaoGioHang(@lstCB[i].MaCombo,false)" data-target="#showdetail">Đặt Mua</button>
+                            <button class="cart-btn" data-toggle="modal" onclick="ThemVaoGioHang('/SanPham/SanPham_ChiTiet',@lstCB[i].MaCombo,false)" data-target="#showdetail">Đặt Mua</button>
                         </div>
                     </li>
                 }
@@ -41,9 +41,9 @@
                             </div>
                         </div>
                         <div class="product-info">
-                            <h4>@item.TenSanPham</h4>
+                            <h4>@item.TenSanPham</h4>       
                             <p>@item.DonGia</p>
-                            <button class="cart-btn" data-toggle="modal" onclick="ThemVaoGioHang(@item.MaSanPham,true)" data-target="#showdetail">Đặt Mua</button>
+                            <button class="cart-btn" data-toggle="modal" onclick="ThemVaoGioHang('/SanPham/SanPham_ChiTiet',@item.MaSanPham,true)" data-target="#showdetail">Đặt Mua</button>
                         </div>
                     </li>
                 }
@@ -53,17 +53,19 @@
 </div>
 
 <script>
-    function ThemVaoGioHang(id, laSanPham) {
+    function ThemVaoGioHang(url, id, laSanPham, soLuong, giaTien) {
         debugger
-        $.ajax({
-            url: '/SanPham/SanPham_ChiTiet',
+        soLuong = document.getElementById("number").value
+        $.ajax({           
+            url: url,
             type: "post",
             data: {
                 MaMatHang: id,
-                laSanPham: laSanPham
+                laSanPham: laSanPham,
+                soLuong: soLuong
             }
         }).done((result) => {
-            console.log(result)
+            $(".modal-body .container").html(result);
         })
     }
 </script>

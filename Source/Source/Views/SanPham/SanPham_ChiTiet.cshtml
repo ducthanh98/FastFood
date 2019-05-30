@@ -3,7 +3,50 @@
     DAO.SanPhamDAO dssp = (DAO.SanPhamDAO)ViewBag.spdetail;
 }
 
-@if (dssp != null)
+@if (dscb != null)
+{
+    <div class="extra-product">
+        <div class="bundle-title">
+            Phần Ăn Chi Tiết
+        </div>
+        <div class="bundle-content">
+            @foreach (var item in dscb.sanPham)
+            {
+                <div class="bundle-option-content">
+                    <div class="span-1">
+                        <div class="name">@item.TenSanPham</div>
+                    </div>
+                    <div class="span-1-option" style="width: 7.5em">
+                        <input disabled="disabled" type="text" id="number1" class="count" maxlength="10" value="@item.SoLuong">
+                    </div>
+                </div>
+            }          
+        </div>
+    </div>
+    <div class="count-product">
+        <div class="span-1">
+            <div class="name">Số Lượng</div>
+        </div>
+        <div class="span-1-option">
+            <button class="control-count" onclick="decreaseValue(); calprice1()" type="button" id="btn-1">
+                <span>-</span>
+            </button>
+            <input type="text" id="number" class="count" maxlength="10" value="1" onchange="cal1(this)" data-dongia1="@dscb.DonGia">
+            <button class="control-count" onclick="increaseValue()" type="button" id="btn-2">
+                <span>+</span>
+            </button>
+        </div>
+    </div>
+    <div class="total-payment">
+        <span>Đơn Giá: </span>
+        <span class="total" id="price1"> @dscb.DonGia</span>
+    </div>
+    <div class="modal-footer">
+        <button data-toggle="modal" data-target="#cart" type="button" class="add-to-cart" data-dismiss="modal" onclick="ThemVaoGioHang('/GioHang/GioHang_ChiTiet',@dscb.MaCombo,false)">Thêm vào giỏ hàng</button>
+        <button type="button" class="payment">Thanh Toán</button>
+    </div>
+}
+else
 {
     <div class="extra-product">
         <div class="bundle-title">
@@ -11,35 +54,62 @@
         </div>
         <div class="bundle-content">
             <div class="bundle-option-content">
+
                 <div class="span-1">
                     <div class="name">@dssp.TenSanPham</div>
-                    </div>
-                    <div class="span-1-option">
-                        <input value="1">
-                    </div>
                 </div>
+
+                <div class="span-1-option">
+                    <button class="control-count" onclick="decreaseValue(); calprice2()" type="button" id="btn-1">
+                        <span>-</span>
+                    </button>
+                    <input type="text" id="number" class="count" maxlength="10" value="1" onchange="cal2(this)" data-dongia2="@dssp.DonGia">
+                    <button class="control-count" onclick="increaseValue(); calprice2()" type="button" id="btn-2">
+                        <span>+</span>
+                    </button>
+                </div>
+
             </div>
         </div>
-        <div class="count-product">
-            <div class="span-1">
-                <div class="name">Số Lượng</div>
-            </div>
-            <div class="span-1-option">
-                <button class="control-count" type="button" id="btn-1">
-                    <span>-</span>
-                </button>
-                <input class="count" maxlength="10" value="1">
-                <button class="control-count" onclick="Calculation(this,'.count');" type="button" id="btn-2">
-                    <span>+</span>
-                </button>
-            </div>
-        </div>
-        <div class="total-payment">
-            <span>Tổng tiền phải thanh toán: </span>
-            <span class="total"> 150.000</span>
-        </div>
+    </div>
+
+    <div class="total-payment">
+        <span>Tổng Phải Thanh Toán:  </span>
+        <span class="total" id="price2">@dssp.DonGia</span>
+    </div>
+    <div class="modal-footer">
+        <button data-toggle="modal" data-target="#cart" type="button" class="add-to-cart" data-dismiss="modal" onclick="ThemVaoGioHang('/GioHang/GioHang_ChiTiet',@dssp.MaSanPham,true)">Thêm vào giỏ hàng</button>
+        <button type="button" class="payment">Thanh Toán</button>
+    </div>
 }
+        
+<script>
+    function cal1(obj) {
+        var obj = document.getElementById("number").value
+        var price = document.getElementById("number").getAttribute('data-dongia1')
+        document.getElementById("price1").innerHTML = price * obj
+    }
+
+    function cal2(obj) {
+        var obj = document.getElementById("number").value
+        var price = document.getElementById("number").getAttribute('data-dongia2')
+        document.getElementById("price2").innerHTML = price * obj
+    }
+    function calprice1() {
+        var a = document.getElementById("number").value
+        var b = document.getElementById("number").getAttribute('data-dongia1')
+        var total = parseInt(a) * parseInt(b)
+        document.getElementById("price1").innerHTML = total
+    }
 
 
+    function calprice2() {
+        var a = document.getElementById("number").value
+        var b = document.getElementById("number").getAttribute('data-dongia2')
+        var total = parseInt(a) * parseInt(b)
+        document.getElementById("price2").innerHTML= total
+    }
+
+</script>
 
 

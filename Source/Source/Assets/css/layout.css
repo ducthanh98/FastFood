@@ -313,3 +313,7 @@ ul.social li i:hover {
 .backtop-visbile {
     visibility: visible;
 }
+
+button{
+    cursor : pointer;
+}
