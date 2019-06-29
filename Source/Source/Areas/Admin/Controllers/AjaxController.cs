@@ -370,6 +370,11 @@ namespace Source.Areas.Admin.Controllers
         }
 
         #endregion Users
-
+        public List<SanPhamDAO> test()
+        {
+            List<SanPhamDAO> lst = new List<SanPhamDAO>();
+            lst = SanPham_Service.SelectBetween(4000, 5000);
+            return lst;
+        }
     }
 }

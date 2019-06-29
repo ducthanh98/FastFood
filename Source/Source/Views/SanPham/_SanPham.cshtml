@@ -2,7 +2,7 @@
 
 @{
     List<DAO.SanPham_LoaiSanPham> lstSP = (List<DAO.SanPham_LoaiSanPham>)TempData["sanPham"];
-    List<DAO.Combo_SanPham> lstCB = (List<DAO.Combo_SanPham>)TempData["comBo"];
+     List<DAO.Combo_SanPham> lstCB = (List<DAO.Combo_SanPham>)TempData["comBo"];
 }
 }
 <div class="title-menu">
@@ -54,7 +54,6 @@
 
 <script>
     function ThemVaoGioHang(url, id, laSanPham, soLuong, giaTien) {
-        debugger
         soLuong = document.getElementById("number").value
         $.ajax({           
             url: url,

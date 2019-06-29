@@ -11,7 +11,7 @@
 
         <div class="form-group form-material" data-plugin="formMaterial">
             <label class="form-control-label" for="TenLoaiChiPhi">Giá tiền</label>
-            <input type="text" class="form-control required currency" onkeyup="formatCurrency(this)" value='@Model.GiaTien' id="GiaTien" />
+            <input type="text" class="form-control required currency" onkeyup="formatCurrency(this)" onkeypress="return onlyNumber(event)" value='@Model.GiaTien' id="GiaTien" />
         </div>
 
         <div class="form-group form-material" data-plugin="formMaterial">

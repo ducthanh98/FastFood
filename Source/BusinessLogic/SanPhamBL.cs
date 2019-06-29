@@ -61,5 +61,9 @@ namespace BusinessLogic
         {
             return new SqlHelper<SanPhamDAO>().ExecuteProcAndGetData("SanPham_SelectBy",sTuKhoa);
         }
+        public List<SanPhamDAO> SelectBetween(double from,double to)
+        {
+            return new SqlHelper<SanPhamDAO>().ExecuteProcAndGetData("SanPham_SelectBetween", from,to);
+        }
     }
 }
