@@ -38,7 +38,7 @@ namespace Source.Controllers
             }
             else
             {
-                SanPhamDAO sp = SanPham_Service.GetByID(MaMatHang);
+                SanPhamDAO sp = SanPham_Service.GetByID(MaMatHang);              
                 ViewBag.spdetail = sp;
             }
             return PartialView();

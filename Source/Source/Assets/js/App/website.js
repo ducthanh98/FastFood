@@ -17,8 +17,3 @@ function decreaseValue() {
     value--;
     document.getElementById('number').value = value;
 }
-
-
-function Calculation() {
-
-}

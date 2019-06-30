@@ -96,6 +96,20 @@ li {
     position: absolute;
 }
 
+.login ul li{
+     display: none;
+}
+
+.login:hover ul li{
+    display: block;
+}
+
+.login:hover ul li {
+    display: block;
+    height: auto;
+    width: auto;
+    position: absolute;
+}
 .memenu {
     display: none;
     padding-right: 3%;

@@ -4,7 +4,7 @@
 
 @if(Model == null || Model.Count == 0)
 {
-    <p class="text-info text-center">
+    <p class="text-danger text-center" style="font-size: 30px">
         Bạn Chưa Mua Sản Phẩm Nào!
     </p>
 }
@@ -34,39 +34,26 @@ else
                                     <div class="col-8" style="margin-top: 10px">
                                         <div class="col align-self-start">
                                             <a href="update-cart.html" style="font-size: 20px">@item.sp.TenSanPham</a>
-                                        </div>
-                                        <div class="col align-self-end" style="margin-top:3%">
-                                            <a class="adetail" href="#detail" data-toggle="collapse">
-                                                Xem Chi Tiết
-                                            </a>
-                                            <div class="collapse" id="detail">
-                                                <div class="show-detail">
-                                                    <dl>@item.sp.TenSanPham</dl>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        </div>                                     
                                     </div>
                                 </div>
                             </td>
-                            <td id="td2">@item.sp.DonGia</td>                     
+                            <td id="giaSP">@item.sp.DonGia</td>                     
                             <td id="td3">
                                 <div class="count-product">
                                     <div class="span-1-option">
-                                        <button class="control-count" onclick="decreasevalue()" type="button" id="btn-1">
+                                        <button class="control-count" onclick="decreaseValue(this)" type="button" id="btn-1">
                                             <span>-</span>
                                         </button>
                                         <input type="text" id="number" class="count" maxlength="10" value="@item.SoLuong">
-                                        <button class="control-count" onclick="increasevalue()" type="button" id="btn-2">
+                                        <button class="control-count" onclick="increaseValue(this)" type="button" id="btn-2">
                                             <span>+</span>
                                         </button>
                                     </div>
                                 </div>
                             </td>
-                            <td id="td4">
-                                <a href="update-cart.html"><img src="./imagescart/pen.png"> thay đổi chi tiết phần ăn</a>
-                            </td>
                             <td id="td5">
-                                <button onclick="XoaGioHang('/GioHang/XoaGioHang', @item.sp.MaSanPham, false); return confirm('Bạn có chắc muốn xóa sản phẩm này?');"><img src="~/assets/images/trash.png">xóa</button>
+                                <button onclick="XoaGioHang('/GioHang/XoaGioHang', @item.sp.MaSanPham, true)"><img src="~/assets/images/trash.png">xóa</button>
                             </td>
                         </tr>
                     }
@@ -91,10 +78,11 @@ else
                                             <div class="collapse" id="detail">
                                                 <div class="show-detail">
                                                     <dl>
-                                                        <dt>Gà rán:</dt>
-                                                        <dd>2 x 1 gà rán</dd>
-                                                        <dt>Món ăn kèm:</dt>
-                                                        <dd>1 Khoai tây chiên vừa</dd>
+                                                        @foreach (var ds in item.cb.sanPham)
+                                                        {
+                                                            <dt>@ds.TenSanPham :</dt> 
+                                                            <dd>  @ds.SoLuong</dd>
+                                                        }
                                                     </dl>
                                                 </div>
                                             </div>
@@ -102,25 +90,22 @@ else
                                     </div>
                                 </div>
                             </td>
-                            <td id="td2">@item.cb.DonGia</td>
+                            <td id="giaCB">@item.cb.DonGia</td>
                             <td id="td3">
                                 <div class="count-product">
                                     <div class="span-1-option">
-                                        <button class="control-count" onclick="decreasevalue()" type="button" id="btn-1">
+                                        <button class="control-count" onclick="decreaseValue(this)" type="button" id="btn-1">
                                             <span>-</span>
                                         </button>
-                                        <input type="text" id="number" class="count" maxlength="10" value="@item.SoLuong">
-                                        <button class="control-count" onclick="increasevalue()" type="button" id="btn-2">
+                                        <input disabled="disabled" type="text" id="number" onchange="TongTien()" class="count" maxlength="10" value="@item.SoLuong">
+                                        <button class="control-count" onclick="increaseValue(this) " type="button" id="btn-2">
                                             <span>+</span>
                                         </button>
                                     </div>
                                 </div>
                             </td>
-                            <td id="td4">
-                                <a href="update-cart.html"><img src="./imagescart/pen.png"> thay đổi chi tiết phần ăn</a>
-                            </td>
                             <td id="td5">
-                                <button onclick="XoaGioHang('/GioHang/XoaGioHang',@item.cb.MaCombo, true) "><img src="~/assets/images/trash.png">xóa</button>
+                                <button onclick="XoaGioHang('/GioHang/XoaGioHang',@item.cb.MaCombo, false);"><img src="~/assets/images/trash.png">xóa</button>
                             </td>
                         </tr>
                     }
@@ -134,28 +119,51 @@ else
                 <p>Tổng Cộng:</p>
             </div>
             <div class="col-6" style="text-align: left; color: green; font-size: 23px; padding-left:0;">
-                <p>200.0000</p>
+                <span id="tongtien">1</span>
             </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="col-6" style="text-align: right; margin-right:0">
+            <button class="add-to-cart">
+                <a href="@Url.Action("LoaiSanPham","SanPham")">Tiếp tục mua hàng</a>
+            </button>
+        </div>
+        <div class="col-6 " style="text-align: left; margin-left:0">
+            <button class="payment">
+                <a>Thanh toán</a>
+            </button>
         </div>
     </div>
 }
 
-@*<script>
+<script>
     function XoaGioHang(url, id, laSanPham) {
-        $.ajax({
-            url: url,
-            data: {
-                id: MaMatHang,
-                laSanPham: laSanPham
-            }
-        }).done(() => {
+        var r = confirm("Bạn có chắc muốn xóa sản phẩm !")
+        if(r === true){
             $.ajax({
-                url: '/GioHang/GioHang_ChiTiet'
-            }).done((result) => {
-                $(".modal-body-gh .container").html(result);
+                url: url,
+                data: {
+                    MaMatHang: id,
+                    laSanPham: laSanPham
+                }
+            }).done(() => {
+                $.ajax({
+                    url: '/GioHang/GioHang_ChiTiet'
+                }).done((result) => {
+                    $(".modal-body-gh .container").html(result);
+                })
             })
-        })
+        }      
     }
-</script>*@
+
+    function TongTien(){
+        var a = document.getElementById("giaSP").value
+        var b = document.getElementById("giaCB").value
+        document.getElementById("tongtien").innerHTML= parseInt(a) + parseInt(b)
+    }
+
+    
+</script>
 
 

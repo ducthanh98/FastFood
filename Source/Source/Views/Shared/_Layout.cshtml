@@ -1,4 +1,6 @@
-﻿
+﻿@{
+    DAO.TaiKhoanDAO user = (DAO.TaiKhoanDAO)Session["User"];
+}
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,20 +22,39 @@
 </head>
 <body>
     @*@using (Html.BeginForm("KQTimKiem","TimKiem"))
-    {
-        <input type="text" name="sTuKhoa" placeholder="nhapj tu khoa" />
-        <button type="submit">tim kiem</button>
-    }*@
+        {
+            <input type="text" name="sTuKhoa" placeholder="nhapj tu khoa" />
+            <button type="submit">tim kiem</button>
+        }*@
     <div class="header">
         <div class="headertop-right">
             <ul>
-                <li>
-                    <a href="@Url.Action("Login", "Auth")">Đăng Nhập</a>
-                </li>
-                <img src="~/Assets/images/topbar.png">
-                <li style="margin-right: 3px">
-                    <a href="#">Đăng Kí</a>
-                </li>
+                @if (user == null)
+                {
+                    <li>
+                        <a href="@Url.Action("Login", "Auth")">Đăng Nhập</a>
+                    </li>
+                    <img src="~/Assets/images/topbar.png">
+                    <li style="margin-right: 3px">
+                        <a href="@Url.Action("Register","Auth")">Đăng Kí</a>
+                    </li>
+                }
+                else
+                {
+
+                    <li>
+                        <div class="login">
+                            <a href="#" style="margin-right: 1%;display: contents">Xin Chào, @user.TenTaiKhoan</a>
+                            <div class="memenu">
+                                <ul>
+                                    <li><a>Xem Thông Tin</a></li>
+                                    <li><a href="@Url.Action("Logout","Auth")">Đăng Xuất</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                }
             </ul>
         </div>
         <div class="container">
@@ -77,18 +98,6 @@
                     <div class="container" style="max-height: 400px">
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <div class="col-6" style="text-align: right; margin-right:0">
-                        <button class="add-to-cart">
-                            <a href="@Url.Action("LoaiSanPham","SanPham")">Tiếp tục mua hàng</a>
-                        </button>
-                    </div>
-                    <div class="col-6 " style="text-align: left; margin-left:0">
-                        <button class="payment">
-                            <a>Thanh toán</a>
-                        </button>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -100,12 +109,12 @@
 <script src="~/Assets/js/App/website.js"></script>
 <script src="~/Scripts/Features.js"></script>
 <script>
-        $(window).scroll(function () {
-            if ($(window).scrollTop() == 0) {
-                $(".header").css("position", "relative");
-            } else {
-                $(".header").css("position", "fixed");
-            }
-        });
+    $(window).scroll(function () {
+        if ($(window).scrollTop() == 0) {
+            $(".header").css("position", "relative");
+        } else {
+            $(".header").css("position", "fixed");
+        }
+    });
 </script>
 </html>

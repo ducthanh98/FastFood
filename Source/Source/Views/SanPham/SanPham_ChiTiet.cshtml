@@ -28,11 +28,11 @@
             <div class="name">Số Lượng</div>
         </div>
         <div class="span-1-option">
-            <button class="control-count" onclick="decreaseValue(); calprice1()" type="button" id="btn-1">
+            <button class="control-count" onclick="decreaseValue(this); calprice1()" type="button" id="btn-1">
                 <span>-</span>
             </button>
             <input type="text" id="number" class="count" maxlength="10" value="1" onchange="cal1(this)" data-dongia1="@dscb.DonGia">
-            <button class="control-count" onclick="increaseValue()" type="button" id="btn-2">
+            <button class="control-count" onclick="increaseValue(this); calprice1()" type="button" id="btn-2">
                 <span>+</span>
             </button>
         </div>
@@ -46,10 +46,10 @@
         <button type="button" class="payment">Thanh Toán</button>
     </div>
 }
-else
+else if(dssp != null && dssp.TrangThai == true)
 {
     <div class="extra-product">
-        <div class="bundle-title">
+        <div class="bundle-title">  
             Phần Ăn Chi Tiết
         </div>
         <div class="bundle-content">
@@ -58,7 +58,6 @@ else
                 <div class="span-1">
                     <div class="name">@dssp.TenSanPham</div>
                 </div>
-
                 <div class="span-1-option">
                     <button class="control-count" onclick="decreaseValue(); calprice2()" type="button" id="btn-1">
                         <span>-</span>

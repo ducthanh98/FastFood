@@ -31,19 +31,19 @@
                         </div>
                     </li>
                 }
-                @foreach (var item in lstSP)
+                @for(int i=0; i< lstSP.Count;i++)
                 {
                     <li>
                         <div class="product-describe">
-                            <img src="@Url.Content(AppConfig.loadSP + item.HinhAnh)">
+                            <img src="@Url.Content(AppConfig.loadSP + lstSP[i].HinhAnh)">
                             <div class="description">
-                                @item.MoTa
+                                @lstSP[i].MoTa
                             </div>
                         </div>
                         <div class="product-info">
-                            <h4>@item.TenSanPham</h4>       
-                            <p>@item.DonGia</p>
-                            <button class="cart-btn" data-toggle="modal" onclick="XemChiTiet('/SanPham/SanPham_ChiTiet',@item.MaSanPham,true)" data-target="#showdetail">Đặt Mua</button>
+                            <h4>@lstSP[i].TenSanPham</h4>       
+                            <p>@lstSP[i].DonGia</p>
+                            <button class="cart-btn" data-toggle="modal" onclick="XemChiTiet('/SanPham/SanPham_ChiTiet',@lstSP[i].MaSanPham,true)" data-target="#showdetail">Đặt Mua</button>
                         </div>
                     </li>
                 }
