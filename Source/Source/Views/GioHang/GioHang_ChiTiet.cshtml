@@ -1,133 +1,163 @@
 ﻿@using Source.Configuration;
-@{
-    DAO.Combo_SanPham cb = (DAO.Combo_SanPham)ViewBag.cb;
-    DAO.SanPhamDAO sp = (DAO.SanPhamDAO)ViewBag.sp;
-}
-<div class="contaner">
-    <div class="cart-info">
-        <table>
-            <tr style="font-size: 23px;font-weight: bold">
-                <td>Tên Sản Phẩm</td>
-                <td>Giá</td>
-                <td>Số Lượng</td>
-                <td colspan="2">Thay Đổi</td>
-            </tr>
+@model List<DAO.GioHang>
 
-            @if (cb == null)
-            {
-                <tr>
-                    <td id="td1">
-                        <div class="row" style="margin: 0">
-                            <div class="col-4">
-                                <a href="update-cart.html">
-                                    <img src="@Url.Content(AppConfig.loadSP +sp.HinhAnh)">
-                                </a>
-                            </div>
-                            <div class="col-8" style="margin-top: 10px">
-                                <div class="col align-self-start">
-                                    <a href="update-cart.html" style="font-size: 20px">@sp.TenSanPham</a>
-                                </div>
-                                <div class="col align-self-end" style="margin-top:3%">
-                                    <a class="adetail" href="#detail" data-toggle="collapse">
-                                        Xem Chi Tiết
-                                    </a>
-                                    <div class="collapse" id="detail">
-                                        <div class="show-detail">
-                                            <dl>
-                                                @sp.TenSanPham
-                                            </dl>
+
+@if(Model == null || Model.Count == 0)
+{
+    <p class="text-info text-center">
+        Bạn Chưa Mua Sản Phẩm Nào!
+    </p>
+}
+else
+{
+    <div class="container">
+        <div class="cart-info" style="margin-top: 1%">
+            <table>
+                <tr style="font-size: 18px;font-weight: bold">
+                    <td>Tên Sản Phẩm</td>
+                    <td>Giá</td>
+                    <td>Số Lượng</td>
+                    <td colspan="2">Thay Đổi</td>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    if (item.cb == null)
+                    {
+                        <tr>
+                            <td id="td1">
+                                <div class="row" style="margin: 0">
+                                    <div class="col-4">
+                                        <a href="update-cart.html">
+                                            <img src="@Url.Content(AppConfig.loadSP + item.sp.HinhAnh)">
+                                        </a>
+                                    </div>
+                                    <div class="col-8" style="margin-top: 10px">
+                                        <div class="col align-self-start">
+                                            <a href="update-cart.html" style="font-size: 20px">@item.sp.TenSanPham</a>
+                                        </div>
+                                        <div class="col align-self-end" style="margin-top:3%">
+                                            <a class="adetail" href="#detail" data-toggle="collapse">
+                                                Xem Chi Tiết
+                                            </a>
+                                            <div class="collapse" id="detail">
+                                                <div class="show-detail">
+                                                    <dl>
+                                                        @item.sp.TenSanPham
+                                                    </dl>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </td>
-                    <td id="td2">@sp.DonGia</td>
-                    <td id="td3">
-                        <div class="count-product">
-                            <div class="span-1-option">
-                                <button class="control-count" onclick="decreasevalue()" type="button" id="btn-1">
-                                    <span>-</span>
-                                </button>
-                                <input type="text" id="number" class="count" maxlength="10" value="1">
-                                <button class="control-count" onclick="increasevalue()" type="button" id="btn-2">
-                                    <span>+</span>
-                                </button>
-                            </div>
-                        </div>
-                    </td>
-                    <td id="td4">
-                        <a href="update-cart.html"><img src="./imagescart/pen.png"> thay đổi chi tiết phần ăn</a>
-                    </td>
-                    <td id="td5">
-                        <button><img src="~/assets/images/trash.png">xóa</button>
-                    </td>
-                </tr>
-            }
-            else
-            {
-                <tr>
-                    <td id="td1">
-                        <div class="row" style="margin: 0">
-                            <div class="col-4">
-                                <a href="update-cart.html">
-                                    <img src="@Url.Content(AppConfig.loadSP +cb.HinhAnh)">
-                                </a>
-                            </div>
-                            <div class="col-8" style="margin-top: 10px">
-                                <div class="col align-self-start">
-                                    <a href="update-cart.html" style="font-size: 20px">@cb.TenCombo</a>
+                            </td>
+                            <td id="td2">@item.sp.DonGia</td>                     
+                            <td id="td3">
+                                <div class="count-product">
+                                    <div class="span-1-option">
+                                        <button class="control-count" onclick="decreasevalue()" type="button" id="btn-1">
+                                            <span>-</span>
+                                        </button>
+                                        <input type="text" id="number" class="count" maxlength="10" value="@item.SoLuong">
+                                        <button class="control-count" onclick="increasevalue()" type="button" id="btn-2">
+                                            <span>+</span>
+                                        </button>
+                                    </div>
                                 </div>
-                                <div class="col align-self-end" style="margin-top:3%">
-                                    <a class="adetail" href="#detail" data-toggle="collapse">
-                                        Xem chi tiết
-                                    </a>
-                                    <div class="collapse" id="detail">
-                                        <div class="show-detail">
-                                            <dl>
-                                                <dt>Gà rán:</dt>
-                                                <dd>2 x 1 gà rán</dd>
-                                                <dt>Món ăn kèm:</dt>
-                                                <dd>1 Khoai tây chiên vừa</dd>
-                                            </dl>
+                            </td>
+                            <td id="td4">
+                                <a href="update-cart.html"><img src="./imagescart/pen.png"> thay đổi chi tiết phần ăn</a>
+                            </td>
+                            <td id="td5">
+                                <button onclick="XoaGioHang('/GioHang/XoaGioHang', @item.cb.MaCombo, false); return confirm('Bạn có chắc muốn xóa sản phẩm này?');"><img src="~/assets/images/trash.png">xóa</button>
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr>
+                            <td id="td1">
+                                <div class="row" style="margin: 0">
+                                    <div class="col-4">
+                                        <a href="update-cart.html">
+                                            <img src="@Url.Content(AppConfig.loadSP + item.cb.HinhAnh)">
+                                        </a>
+                                    </div>
+                                    <div class="col-8" style="margin-top: 10px">
+                                        <div class="col align-self-start">
+                                            <a href="update-cart.html" style="font-size: 20px">@item.cb.TenCombo</a>
+                                        </div>
+                                        <div class="col align-self-end" style="margin-top:3%">
+                                            <a class="adetail" href="#detail" data-toggle="collapse">
+                                                Xem chi tiết
+                                            </a>
+                                            <div class="collapse" id="detail">
+                                                <div class="show-detail">
+                                                    <dl>
+                                                        <dt>Gà rán:</dt>
+                                                        <dd>2 x 1 gà rán</dd>
+                                                        <dt>Món ăn kèm:</dt>
+                                                        <dd>1 Khoai tây chiên vừa</dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </td>
-                    <td id="td2">@cb.DonGia</td>
-                    <td id="td3">
-                        <div class="count-product">
-                            <div class="span-1-option">
-                                <button class="control-count" onclick="decreasevalue()" type="button" id="btn-1">
-                                    <span>-</span>
-                                </button>
-                                <input type="text" id="number" class="count" maxlength="10" value="1">
-                                <button class="control-count" onclick="increasevalue()" type="button" id="btn-2">
-                                    <span>+</span>
-                                </button>
-                            </div>
-                        </div>
-                    </td>
-                    <td id="td4">
-                        <a href="update-cart.html"><img src="./imagescart/pen.png"> thay đổi chi tiết phần ăn</a>
-                    </td>
-                    <td id="td5">
-                        <button><img src="~/assets/images/trash.png">xóa</button>
-                    </td>
-                </tr>
+                            </td>
+                            <td id="td2">@item.cb.DonGia</td>
+                            <td id="td3">
+                                <div class="count-product">
+                                    <div class="span-1-option">
+                                        <button class="control-count" onclick="decreasevalue()" type="button" id="btn-1">
+                                            <span>-</span>
+                                        </button>
+                                        <input type="text" id="number" class="count" maxlength="10" value="@item.SoLuong">
+                                        <button class="control-count" onclick="increasevalue()" type="button" id="btn-2">
+                                            <span>+</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                            <td id="td4">
+                                <a href="update-cart.html"><img src="./imagescart/pen.png"> thay đổi chi tiết phần ăn</a>
+                            </td>
+                            <td id="td5">
+                                <button onclick="XoaGioHang('/GioHang/XoaGioHang',@item.cb.MaCombo, true) "><img src="~/assets/images/trash.png">xóa</button>
+                            </td>
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+    </div>
+    <div style="font-weight: bold">
+        <div class="row" style="padding-top: 1%">
+            <div class="col-6" style="text-align: right; color: black; padding-top: 5px;">
+                <p>Tổng Cộng:</p>
+            </div>
+            <div class="col-6" style="text-align: left; color: green; font-size: 23px; padding-left:0;">
+                <p>200.0000</p>
+            </div>
+        </div>
+    </div>
+}
+
+@*<script>
+    function XoaGioHang(url, id, laSanPham) {
+        $.ajax({
+            url: url,
+            data: {
+                id: MaMatHang,
+                laSanPham: laSanPham
             }
-        </table>
-    </div>
-</div>
-<div style="font-weight: bold">
-    <div class="row" style="padding-top: 1%">
-        <div class="col-6" style="text-align: right; color: black; padding-top: 5px;">
-            <p>Tổng Cộng:</p>
-        </div>
-        <div class="col-6" style="text-align: left; color: green; font-size: 23px; padding-left:0;">
-            <p>200.0000</p>
-        </div>
-    </div>
-</div>
+        }).done(() => {
+            $.ajax({
+                url: '/GioHang/GioHang_ChiTiet'
+            }).done((result) => {
+                $(".modal-body-gh .container").html(result);
+            })
+        })
+    }
+</script>*@
+
+

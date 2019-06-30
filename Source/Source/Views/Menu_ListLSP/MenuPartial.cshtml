@@ -30,9 +30,21 @@
                 <a href="@Url.Action("Index","GioiThieu")">Giới Thiệu</a>
             </li>
             <img src="~/Assets/images/topbar-separator.png">
-            @*<li>
-                <button data-toggle="modal" data-target="#cart"><img src="~/Assets/images/cart.png"> Giỏ Hàng</button>
-            </li>*@
+            <li>
+                <button data-toggle="modal" data-target="#cart" onclick="XemGioHang()" ><img src="~/Assets/images/cart.png"> Giỏ Hàng</button>
+            </li>
         </ul>
     </div>
 </div>
+<script>
+    function XemGioHang() {
+        debugger
+        $.ajax({
+            url: '/GioHang/GioHang_ChiTiet'
+        }).done((result) => {
+            $(".modal-body-gh .container").html(result);
+        })
+    }
+</script>
+
+

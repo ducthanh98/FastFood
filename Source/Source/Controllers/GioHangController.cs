@@ -11,29 +11,74 @@ namespace Source.Controllers
     public class GioHangController : BaseController
     {
         // GET: GioHang
-        public ActionResult GioHang()
+        public ActionResult Index()
         {
             return View();
         }
-         public PartialViewResult GioHang_ChiTiet( int MaMatHang, bool laSanPham, int soLuong)
+
+        public PartialViewResult GioHang_ChiTiet()
         {
-            List<GioHang> lstGH = new List<DAO.GioHang>();
-            GioHang gh = new DAO.GioHang();
-            gh.SoLuong = soLuong;
+            List<GioHang> giohang = Session["giohang"] as List<GioHang>;
+            return PartialView(giohang);
+        }
+
+        public bool GetSP(int MaMatHang, bool laSanPham, int soLuong)
+        {
+            if (Session["giohang"] == null)
+            {
+                Session["giohang"] = new List<GioHang>();
+            }
+            List<GioHang> giohang = Session["giohang"] as List<GioHang>;
             if (laSanPham == false)
             {
-                gh.MaCombo = MaMatHang;
-                Combo_SanPham cb = Combo_Service.SelectByPrimaryKey(MaMatHang);
-                ViewBag.cb = cb;
+                if (giohang.FirstOrDefault(x =>(x.cb != null && x.cb.MaCombo == MaMatHang)) == null)
+                {
+                    giohang.Add(new GioHang { cb = Combo_Service.SelectByPrimaryKey(MaMatHang), SoLuong = soLuong });
+                }
+                else
+                {
+                    GioHang item = giohang.FirstOrDefault(x =>(x.cb!= null && x.cb.MaCombo == MaMatHang));
+                    item.SoLuong += soLuong;
+                }
             }
             else
             {
-                gh.MaSanPham = MaMatHang;
-                SanPhamDAO sp = SanPham_Service.GetByID(MaMatHang);
-                ViewBag.sp = sp;
+                if (giohang.FirstOrDefault(x =>(x.sp != null && x.sp.MaSanPham == MaMatHang)) == null)
+                {
+                    giohang.Add(new GioHang { sp = SanPham_Service.GetByID(MaMatHang), SoLuong = soLuong });
+                }
+                else
+                {
+                    GioHang item = giohang.FirstOrDefault(x =>(x.sp != null && x.sp.MaSanPham == MaMatHang));
+                    item.SoLuong += soLuong;
+                }
+
             }
-            lstGH.Add(gh);
-            return PartialView(lstGH);
+            return true;
         }
+
+        //public bool XoaGioHang(int MaMatHang, bool laSanPham)
+        //{
+        //    List<GioHang> giohang = Session["giohang"] as List<GioHang>;
+        //    if(laSanPham == false)
+        //    {
+        //        GioHang item = giohang.FirstOrDefault(x => (x.cb != null && x.cb.MaCombo == MaMatHang));
+        //        if(item !=null)
+        //        {
+        //            giohang.Remove(item);
+        //        }   
+        //    }
+        //    else
+        //    {
+        //        GioHang item = giohang.FirstOrDefault(x => (x.sp != null && x.sp.MaSanPham == MaMatHang));
+        //        if (item != null)
+        //        {
+        //            giohang.Remove(item);
+        //        }
+        //    }          
+        //    return true;
+        //}
     }
 }
+
+

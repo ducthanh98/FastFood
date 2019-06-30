@@ -42,7 +42,7 @@
         <span class="total" id="price1"> @dscb.DonGia</span>
     </div>
     <div class="modal-footer">
-        <button data-toggle="modal" data-target="#cart" type="button" class="add-to-cart" data-dismiss="modal" onclick="ThemVaoGioHang('/GioHang/GioHang_ChiTiet',@dscb.MaCombo,false)">Thêm vào giỏ hàng</button>
+        <button data-toggle="modal" data-target="#cart" type="button" class="add-to-cart" data-dismiss="modal" onclick="ThemVaoGioHang('/GioHang/GetSP',@dscb.MaCombo,false)">Thêm vào giỏ hàng</button>
         <button type="button" class="payment">Thanh Toán</button>
     </div>
 }
@@ -78,7 +78,7 @@ else
         <span class="total" id="price2">@dssp.DonGia</span>
     </div>
     <div class="modal-footer">
-        <button data-toggle="modal" data-target="#cart" type="button" class="add-to-cart" data-dismiss="modal" onclick="ThemVaoGioHang('/GioHang/GioHang_ChiTiet',@dssp.MaSanPham,true)">Thêm vào giỏ hàng</button>
+        <button data-toggle="modal" data-target="#cart" type="button" class="add-to-cart" data-dismiss="modal" onclick="ThemVaoGioHang('/GioHang/GetSP',@dssp.MaSanPham,true)">Thêm vào giỏ hàng</button>
         <button type="button" class="payment">Thanh Toán</button>
     </div>
 }
@@ -110,6 +110,24 @@ else
         document.getElementById("price2").innerHTML= total
     }
 
+    function ThemVaoGioHang(url, id, laSanPham, soLuong){
+        debugger
+        soLuong = document.getElementById("number").value
+        $.ajax({
+            url: url,
+            data:{
+                MaMatHang: id,
+                laSanPham: laSanPham,
+                soLuong: soLuong
+            }
+        }).done(()=>{
+            $.ajax({
+                url: '/GioHang/GioHang_ChiTiet'
+            }).done((result) => {
+                $(".modal-body-gh .container").html(result);
+            })
+        })
+    } 
 </script>
 
 
