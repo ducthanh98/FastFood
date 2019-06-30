@@ -68,16 +68,13 @@
         <div class="modal-dialog modal-dialog" role="document" style="max-width: none;width:auto;padding-left: 3%;padding-right: 3%;">
             <div class="modal-content">
                 <div class="modal-header" style="font-weight: bold;color: #ffffff;background-color: #EF5F21;padding: 5px 5px 5px">
-                    <h5 class="modal-title">Phần Ăn Bạn Đã Chọn</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-right:0">
+                    <h5 style="font-weight: bold;color: antiquewhite; font-size: 25px; margin-left: 2%" class="modal-title">Phần Ăn Bạn Đã Chọn</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-right:0; font-size:40px">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <div class="contaner">
-                        @*@{ 
-                            Html.RenderAction("GioHang_ChiTiet", "GioHang", new { MaMatHang = 1, laSanPham = false, soLuong = 1});
-                        }*@
+                <div class="modal-body-gh" style="overflow-x: scroll;">
+                    <div class="container" style="max-height: 400px">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -110,5 +107,14 @@
                 $(".header").css("position", "fixed");
             }
         });
+
+        function XemGioHang() {
+            debugger
+            $.ajax({
+                url: '/GioHang/GioHang_ChiTiet'
+            }).done((result) => {
+                $(".modal-body-gh .container").html(result);
+            })
+        }
 </script>
 </html>

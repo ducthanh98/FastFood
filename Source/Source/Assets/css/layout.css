@@ -176,7 +176,7 @@ li {
 .cart-info td {
     max-width: 430px;
     height: auto;
-    color: black;
+    color: #fe661a;
     border: 2px brown solid;
 }
 
@@ -202,6 +202,9 @@ li {
 
 .cart-info .count-product input {
     height: 28px;
+}
+.cart-info a img{
+    height: 100px;
 }
 
 .listmenu button:hover {

@@ -14,8 +14,8 @@
             {
             <div class="col-4">
                 <div class="product-item">
-                    <a class="item-pro" href="#"><img src="@Url.Content( AppConfig.loadSP +item.HinhAnh)" alt=""></a>
-                    <a class="item-btn" href="#">@item.TenLoaiSanPham</a>
+                    <a class="item-pro" href="@Url.Action("SanPham","SanPham", new {@MaLoaiSanPham = @item.MaLoaiSanPham})"><img src="@Url.Content( AppConfig.loadSP +item.HinhAnh)" alt=""></a>
+                    <a class="item-btn" href="@Url.Action("SanPham","SanPham", new {@MaLoaiSanPham = @item.MaLoaiSanPham})">@item.TenLoaiSanPham</a>
                 </div>
             </div>
         }

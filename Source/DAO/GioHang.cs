@@ -8,10 +8,8 @@ namespace DAO
 {
     public class GioHang
     {
-        public int MaCombo {set; get;}
-        public int MaSanPham { set; get; }
+        public SanPhamDAO sp { set; get; }
+        public Combo_SanPham cb { set; get; }
         public int SoLuong { set; get; }
-        public decimal ThanhTien { set; get; }
-   
     }
 }

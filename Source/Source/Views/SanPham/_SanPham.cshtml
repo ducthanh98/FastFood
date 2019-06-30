@@ -2,9 +2,9 @@
 
 @{
     List<DAO.SanPham_LoaiSanPham> lstSP = (List<DAO.SanPham_LoaiSanPham>)TempData["sanPham"];
-     List<DAO.Combo_SanPham> lstCB = (List<DAO.Combo_SanPham>)TempData["comBo"];
+    List<DAO.Combo_SanPham> lstCB = (List<DAO.Combo_SanPham>)TempData["comBo"];
 }
-}
+
 <div class="title-menu">
     <h2>@lstSP.FirstOrDefault().TenLoaiSanPham</h2>
 </div>
@@ -27,7 +27,7 @@
                         <div class="product-info">
                             <h4>@lstCB[i].TenCombo</h4>
                             <p>@lstCB[i].DonGia</p>
-                            <button class="cart-btn" data-toggle="modal" onclick="ThemVaoGioHang('/SanPham/SanPham_ChiTiet',@lstCB[i].MaCombo,false)" data-target="#showdetail">Đặt Mua</button>
+                            <button class="cart-btn" data-toggle="modal" onclick="XemChiTiet('/SanPham/SanPham_ChiTiet',@lstCB[i].MaCombo,false)" data-target="#showdetail">Đặt Mua</button>
                         </div>
                     </li>
                 }
@@ -43,7 +43,7 @@
                         <div class="product-info">
                             <h4>@item.TenSanPham</h4>       
                             <p>@item.DonGia</p>
-                            <button class="cart-btn" data-toggle="modal" onclick="ThemVaoGioHang('/SanPham/SanPham_ChiTiet',@item.MaSanPham,true)" data-target="#showdetail">Đặt Mua</button>
+                            <button class="cart-btn" data-toggle="modal" onclick="XemChiTiet('/SanPham/SanPham_ChiTiet',@item.MaSanPham,true)" data-target="#showdetail">Đặt Mua</button>
                         </div>
                     </li>
                 }
@@ -53,19 +53,17 @@
 </div>
 
 <script>
-    function ThemVaoGioHang(url, id, laSanPham, soLuong, giaTien) {
-        soLuong = document.getElementById("number").value
+    function XemChiTiet(url, id, laSanPham) {    
         $.ajax({           
             url: url,
             type: "post",
             data: {
                 MaMatHang: id,
-                laSanPham: laSanPham,
-                soLuong: soLuong
+                laSanPham: laSanPham
             }
         }).done((result) => {
-            $(".modal-body .container").html(result);
-        })
+            $(".modal-body .container").html(result);            
+        })     
     }
 </script>
 
