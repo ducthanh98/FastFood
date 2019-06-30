@@ -1,5 +1,6 @@
 ﻿using DAO;
 using Source.Areas.Admin.Controllers;
+using Source.Configuration;
 using Source.Helpers;
 using System;
 using System.Collections.Generic;
@@ -74,6 +75,41 @@ namespace Source.Controllers
 
         public ActionResult Register()
         {
+            TaiKhoanDAO taiKhoan = new TaiKhoanDAO();
+            return View(taiKhoan);
+        }
+        [HttpPost]
+        public ActionResult Register(TaiKhoanDAO user,string rePass,string GioiTinh)
+        {
+            bool check = true;
+            try
+            {
+                if (string.IsNullOrEmpty(user.TenTaiKhoan) || string.IsNullOrEmpty(user.MatKhau) || string.IsNullOrEmpty(user.SDT) || string.IsNullOrEmpty(user.DiaChi))
+                {
+                    ViewBag.error = "Vui lòng nhập đầy đủ thông tin";
+                    return View(user);
+                }
+
+                if (!user.MatKhau.Equals(rePass))
+                {
+                    ViewBag.error = "Mật khẩu không khớp. Vui lòng thử lại";
+                    return View(user);
+                }
+                if (GioiTinh!= null)
+                {
+                    user.GioiTinh = true;
+                }
+                else
+                {
+                    user.GioiTinh = false;
+                }
+                check = TaiKhoan_Service.Insert(user);
+            } catch(Exception e)
+            {
+                ViewBag.error = e.Message;
+                return View(user);
+            }
+
             return View();
         }
         public ActionResult NotFound()

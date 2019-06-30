@@ -212,7 +212,6 @@
     <Compile Include="Controllers\Menu_ListLSPController.cs" />
     <Compile Include="Areas\Admin\Controllers\TaiKhoanController.cs" />
     <Compile Include="Controllers\TimKiemController.cs" />
-
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -6322,6 +6321,8 @@
     <Content Include="Views\GioHang\GioHang_ChiTiet.cshtml" />
     <Content Include="Views\TimKiem\KQTimKiem.cshtml" />
     <Content Include="Views\GioiThieu\Index.cshtml" />
+    <Content Include="Views\Shared\_AuthLayout.cshtml" />
+    <Content Include="Views\Auth\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
