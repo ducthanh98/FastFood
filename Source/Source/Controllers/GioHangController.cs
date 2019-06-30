@@ -78,6 +78,58 @@ namespace Source.Controllers
             }
             return true;
         }
+
+        public bool GiamSL(int MaMatHang,bool laSanPham)
+        {
+            List<GioHang> giohang = Session["giohang"] as List<GioHang>;
+            if (laSanPham == false)
+            {
+                GioHang item = giohang.FirstOrDefault(x => (x.cb != null && x.cb.MaCombo == MaMatHang));
+                if (item != null && item.SoLuong <=1)
+                {
+                    giohang.Remove(item);
+                }
+                else if(item != null && item.SoLuong >= 1)
+                {
+                    item.SoLuong--;
+                }
+            }
+            else
+            {
+                GioHang item = giohang.FirstOrDefault(x => (x.sp != null && x.sp.MaSanPham == MaMatHang));
+                if (item != null && item.SoLuong <= 1)
+                {
+                    giohang.Remove(item);
+                }
+                else if (item != null && item.SoLuong >= 1)
+                {
+                    item.SoLuong--;
+                }
+            }
+            return true;
+        }
+
+        public bool TangSL(int MaMatHang, bool laSanPham)
+        {
+            List<GioHang> giohang = Session["giohang"] as List<GioHang>;
+            if (laSanPham == false)
+            {
+                GioHang item = giohang.FirstOrDefault(x => (x.cb != null && x.cb.MaCombo == MaMatHang));
+                if (item != null)
+                {
+                    item.SoLuong++;
+                }
+            }
+            else
+            {
+                GioHang item = giohang.FirstOrDefault(x => (x.sp != null && x.sp.MaSanPham == MaMatHang));
+                if(item != null)
+                {
+                    item.SoLuong++;
+                }
+            }
+            return true;
+        }
     }
 }
 

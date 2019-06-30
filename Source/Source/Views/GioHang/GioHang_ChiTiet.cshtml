@@ -1,6 +1,8 @@
 ﻿@using Source.Configuration;
 @model List<DAO.GioHang>
-
+@{ 
+    decimal TongTien = 0;
+}
 
 @if(Model == null || Model.Count == 0)
 {
@@ -38,15 +40,15 @@ else
                                     </div>
                                 </div>
                             </td>
-                            <td id="giaSP">@item.sp.DonGia</td>                     
+                            <td id="giaSP">@(TongTien += item.sp.DonGia * item.SoLuong)</td>                     
                             <td id="td3">
                                 <div class="count-product">
                                     <div class="span-1-option">
-                                        <button class="control-count" onclick="decreaseValue(this)" type="button" id="btn-1">
+                                        <button class="control-count" onclick="GiamSL('/GioHang/GiamSL', @item.sp.MaSanPham,true)" type="button" id="btn-1">
                                             <span>-</span>
                                         </button>
-                                        <input type="text" id="number" class="count" maxlength="10" value="@item.SoLuong">
-                                        <button class="control-count" onclick="increaseValue(this)" type="button" id="btn-2">
+                                        <input disabled="disabled" type="text" id="number"  class="count" maxlength="10" value="@item.SoLuong">
+                                        <button class="control-count" onclick="TangSL('/GioHang/TangSL', @item.sp.MaSanPham,true)" type="button" id="btn-2">
                                             <span>+</span>
                                         </button>
                                     </div>
@@ -81,7 +83,7 @@ else
                                                         @foreach (var ds in item.cb.sanPham)
                                                         {
                                                             <dt>@ds.TenSanPham :</dt> 
-                                                            <dd>  @ds.SoLuong</dd>
+                                                            <dd>@ds.SoLuong</dd>
                                                         }
                                                     </dl>
                                                 </div>
@@ -90,15 +92,15 @@ else
                                     </div>
                                 </div>
                             </td>
-                            <td id="giaCB">@item.cb.DonGia</td>
+                            <td id="giaCB">@(TongTien +=  item.cb.DonGia * item.SoLuong)</td>
                             <td id="td3">
                                 <div class="count-product">
                                     <div class="span-1-option">
-                                        <button class="control-count" onclick="decreaseValue(this)" type="button" id="btn-1">
+                                        <button class="control-count" onclick="GiamSL('/GioHang/GiamSL', @item.cb.MaCombo,false)" type="button" id="btn-1">
                                             <span>-</span>
                                         </button>
-                                        <input disabled="disabled" type="text" id="number" onchange="TongTien()" class="count" maxlength="10" value="@item.SoLuong">
-                                        <button class="control-count" onclick="increaseValue(this) " type="button" id="btn-2">
+                                        <input disabled="disabled" type="text" id="number"  class="count" maxlength="10" value="@item.SoLuong">
+                                        <button class="control-count" onclick="TangSL('/GioHang/TangSL', @item.cb.MaCombo, false)" type="button" id="btn-2">
                                             <span>+</span>
                                         </button>
                                     </div>
@@ -119,7 +121,7 @@ else
                 <p>Tổng Cộng:</p>
             </div>
             <div class="col-6" style="text-align: left; color: green; font-size: 23px; padding-left:0;">
-                <span id="tongtien">1</span>
+                <span id="tongtien">@TongTien</span>
             </div>
         </div>
     </div>
@@ -157,11 +159,37 @@ else
         }      
     }
 
-    function TongTien(){
-        var a = document.getElementById("giaSP").value
-        var b = document.getElementById("giaCB").value
-        document.getElementById("tongtien").innerHTML= parseInt(a) + parseInt(b)
-    }
+    function GiamSL(url, id, laSanPham) {
+            $.ajax({
+                url: url,
+                data: {
+                    MaMatHang: id,
+                    laSanPham: laSanPham
+                }
+            }).done(() => {
+                $.ajax({
+                    url: '/GioHang/GioHang_ChiTiet'
+                }).done((result) => {
+                    $(".modal-body-gh .container").html(result);
+                })
+            })
+    }    
+    
+    function TangSL(url, id, laSanPham) {
+        $.ajax({
+            url: url,
+            data: {
+                MaMatHang: id,
+                laSanPham: laSanPham
+            }
+        }).done(() => {
+            $.ajax({
+                url: '/GioHang/GioHang_ChiTiet'
+            }).done((result) => {
+                $(".modal-body-gh .container").html(result);
+            })
+        })
+    }  
 
     
 </script>

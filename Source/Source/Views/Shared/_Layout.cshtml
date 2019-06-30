@@ -43,17 +43,10 @@
                 {
 
                     <li>
-                        <div class="login">
-                            <a href="#" style="margin-right: 1%;display: contents">Xin Chào, @user.TenTaiKhoan</a>
-                            <div class="memenu">
-                                <ul>
-                                    <li><a>Xem Thông Tin</a></li>
-                                    <li><a href="@Url.Action("Logout","Auth")">Đăng Xuất</a></li>
-                                </ul>
-                            </div>
-                        </div>
+                        <a href="#" style="margin-right: 1%;display: contents">Xin Chào, @user.TenTaiKhoan</a>
                     </li>
-
+                    <img src="~/Assets/images/topbar.png">
+                    <li><a href="@Url.Action("Logout","Auth")">Đăng Xuất</a></li>
                 }
             </ul>
         </div>
