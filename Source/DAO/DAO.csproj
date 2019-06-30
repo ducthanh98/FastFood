@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddToCart.cs" />
     <Compile Include="CB_LSP.cs" />
     <Compile Include="ChartReport.cs" />
     <Compile Include="ChiPhiDAO.cs" />

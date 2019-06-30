@@ -11,5 +11,6 @@ namespace DAO
         public SanPhamDAO sp { set; get; }
         public Combo_SanPham cb { set; get; }
         public int SoLuong { set; get; }
+       
     }
 }
