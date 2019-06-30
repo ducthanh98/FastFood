@@ -1,0 +1,88 @@
+﻿@model List<DAO.DonHangDAO>
+
+@{
+    int pageFrom = ((ViewBag.pageNumber - 1) * ViewBag.pageSize) + 1;
+
+}
+<!-- Table -->
+<div class="example-wrap">
+    <div class="example table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th class="text-center">Mã hóa đơn</th>
+                    <th class="text-center" width="300">Đơn giá</th>
+                    <th>Địa chỉ</th>
+                    <th class="text-center">Thời gian</th>
+                    <th class="text-center" width="150">Trạng thái</th>
+                    <th class="text-center" width="180">Chỉnh sửa</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count > 0)
+                {
+                    for (int i = 0; i < Model.Count; i++)
+                    {
+                        <tr>
+                            <td>@(pageFrom + i)</td>
+                            <td class="text-center" width="130">@Model[i].MaHoaDon</td>
+                            <td class="text-center money">@Model[i].TongTien.ToString().Replace(".00","")</td>
+                            <td width="300">@Model[i].DiaChi</td>
+                            <td width="200">@Model[i].ThoiGian</td>
+                            <td width="150" class="text-center">@Model[i].TrangThai</td>
+                            <td class="text-center">
+                                <i class="icon wb-check text-success" title="Xử lí" onclick="updateInvoice(this,0)" data-id='@Model[i].MaHoaDon' style="margin-right:5px;"></i>
+                                <i class="icon wb-refresh text-primary" title="Đang xử lí" onclick="updateInvoice(this,1)" data-id='@Model[i].MaHoaDon' style="margin-right:5px;"></i>
+                                <i class="icon wb-close text-danger" title="Hủy" onclick="updateInvoice(this,2)" data-id='@Model[i].MaHoaDon'></i>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td class="text-center" colspan="7">Không có dữ liệu</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- End Table -->
+@{ Html.RenderAction("_Pagination", "Home", new { maxNumber = ViewBag.maxNumber, pageNumber = ViewBag.pageNumber });}
+
+<script>
+    $(".money").each(function () {
+        formatTableCurrency(this);
+    })
+
+    function updateInvoice(element, status) {
+        // 0: Xử lí
+        // 1: Đang xử lí
+        // 2 Hủy
+        const res = confirm("Bạn có muốn đổi trạng thái hóa đơn");
+        if (res) {
+            let value = "";
+            if (status === 0) {
+                value = "Xử lí";
+            } else if (status === 1) {
+                value = "Đang xử lí";
+            } else {
+                value = "Hủy";
+            }
+            $.ajax({
+                url: '/Ajax/UpdateInvoiceStatus',
+                method: 'post',
+                data: {
+                    ID: +element.getAttribute('data-id'),
+                    value: value
+                }
+            }).done((result) => {
+                alertMess(result);
+            })
+        }
+        
+    }
+</script>
+

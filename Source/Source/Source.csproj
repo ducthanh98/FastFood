@@ -5349,7 +5349,6 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Ajax\" />
     <Folder Include="Areas\Admin\Views\Base\" />
-    <Folder Include="Areas\Admin\Views\DonHang\" />
     <Folder Include="Areas\Admin\Views\SanPham\" />
     <Folder Include="Views\Ajax\" />
   </ItemGroup>
@@ -6300,6 +6299,8 @@
     <Content Include="Areas\Admin\Views\KhuyenMai\_DanhSach.cshtml" />
     <Content Include="Areas\Admin\Views\KhuyenMai\_KhuyenMai_ChiTiet.cshtml" />
     <Content Include="Areas\Admin\Views\TaiKhoan\_ChiTiet.cshtml" />
+    <Content Include="Areas\Admin\Views\DonHang\DanhSach.cshtml" />
+    <Content Include="Areas\Admin\Views\DonHang\_DanhSach.cshtml" />
     <None Include="Project_Readme.html" />
     <Content Include="Areas\Admin\Views\ChiPhi\_DanhSachChiPhi.cshtml" />
     <Content Include="Areas\Admin\Views\ChiPhi\_ChiPhi_ChiTiet.cshtml" />

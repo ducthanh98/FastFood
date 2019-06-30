@@ -28,7 +28,9 @@ namespace Source.Configuration
                 else if (user.QuyenHan == 1)
                 {
 
-                    if (controller.ControllerName != "DonHang")
+                    if (!(controller.ControllerName.Equals("DonHang") || 
+                        (controller.ControllerName.Equals("Ajax") && filterContext.ActionDescriptor.ActionName.Equals("UpdateInvoiceStatus")) || 
+                        (controller.ControllerName.Equals("Home") && !filterContext.ActionDescriptor.ActionName.Equals("Index"))))
                     {
                         filterContext.Result = new RedirectResult("/Auth/Unauthorized");
                     }

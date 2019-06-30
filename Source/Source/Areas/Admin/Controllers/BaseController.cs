@@ -19,6 +19,8 @@ namespace Source.Areas.Admin.Controllers
         protected LoaiSanPhamBL LoaiSanPham_Service = new LoaiSanPhamBL();
         protected ComboBL Combo_Service = new ComboBL();
         protected ReportBL Report_Service = new ReportBL();
-        
+        protected DonHangBL DonHang_Service = new DonHangBL();
+
+
     }
 }

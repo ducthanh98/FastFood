@@ -137,6 +137,38 @@ namespace Common
             }
             return check;
         }
+        public bool ExecuteProc(string name_proc, string fieldCode, int ID,string fieldName,string value)
+        {
+            bool check = true;
+            SqlCommand cmdObject = null;
+            try
+            {
+                cmdObject = new SqlCommand(name_proc, Connection);
+                cmdObject.CommandType = CommandType.StoredProcedure;
+                SqlParameter par1 = new SqlParameter(fieldCode, ID);
+                SqlParameter par2 = new SqlParameter(fieldName, value);
+
+                cmdObject.Parameters.Add(par1);
+                cmdObject.Parameters.Add(par2);
+                // Do something with propValue
+                if (cmdObject.ExecuteNonQuery() == 0)
+                {
+                    check = false;
+                }
+
+            }
+            catch (Exception e)
+            {
+                check = false;
+                throw e;
+            }
+            finally
+            {
+                cmdObject.Dispose();
+                CloseConnection();
+            }
+            return check;
+        }
 
         public List<T> ExecuteProcAndGetData(string name_proc,string Field, int? ID)
         {

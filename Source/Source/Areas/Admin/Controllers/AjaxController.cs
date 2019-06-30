@@ -363,6 +363,37 @@ namespace Source.Areas.Admin.Controllers
         }
 
         #endregion Users
+
+        #region DonHang
+        public JsonResult UpdateInvoiceStatus(int ID,string value)
+        {
+            AjaxResultModel Result = new AjaxResultModel();
+
+            bool check = true;
+            try
+            {
+                check = DonHang_Service.UpdateByID(ID,value);
+                if (check)
+                {
+                    Result.Code = 0;
+                    Result.Message = "Thành công";
+                }
+                else
+                {
+                    Result.Code = 1;
+                    Result.Message = "Đã có lỗi xảy ra. Vui lòng thử lại.";
+                }
+            }
+            catch (Exception e)
+            {
+                Result.Code = 1;
+                Result.Message = e.Message;
+                //throw;
+            }
+            return Json(new JsonResult() { Data = Result });
+        }
+
+        #endregion
         public List<SanPhamDAO> test()
         {
             List<SanPhamDAO> lst = new List<SanPhamDAO>();
