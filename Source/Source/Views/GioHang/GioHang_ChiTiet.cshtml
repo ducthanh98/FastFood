@@ -40,7 +40,8 @@ else
                                     </div>
                                 </div>
                             </td>
-                            <td id="giaSP">@(TongTien += item.sp.DonGia * item.SoLuong)</td>                     
+                            @{TongTien += item.sp.DonGia * item.SoLuong;}
+                            <td id="giaSP">@(item.sp.DonGia * item.SoLuong)</td>                     
                             <td id="td3">
                                 <div class="count-product">
                                     <div class="span-1-option">
@@ -92,7 +93,8 @@ else
                                     </div>
                                 </div>
                             </td>
-                            <td id="giaCB">@(TongTien +=  item.cb.DonGia * item.SoLuong)</td>
+                            @{TongTien += item.cb.DonGia * item.SoLuong;}
+                            <td id="giaCB">@(item.cb.DonGia * item.SoLuong)</td>
                             <td id="td3">
                                 <div class="count-product">
                                     <div class="span-1-option">

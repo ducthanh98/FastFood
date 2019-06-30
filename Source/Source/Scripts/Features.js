@@ -42,7 +42,6 @@ var id = 0;
             $(`#${item.id}`).focus();
             return { valid: false, message: 'Phần trăm phải lớn hơn 0 và nhỏ hơn 100 ' };
         } else if (item.classList.contains('pass')) {
-            debugger
             if (item.value !== document.getElementsByClassName("re-pass")[0].value) {
                 $(`#${item.id}`).focus();
                 return { valid: false, message: 'Mật khẩu không khớp. Vui lòng nhập lại' };
