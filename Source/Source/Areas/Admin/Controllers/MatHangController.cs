@@ -28,7 +28,7 @@ namespace Source.Areas.Admin.Controllers
                 {
                     hs.Add(productType[i].MaLoaiSanPham, productType[i].TenLoaiSanPham);
                 }
-                ViewBag.listboxes = hs;
+                ViewBag.listProductTypes = hs;
                 int totalEntries;
                 list = SanPham_Service.GetAllBy(pageNumber, pageSize, keyText, out totalEntries);
                 ViewBag.maxNumber = Math.Ceiling(totalEntries / (double)pageSize);

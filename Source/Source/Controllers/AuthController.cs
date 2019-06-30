@@ -110,7 +110,7 @@ namespace Source.Controllers
                 return View(user);
             }
 
-            return View();
+            return RedirectToAction("Login","Auth");
         }
         public ActionResult NotFound()
         {

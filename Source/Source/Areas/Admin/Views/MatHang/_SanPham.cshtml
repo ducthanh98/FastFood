@@ -29,7 +29,7 @@
 
                                 <td>@Model[i].TenSanPham</td>
 
-                                <td>@Model[i].MaLoaiSanPham</td>
+                                <td>@ViewBag.listProductTypes[Model[i].MaLoaiSanPham]</td>
 
                                 <td class="text-center"><img width="150px" height="150px" @if (!string.IsNullOrEmpty(@Model[i].HinhAnh)) { <text>src=@Url.Content(AppConfig.uploadFolder + Model[i].HinhAnh) </text> } alt="" /></td>
 

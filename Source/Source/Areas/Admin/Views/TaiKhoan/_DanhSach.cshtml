@@ -28,7 +28,7 @@
                             <td>@Model[i].DiaChi</td>
                             <td>@Model[i].SDT</td>
                             <td>@if (Model[i].GioiTinh) {<text>Nam</text> } else { <text>Nữ</text> }</td>
-                            <td>@if (@Model[i].QuyenHan == 0) { <text>Admin</text>} else if (@Model[i].QuyenHan == 1) {<text>Quản lý</text>} else if (@Model[i].QuyenHan == 2) {<text>Nhân viên</text>} else {<text>Khách hàng</text>}</td>
+                            <td>@if (@Model[i].QuyenHan == 0) { <text>Admin</text>} else if (@Model[i].QuyenHan == 1) {<text>Nhân viên</text>} else {<text>Khách hàng</text>}</td>
                             <td class="text-center">
                                 <i class="icon wb-edit text-primary" onclick="setValueForModal(this,true)" data-id='@Model[i].MaTaiKhoan' data-target="#info-modal" data-toggle="modal" aria-hidden="true">
 </td>

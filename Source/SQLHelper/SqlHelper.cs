@@ -138,8 +138,6 @@ namespace Common
             return check;
         }
 
-
-
         public List<T> ExecuteProcAndGetData(string name_proc,string Field, int? ID)
         {
             List<T> result = new List<T>();

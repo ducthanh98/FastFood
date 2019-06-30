@@ -329,20 +329,13 @@ namespace Source.Areas.Admin.Controllers
             try
             {
                 TaiKhoanDAO user  = ((TaiKhoanDAO)HttpContext.Session["User"]);
-                if(user.QuyenHan > obj.QuyenHan)
+                if(obj.QuyenHan.Equals(0))
                 {
                     Result.Code = 2;
-                    Result.Message = "Bạn không thể tạo tài khoản vượt quyền hạn";
+                    Result.Message = "Bạn không thể tạo tài khoản với quyền hạn admin";
                     return Json(new JsonResult() { Data = Result });
-                } 
-
-                if (isUpdate && obj.MaTaiKhoan == 1 && obj.QuyenHan != 0)
-                {
-                    Result.Code = 3;
-                    Result.Message = "Bạn không thể chỉnh sửa quyền hạn tài khoản cấp cao nhất";
-                    return Json(new JsonResult() { Data = Result });
-
-                } else if (isUpdate){
+                }
+                if (isUpdate){
                     check = TaiKhoan_Service.Update(obj);
                 }
                 else

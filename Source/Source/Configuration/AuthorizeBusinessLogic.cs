@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace Source.Configuration
 {
-    public class AuthorizeBusinessLogic:ActionFilterAttribute
+    public class AuthorizeBusinessLogic : ActionFilterAttribute
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
@@ -18,19 +18,21 @@ namespace Source.Configuration
                 TaiKhoanDAO user = HttpContext.Current.Session["User"] == null ? null : (TaiKhoanDAO)HttpContext.Current.Session["User"];
                 if (user == null)
                 {
-                    string url = "/Auth/Login?url=/Admin/"+controller.ControllerName + "/" + filterContext.ActionDescriptor.ActionName;
+                    string url = "/Auth/Login?url=/Admin/" + controller.ControllerName + "/" + filterContext.ActionDescriptor.ActionName;
                     filterContext.Result = new RedirectResult(url);
-                } else if(user.QuyenHan == 3)
+                }
+                else if (user.QuyenHan != 0 && user.QuyenHan != 1)
                 {
                     filterContext.Result = new RedirectResult("/Auth/Unauthorized");
-                } /*else if(user.QuyenHan == 2)
+                }
+                else if (user.QuyenHan == 1)
                 {
-                    
+
                     if (controller.ControllerName != "DonHang")
                     {
                         filterContext.Result = new RedirectResult("/Auth/Unauthorized");
                     }
-                }*/
+                }
             }
         }
     }

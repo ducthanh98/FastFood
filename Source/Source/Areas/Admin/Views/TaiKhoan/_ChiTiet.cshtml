@@ -42,9 +42,8 @@
             <label class="form-control-label" for="QuyenHan">Quyền hạn *</label>
             <select class="form-control required" id="QuyenHan" data-plugin="select2">
                 <option @if (Model.QuyenHan == 0) { <text> selected</text> } value='0'>Admin</option>
-                <option @if (Model.QuyenHan == 1) { <text> selected</text> } value='1'>Quản lí</option>
-                <option @if (Model.QuyenHan == 2) { <text> selected</text> } value='2'>Nhân viên</option>
-                <option @if (Model.QuyenHan == 3) { <text> selected</text> } value='3'>Khách Hàng</option>
+                <option @if (Model.QuyenHan == 2) { <text> selected</text> } value='1'>Nhân viên</option>
+                <option @if (Model.QuyenHan == 3) { <text> selected</text> } value='2'>Khách Hàng</option>
             </select>
         </div>
 

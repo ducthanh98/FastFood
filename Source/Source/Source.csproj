@@ -199,6 +199,7 @@
     <Compile Include="Areas\Admin\Controllers\AjaxController.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\ChiPhiController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DonHangController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\KhuyenMaiController.cs" />
     <Compile Include="Areas\Admin\Controllers\MatHangController.cs" />
@@ -5348,6 +5349,7 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Ajax\" />
     <Folder Include="Areas\Admin\Views\Base\" />
+    <Folder Include="Areas\Admin\Views\DonHang\" />
     <Folder Include="Areas\Admin\Views\SanPham\" />
     <Folder Include="Views\Ajax\" />
   </ItemGroup>
