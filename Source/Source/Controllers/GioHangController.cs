@@ -57,27 +57,27 @@ namespace Source.Controllers
             return true;
         }
 
-        //public bool XoaGioHang(int MaMatHang, bool laSanPham)
-        //{
-        //    List<GioHang> giohang = Session["giohang"] as List<GioHang>;
-        //    if(laSanPham == false)
-        //    {
-        //        GioHang item = giohang.FirstOrDefault(x => (x.cb != null && x.cb.MaCombo == MaMatHang));
-        //        if(item !=null)
-        //        {
-        //            giohang.Remove(item);
-        //        }   
-        //    }
-        //    else
-        //    {
-        //        GioHang item = giohang.FirstOrDefault(x => (x.sp != null && x.sp.MaSanPham == MaMatHang));
-        //        if (item != null)
-        //        {
-        //            giohang.Remove(item);
-        //        }
-        //    }          
-        //    return true;
-        //}
+        public bool XoaGioHang(int MaMatHang, bool laSanPham)
+        {
+            List<GioHang> giohang = Session["giohang"] as List<GioHang>;
+            if (laSanPham == false)
+            {
+                GioHang item = giohang.FirstOrDefault(x => (x.cb != null && x.cb.MaCombo == MaMatHang));
+                if (item != null)
+                {
+                    giohang.Remove(item);
+                }
+            }
+            else
+            {
+                GioHang item = giohang.FirstOrDefault(x => (x.sp != null && x.sp.MaSanPham == MaMatHang));
+                if (item != null)
+                {
+                    giohang.Remove(item);
+                }
+            }
+            return true;
+        }
     }
 }
 

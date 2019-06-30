@@ -107,14 +107,5 @@
                 $(".header").css("position", "fixed");
             }
         });
-
-        function XemGioHang() {
-            debugger
-            $.ajax({
-                url: '/GioHang/GioHang_ChiTiet'
-            }).done((result) => {
-                $(".modal-body-gh .container").html(result);
-            })
-        }
 </script>
 </html>
